@@ -4,9 +4,10 @@
 #' TODO use pipe instead of temporary file
 #' TODO scale window according to png
 #' TODO can I use vector formats?
+#' TODO change to plantuml class and plot.plantuml()
 #'
 #' @param plantuml plantuml code to draw the UML graph
-#' @param file if \codew{file} is \code{NULL}, a png is created, saved in a
+#' @param file if \code{file} is \code{NULL}, a png is created, saved in a
 #'   temporary file and drawn in a device. If file is a file name, the graph is
 #'   saved in the file and the type is based on the extensions. See limitations
 #'   of plantuml to get the list of available file formats]
@@ -16,6 +17,7 @@
 #'
 #' @export
 #' @importFrom png readPNG
+#' @importFrom graphics par plot rasterImage
 #'
 #' @examples
 plotPlantuml <- function(
