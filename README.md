@@ -15,8 +15,14 @@ The package is not on CRAN, so you have to install it from github:
 # From github
 # install.packages("devtools")
 devtools::install_github("rkrug/plantuml")
+```
 
+    ## Skipping install of 'plantuml' from a github remote, the SHA1 (d9acb893) has not changed since last install.
+    ##   Use `force = TRUE` to force installation
+
+``` r
 # download and install the PlantUML jar file from \link{http://plantuml.com/download}
+library(plantuml)
 updatePlantumlJar()
 ```
 

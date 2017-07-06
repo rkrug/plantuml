@@ -9,19 +9,20 @@ This package provides the functionality to create UML graphs using the [PlantUML
 
 # Installation
 The package is not on CRAN, so you have to install it from github:
-```{r installation, eval = FALSE}
+```{r installation, eval = TRUE}
 # From github
 # install.packages("devtools")
 devtools::install_github("rkrug/plantuml")
 
 # download and install the PlantUML jar file from \link{http://plantuml.com/download}
+library(plantuml)
 updatePlantumlJar()
 ```
 
 # Usage
 In a graphical device
 ```{r exampleDevice}
-# library(plantuml)
+library(plantuml)
 x <- '
  @startuml
   --> "First Activity"
