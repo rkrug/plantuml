@@ -9,6 +9,7 @@ Description: Create UML graphs using the PLANTUML language.
 License: GPL-3
 Encoding: UTF-8
 Imports: 
+  utils,
   grid,
   png
 LazyData: true

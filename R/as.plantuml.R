@@ -8,6 +8,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' x <- '
 #'  @startuml
 #'   --> "First Activity"
@@ -17,6 +18,8 @@
 #' '
 #' x <- as.plantuml( x )
 #' plot( x )
+#' }
+#'
 as.plantuml <- function(
   x
   ) {

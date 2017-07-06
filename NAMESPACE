@@ -2,5 +2,7 @@
 
 S3method(plot,plantuml)
 export(as.plantuml)
+export(updatePlantumlJar)
 importFrom(grid,grid.raster)
 importFrom(png,readPNG)
+importFrom(utils,download.file)

@@ -25,8 +25,10 @@
 #'  --> (*)
 #'  @enduml
 #' '
-#' x <- as.plantuml( plantumlCode )
+#' \dontrun{
+#' #' x <- as.plantuml( plantumlCode )
 #' plot( x )
+#' }
 plot.plantuml <- function(
   x,
   file = NULL,
@@ -44,10 +46,11 @@ plot.plantuml <- function(
     ffmt <- paste0("-t", ext)
   }
 
+  cmd <- paste0( "-jar ", system.file("jar", "plantuml.jar", package = "plantuml") )
   system2(
-    command = "plantuml",
+    command = "java",
     input = x$code,
-    args = paste("-p", ffmt, plantumlOpt),
+    args = paste(cmd, "-p", ffmt, plantumlOpt),
     stdout = fn
     )
 

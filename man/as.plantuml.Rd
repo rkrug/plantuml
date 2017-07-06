@@ -16,6 +16,7 @@ object of class \code{plantuml} which can be plotted.
 Convert a \code{character} to a \code{plantuml} object. This can be plotted.
 }
 \examples{
+\dontrun{
 x <- '
  @startuml
   --> "First Activity"
@@ -25,4 +26,6 @@ x <- '
 '
 x <- as.plantuml( x )
 plot( x )
+}
+
 }

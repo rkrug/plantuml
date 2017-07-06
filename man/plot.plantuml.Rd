@@ -33,6 +33,8 @@ plantumlCode <- '
  --> (*)
  @enduml
 '
-x <- as.plantuml( plantumlCode )
+\dontrun{
+#' x <- as.plantuml( plantumlCode )
 plot( x )
+}
 }
