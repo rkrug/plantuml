@@ -1,4 +1,4 @@
-#' Convert a character to a \code{plantuml} object
+#' Convert a list to a \code{plantuml} object
 #'
 #' Convert a \code{character} to a \code{plantuml} object.
 #' This can be plotted.
@@ -15,10 +15,10 @@
 #'  -->
 #'  @enduml
 #'  '
-#'  x <- plantuml( x )
+#'  x <- as.plantuml( x )
 #'  plot( x ) }
 #'
-as.plantuml.default <- function(
+as.plantuml.data.frame <- function(
   x,
   complete = FALSE,
   nm = NULL
@@ -30,19 +30,34 @@ as.plantuml.default <- function(
   }
   #
   puml$code <-  paste0(
-    "\n '### ### default ### ### ### \n ",
+    "\n '### ### data.frame ### ### ### \n ",
     "object ", nm,
     " \n ",
     nm, " : class  = ", class(x), " \n ",
     nm, " : typeof  = ", typeof(x), " \n ",
     nm, " : mode  = ", mode(x), " \n ",
-    nm, " : length = ", length(x), " \n ",
-    nm, " : Not Further Supported in plantuml!", " \n "
+    nm, " : length = ", length(x), " \n "
   )
+  if (!is.null(attributes(x))) {
+    for (i in 1:length(attributes)) {
+      puml$code <- paste0(
+        puml$code, " \n ",
+        nm, " : ", names(attributes(x))[i], " = ", paste0(attributes(x)[[i]], collapse = " "),
+        " \n "
+      )
+    }
+  }
   #
+  for (i in 1:length(x)) {
+    nme <- paste(i, names(x)[i], sep = ".")
+    puml$code <- paste(
+      puml$code,
+      as.plantuml( x = x[[i]] , nm = nme )$code, " \n ",
+      nm, "*-->", nme, " \n "
+    )
+  }
   if (complete) {
     puml$code <- paste("@startuml \n ", puml$code, " \n @enduml")
   }
-  #
   return(puml)
 }

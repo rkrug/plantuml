@@ -30,13 +30,26 @@ as.plantuml.list <- function(
   }
   #
   puml$code <-  paste0(
+    "\n '### ### list ### ### ### \n ",
     "object ", nm,
     " \n ",
     nm, " : class  = ", class(x), " \n ",
+    nm, " : typeof  = ", typeof(x), " \n ",
+    nm, " : mode  = ", mode(x), " \n ",
     nm, " : length = ", length(x), " \n "
   )
+  if (!is.null(attributes(x))) {
+    for (i in 1:length(attributes)) {
+      puml$code <- paste0(
+        puml$code, " \n ",
+        nm, " : ", names(attributes(x))[i], " = ", paste0(attributes(x)[[i]], collapse = " "),
+        " \n "
+      )
+    }
+  }
+  #
   for (i in 1:length(x)) {
-    nme <- paste(i, names(x)[i], sep = ".")
+    nme <- paste(i, names(x)[i], nm, sep = ".")
     puml$code <- paste(
       puml$code,
       as.plantuml( x = x[[i]] , nm = nme )$code, " \n ",
