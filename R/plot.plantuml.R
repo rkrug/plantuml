@@ -36,6 +36,9 @@ plot.plantuml <- function(
   ...
   )
 {
+  if (!x$complete) {
+    x$code <- paste("@startuml \n ", x$code, " \n @enduml")
+  }
   if ( is.null(file) ) {
     fn <- tempfile( fileext = ".png")
     ffmt <- "-tpng"

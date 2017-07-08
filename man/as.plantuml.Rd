@@ -2,30 +2,28 @@
 % Please edit documentation in R/as.plantuml.R
 \name{as.plantuml}
 \alias{as.plantuml}
-\title{Convert a character to a \code{plantuml} object}
+\title{Convert an R object to a Class uml object}
 \usage{
-as.plantuml(x)
+as.plantuml(x, ...)
 }
 \arguments{
-\item{x}{plantuml code as a character string.}
+\item{x}{R object to be converted}
 }
 \value{
 object of class \code{plantuml} which can be plotted.
 }
 \description{
-Convert a \code{character} to a \code{plantuml} object. This can be plotted.
+Generic function to convert an R object to a \code{plantuml} Class object. This can
+be plotted.
 }
 \examples{
 \dontrun{
-x <- '
- @startuml
-  --> "First Activity"
- -->[You can put also labels] "Second Activity"
+ x <- '
+ @startuml --> "First Activity" -->[You can put also labels] "Second Activity"
  -->
  @enduml
-'
+ '
 x <- as.plantuml( x )
-plot( x )
-}
+plot( x ) }
 
 }
