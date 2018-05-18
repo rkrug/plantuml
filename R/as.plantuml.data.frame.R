@@ -49,7 +49,7 @@ as.plantuml.data.frame <- function(
   }
   #
   for (i in 1:length(x)) {
-    nme <- paste(i, names(x)[i], sep = ".")
+    nme <- paste0(nm, ".", i, ".", names(x)[i])
     puml$code <- paste(
       puml$code,
       as.plantuml( x = x[[i]] , nm = nme )$code, " \n ",

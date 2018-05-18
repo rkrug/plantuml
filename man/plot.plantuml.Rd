@@ -4,7 +4,8 @@
 \alias{plot.plantuml}
 \title{Generate UML graph from plantuml}
 \usage{
-\method{plot}{plantuml}(x, file = NULL, plantumlOpt = "", ...)
+\method{plot}{plantuml}(x, file = NULL, plantumlOpt = "", vector = TRUE,
+  ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
@@ -15,6 +16,8 @@ saved in the file and the type is based on the extensions. See limitations
 of plantuml to get the list of available file formats]}
 
 \item{plantumlOpt}{additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}}
+
+\item{vector}{if \code{TRUE} use svg as intermediate format, if \code{FALSE} use png. Only effects plotting in device.}
 
 \item{...}{additional arguments for the plot function \code{grid::grid.raster()}}
 }

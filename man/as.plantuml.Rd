@@ -8,22 +8,13 @@ as.plantuml(x, ...)
 }
 \arguments{
 \item{x}{R object to be converted}
+
+\item{...}{other argunents passed on to generic functions}
 }
 \value{
 object of class \code{plantuml} which can be plotted.
 }
 \description{
-Generic function to convert an R object to a \code{plantuml} Class object. This can
-be plotted.
-}
-\examples{
-\dontrun{
- x <- '
- @startuml --> "First Activity" -->[You can put also labels] "Second Activity"
- -->
- @enduml
- '
-x <- as.plantuml( x )
-plot( x ) }
-
+Generic function to convert an R object to a \code{plantuml} Class object.
+This can be plotted.
 }
