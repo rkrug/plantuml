@@ -77,8 +77,6 @@ plot.plantuml <- function(
         grImport2::readPicture(.) %>%
         grImport2::grid.picture(.)
 
-        plot(1)
-
       # fnrgl <- gsub(".eps", ".rgml", fn)
       # grImport::PostScriptTrace(
       #   file = fn,
