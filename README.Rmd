@@ -1,11 +1,12 @@
 ---
 title: "PlantUML in R"
-output: github_document
+output: 
+  github_document
 editor_options: 
   chunk_output_type: inline
 ---
 
-```{r setup, echo = FALSE, RESULTS = "none"}
+```{r setup, echo = FALSE, include = FALSE}
 devtools::load_all(here::here())
 ```
 # Overview
@@ -23,51 +24,101 @@ library(plantuml)
 updatePlantumlJar()
 ```
 
-# Usage
-In a graphical device
-```{r exampleDevice}
+# Plotting Plantuml graphics
+## Define plantuml code
+First, we define a plantuml object based on some plantuml code 
+```{r definePlantuml}
 library(plantuml)
+library(magrittr)
 x <- '
- @startuml
-  --> "First Activity"
- -->[You can put also labels] "Second Activity"
- -->
- @enduml
+(*) --> "Initialization"
+
+if "Some Test" then
+  -->[true] "Some Activity"
+  --> "Another activity"
+  -right-> (*)
+else
+  ->[false] "Something else"
+  -->[Ending process] (*)
+endif
 '
-x <- as.plantuml( x )
-plot( x )
+x <- plantuml( 
+  x
+)
 ```
 
-which uses a raster format (png) as intermediate format, while
+## Plot via vector format
+Now we plot in in a device using vector format (svg) as intermediate format, which is the default
 
 ```{r exampleDeviceVector}
 plot( 
-  x = x,
-  vector = TRUE
+  x = x
+# vector = TRUE
   )
 ```
 
-uses a vector format (eps) as intermediate format. 
+## Plot via raster format
+When using `vector = FALSE` uses a raster format (png) as intermediate format
 
-To save in a file
-```{r exampleFile}
-x <- '
- @startuml
-  --> "First Activity"
- -->[You can put also labels] "Second Activity"
- -->
- @enduml
-'
-x <- as.plantuml( x )
-plot( x, file = "./README_files/test.svg" )
+```{r exampleDeviceRaster}
+plot( 
+  x = x,
+  vector = FALSE
+  )
 ```
 
+To safe the graph in a file, we simply specify the `file` argument in the plot command:
+```{r exampleFile}
+plot( 
+  x, 
+  file = "./README_files/test.svg" 
+)
+```
+
+## plotting to a file
 And here is the file
 
 ![README_files/test.svg](./README_files/test.svg)
 
+The type of the file is automatically determined based on the extension. Suported extensions in plantuml are:
+
+    - png		To generate images using PNG format (default)
+    - svg		To generate images using SVG format
+    - eps		To generate images using EPS format
+    - pdf		To generate images using PDF format
+    - vdx		To generate images using VDX format
+    - xmi		To generate XMI file for class diagram
+    - scxml		To generate SCXML file for state diagram
+    - html		To generate HTML file for class diagram
+    - txt		To generate images with ASCII art
+    - utxt		To generate images with ASCII art using Unicode characters
+    - latex		To generate images using LaTeX/Tikz format
+    - latex:nopreamble	To generate images using LaTeX/Tikz format without preamble
+   
+# Plotting R objects
+
+
+In addition to plotting based on plantuml code some basic functionality to document R objects has been included. 
+
+an example is:
+
+```{r exampleObject}
+x <- list(
+  a = 1:10,
+  b = letters[1:4],
+  c = data.frame(
+    x = 1:10,
+    y = c(TRUE, FALSE)
+  )
+)
+plot(
+  as.plantuml(x)
+)
+
+```
+This still needs some work to make it nice looking.
 # Additional info
 
-# * **<span style="color:red">TODO</span>**
+# **<span style="color:red">TODO</span>**
 - **<span style="color:red">TODO</span>** make selection dependant on installed packages, as `vector = TRUE` requires postscript to be installed!
 - **<span style="color:red">TODO</span>** update documentation and add tests

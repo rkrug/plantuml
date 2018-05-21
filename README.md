@@ -1,8 +1,6 @@
 PlantUML in R
 ================
 
-    ## Loading plantuml
-
 # Overview
 
 This package provides the functionality to create UML graphs using the
@@ -22,57 +20,115 @@ library(plantuml)
 updatePlantumlJar()
 ```
 
-# Usage
+# Plotting Plantuml graphics
 
-In a graphical device
+## Define plantuml code
+
+First, we define a plantuml object based on some plantuml code
 
 ``` r
 library(plantuml)
+library(magrittr)
 x <- '
- @startuml
-  --> "First Activity"
- -->[You can put also labels] "Second Activity"
- -->
- @enduml
+(*) --> "Initialization"
+
+if "Some Test" then
+  -->[true] "Some Activity"
+  --> "Another activity"
+  -right-> (*)
+else
+  ->[false] "Something else"
+  -->[Ending process] (*)
+endif
 '
-x <- as.plantuml( x )
-plot( x )
+x <- plantuml( 
+  x
+)
 ```
 
-![](README_files/figure-gfm/exampleDevice-1.png)<!-- -->![](README_files/figure-gfm/exampleDevice-2.png)<!-- -->
+## Plot via vector format
 
-which uses a raster format (png) as intermediate format, while
+Now we plot in in a device using vector format (svg) as intermediate
+format, which is the default
+
+``` r
+plot( 
+  x = x
+# vector = TRUE
+  )
+```
+
+![](README_files/figure-gfm/exampleDeviceVector-1.png)<!-- -->
+
+## Plot via raster format
+
+When using `vector = FALSE` uses a raster format (png) as intermediate
+format
 
 ``` r
 plot( 
   x = x,
-  vector = TRUE
+  vector = FALSE
   )
 ```
 
-![](README_files/figure-gfm/exampleDeviceVector-1.png)<!-- -->![](README_files/figure-gfm/exampleDeviceVector-2.png)<!-- -->
+![](README_files/figure-gfm/exampleDeviceRaster-1.png)<!-- -->
 
-uses a vector format (eps) as intermediate format.
-
-To save in a file
+To safe the graph in a file, we simply specify the `file` argument in
+the plot command:
 
 ``` r
-x <- '
- @startuml
-  --> "First Activity"
- -->[You can put also labels] "Second Activity"
- -->
- @enduml
-'
-x <- as.plantuml( x )
-plot( x, file = "./README_files/test.svg" )
+plot( 
+  x, 
+  file = "./README_files/test.svg" 
+)
 ```
+
+## plotting to a file
 
 And here is the file
 
 ![README\_files/test.svg](./README_files/test.svg)
 
-# Additional info
+The type of the file is automatically determined based on the extension.
+Suported extensions in plantuml are:
+
+    - png       To generate images using PNG format (default)
+    - svg       To generate images using SVG format
+    - eps       To generate images using EPS format
+    - pdf       To generate images using PDF format
+    - vdx       To generate images using VDX format
+    - xmi       To generate XMI file for class diagram
+    - scxml     To generate SCXML file for state diagram
+    - html      To generate HTML file for class diagram
+    - txt       To generate images with ASCII art
+    - utxt      To generate images with ASCII art using Unicode characters
+    - latex     To generate images using LaTeX/Tikz format
+    - latex:nopreamble  To generate images using LaTeX/Tikz format without preamble
+
+# Plotting R objects
+
+In addition to plotting based on plantuml code some basic functionality
+to document R objects has been included.
+
+an example is:
+
+``` r
+x <- list(
+  a = 1:10,
+  b = letters[1:4],
+  c = data.frame(
+    x = 1:10,
+    y = c(TRUE, FALSE)
+  )
+)
+plot(
+  as.plantuml(x)
+)
+```
+
+![](README_files/figure-gfm/exampleObject-1.png)<!-- --> \# Additional
+info
 
 # \* **<span style="color:red">TODO</span>**
 
