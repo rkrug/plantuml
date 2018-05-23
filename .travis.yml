@@ -13,10 +13,8 @@ cache: packages
 
 addons:
   apt:
-    sources:
-      - sourceline: 'ppa:webupd8team/java'
     packages:
-      -  oracle-java8-installer
+      - oracle-java8-set-default
       - graphviz
 
 ####
