@@ -167,3 +167,4 @@ This is work in progress and the layoput is likely to change.
   - make selection dependant on installed packages, as `vector = TRUE`
     requires postscript to be installed\!
   - update documentation and add tests
+  - complete travis tests

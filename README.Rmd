@@ -141,3 +141,4 @@ This is work in progress and the layoput is likely to change.
 # **<span style="color:red">TODO</span>**
 - make selection dependant on installed packages, as `vector = TRUE` requires postscript to be installed!
 - update documentation and add tests
+- complete travis tests
