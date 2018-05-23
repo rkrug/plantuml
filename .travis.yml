@@ -13,12 +13,10 @@ cache: packages
 
 addons:
   apt:
+    sources:
+      - ppa:webupd8team/java
     packages:
       - openjdk-10-jdk
-#      - graphviz
+      - graphviz
 
 ####
-
-before_install:
-  apt-get install software-properties-common
-  add-apt-repository ppa:webupd8team/java
