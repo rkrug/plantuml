@@ -46,7 +46,8 @@ as.plantuml.data.frame <- function(
     for (i in 1:length(attributes)) {
       puml$code <- paste0(
         puml$code, " \n ",
-        nm, " : ", names(attributes(x))[i], " = ", paste0(attributes(x)[[i]], collapse = " "),
+        nm, " : ",
+        names(attributes(x))[i], " = ", paste0(attributes(x)[[i]], collapse = " "),
         " \n "
       )
     }
@@ -56,7 +57,7 @@ as.plantuml.data.frame <- function(
     nme <- paste0(nm, ".", i, ".", names(x)[i])
     puml$code <- paste(
       puml$code,
-      as.plantuml( x = x[[i]] , nm = nme )$code, " \n ",
+      as.plantuml( x = x[[i]], nm = nme )$code, " \n ",
       nm, "*-->", nme, " \n "
     )
   }

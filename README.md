@@ -1,8 +1,16 @@
 PlantUML in R
 ================
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+-----
+
 [![Build
 Status](https://travis-ci.org/rkrug/plantuml.svg?branch=master)](https://travis-ci.org/rkrug/plantuml)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/rkrug/plantuml/master.svg)](https://codecov.io/github/rkrug/plantuml?branch=master)
+
+-----
 
 # Overview
 
@@ -144,7 +152,13 @@ Suported extensions in plantuml are:
 In addition to plotting based on plantuml code some basic functionality
 to document R objects has been included.
 
-an example is:
+This is not much more than a proof of concept but includes all standard
+R objects.
+
+**<span style="color:green">If you think this is usefull, pelase let me
+know and leave sugestions in the issue tracker.</span>**
+
+One example is:
 
 ``` r
 x <- list(
@@ -162,11 +176,9 @@ plot(
 
 ![](README_files/figure-gfm/exampleObject-1.png)<!-- -->
 
-This is work in progress and the layoput is likely to change.
-
 # **<span style="color:red">TODO</span>**
 
   - make selection dependant on installed packages, as `vector = TRUE`
     requires postscript to be installed\!
-  - update documentation and add tests
-  - complete travis tests
+  - update documentation and
+  - add tests

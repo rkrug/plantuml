@@ -26,4 +26,3 @@
 as.plantuml <- function(x, ...) {
   UseMethod("as.plantuml", x)
 }
-

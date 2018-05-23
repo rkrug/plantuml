@@ -8,7 +8,7 @@
 #'   temporary file and drawn in a device. If file is a file name, the graph is
 #'   saved in the file and the type is based on the extensions. See limitations
 #'   of plantuml to get the list of available file formats]
-#' @param plantumlOpt additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}
+#' @param plantuml_opt additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}
 #' @param vector if \code{TRUE} use svg as intermediate format, if \code{FALSE} use png. Only effects plotting in device.
 #' @param ... additional arguments for the plot function \code{grid::grid.raster()}
 #'
@@ -36,11 +36,10 @@
 plot.plantuml <- function(
   x,
   file = NULL,
-  plantumlOpt = "",
+  plantuml_opt = "",
   vector = TRUE,
   ...
-  )
-{
+  ){
   if (!x$complete) {
     x$code <- paste("@startuml \n ", x$code, " \n @enduml")
   }
@@ -61,14 +60,16 @@ plot.plantuml <- function(
     ffmt <- paste0("-t", ext)
   }
 
-  cmd <- paste0( "-jar ", system.file("jar", "plantuml.jar", package = "plantuml") )
-
+  cmd <- paste0(
+    "-jar ",
+    system.file("jar", "plantuml.jar", package = "plantuml")
+  )
   if (is.null(file)) {
     if (vector) {
       # system2(
       #   command = "java",
       #   input = x$code,
-      #   args = paste(cmd, "-p", ffmt, plantumlOpt),
+      #   args = paste(cmd, "-p", ffmt, plantuml_opt),
       #   stdout = TRUE
       # ) %>%
       #   paste0(., collapse = "") %>%
@@ -81,7 +82,7 @@ plot.plantuml <- function(
       system2(
         command = "java",
         input = x$code,
-        args = paste(cmd, "-p", ffmt, plantumlOpt),
+        args = paste(cmd, "-p", ffmt, plantuml_opt),
         stdout = fn
       )
       fnrgl <- gsub(".eps", ".rgml", fn)
@@ -112,7 +113,7 @@ plot.plantuml <- function(
       system2(
         command = "java",
         input = x$code,
-        args = paste(cmd, "-p", ffmt, plantumlOpt),
+        args = paste(cmd, "-p", ffmt, plantuml_opt),
         stdout = fn
       )
       puml <- png::readPNG(
@@ -128,7 +129,7 @@ plot.plantuml <- function(
     system2(
       command = "java",
       input = x$code,
-      args = paste(cmd, "-p", ffmt, plantumlOpt),
+      args = paste(cmd, "-p", ffmt, plantuml_opt),
       stdout = fn
     )
   }

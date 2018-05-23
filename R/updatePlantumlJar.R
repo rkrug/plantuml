@@ -16,7 +16,10 @@
 updatePlantumlJar <- function(...) {
   download.file(
     url = "https://sourceforge.net/projects/plantuml/files/latest/download",
-    destfile = file.path( system.file("jar", package = "plantuml"), "plantuml.jar" ),
+    destfile = file.path(
+      system.file("jar", package = "plantuml"),
+      "plantuml.jar"
+    ),
     ...
   )
 }

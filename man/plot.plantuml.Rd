@@ -4,7 +4,7 @@
 \alias{plot.plantuml}
 \title{Generate UML graph from plantuml}
 \usage{
-\method{plot}{plantuml}(x, file = NULL, plantumlOpt = "", vector = TRUE,
+\method{plot}{plantuml}(x, file = NULL, plantuml_opt = "", vector = TRUE,
   ...)
 }
 \arguments{
@@ -15,7 +15,7 @@ temporary file and drawn in a device. If file is a file name, the graph is
 saved in the file and the type is based on the extensions. See limitations
 of plantuml to get the list of available file formats]}
 
-\item{plantumlOpt}{additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}}
+\item{plantuml_opt}{additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}}
 
 \item{vector}{if \code{TRUE} use svg as intermediate format, if \code{FALSE} use png. Only effects plotting in device.}
 
