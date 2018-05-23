@@ -16,7 +16,7 @@ addons:
     sources:
       - sourceline: 'ppa:webupd8team/java'
     packages:
-      - openjdk-10-jdk
+      -  oracle-java8-installer
       - graphviz
 
 ####
