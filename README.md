@@ -1,6 +1,9 @@
 PlantUML in R
 ================
 
+[![Build
+Status](https://travis-ci.org/rkrug/plantuml.svg?branch=master)](https://travis-ci.org/rkrug/plantuml)
+
 # Overview
 
 This package provides the functionality to create UML graphs using the
@@ -59,7 +62,6 @@ First, we define a plantuml object based on some plantuml code
 
 ``` r
 library(plantuml)
-library(magrittr)
 x <- '
 (*) --> "Initialization"
 

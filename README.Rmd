@@ -9,6 +9,9 @@ editor_options:
 ```{r setup, echo = FALSE, include = FALSE}
 devtools::load_all(here::here())
 ```
+
+[![Build Status](https://travis-ci.org/rkrug/plantuml.svg?branch=master)](https://travis-ci.org/rkrug/plantuml)
+
 # Overview
 This package provides the functionality to create UML graphs using the [PlantUML](http://plantuml.com/) language.
 
