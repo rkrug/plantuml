@@ -16,5 +16,6 @@ addons:
     packages:
       - oracle-java8-set-default
       - graphviz
+      - ghostscript
 
 ####
