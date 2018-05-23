@@ -1,3 +1,7 @@
+# plantuml 0.2.2.1
+* add BasicUsage vignette
+* fix du=ocumentation errors
+
 # plantuml 0.2.2
 * fix wrong version
 

@@ -8,7 +8,7 @@ Description: Create UML graphs using the PLANTUML language.
    These are either shown in a graphics device or saved as a file.
 License: GPL-3
 Encoding: UTF-8
-Imports: 
+Imports:
   utils,
   grid,
   png,
@@ -16,3 +16,6 @@ Imports:
   grImport
 LazyData: true
 RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
