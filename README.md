@@ -8,14 +8,45 @@ This package provides the functionality to create UML graphs using the
 
 # Installation
 
-The package is not on CRAN, so you have to install it from github:
+## **<span style="color:red">ATTENTION</span>**
+
+This packege `plantuml` uses the package `grImport` for plotting to a
+graphics device. In the CRAN version (`0.9-0`)the function
+`PostScriptTrace()` does not clean up a temporary file which iscreated
+in theworking directory. This ahs been fixed in R-Forge. I recommend to
+install the package from the github mirror from R-Forge by using
 
 ``` r
-# From github
-# install.packages("devtools")
+devtools::install_github("rforge/grimport/pkg/grImport")
+```
+
+## Prerequisites
+
+The actual work is done by the program [plantuml](http://plantuml.com/).
+Please see [the plantuml installation
+page](http://plantuml.com/faq-install) for prerequisites of running
+plantuml. You don’t have tio install the plantuml.jar file, as the
+packagae maintains it’s own version (see below).
+
+As the package is only on github, you need `devtools` to install it
+easily as a prerequisite
+
+``` r
+install.packages("devtools")
+```
+
+## Installation of plantuml
+
+The package is not on CRAN, so you have to install it from github. Also,
+it doez not come with the plantuml binary, which needs to be installed
+as well:
+
+``` r
+# Install plantuml from github
 devtools::install_github("rkrug/plantuml")
 
 # download and install the PlantUML jar file from \link{http://plantuml.com/download}
+# whenever you call this command again, the plantuml binary will be updated to the newest version
 library(plantuml)
 updatePlantumlJar()
 ```
@@ -74,7 +105,9 @@ plot(
 
 ![](README_files/figure-gfm/exampleDeviceRaster-1.png)<!-- -->
 
-To safe the graph in a file, we simply specify the `file` argument in
+## Plotting to a file
+
+To save the graph in a file, we simply specify the `file` argument in
 the plot command:
 
 ``` r
@@ -83,8 +116,6 @@ plot(
   file = "./README_files/test.svg" 
 )
 ```
-
-## plotting to a file
 
 And here is the file
 
@@ -127,13 +158,12 @@ plot(
 )
 ```
 
-![](README_files/figure-gfm/exampleObject-1.png)<!-- --> \# Additional
-info
+![](README_files/figure-gfm/exampleObject-1.png)<!-- -->
 
-# \* **<span style="color:red">TODO</span>**
+This is work in progress and the layoput is likely to change.
 
-  - **<span style="color:red">TODO</span>** make selection dependant on
-    installed packages, as `vector = TRUE` requires postscript to be
-    installed\!
-  - **<span style="color:red">TODO</span>** update documentation and add
-    tests
+# **<span style="color:red">TODO</span>**
+
+  - make selection dependant on installed packages, as `vector = TRUE`
+    requires postscript to be installed\!
+  - update documentation and add tests

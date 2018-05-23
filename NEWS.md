@@ -1,3 +1,7 @@
+# plantuml 0.2.1
+* revert back to using `.eps` as intermediate format instead odf `.svg`
+* Added asp = 1 to `plot::plantuml()` to always plot the `.eps` in the correct ratio.
+
 # plantuml 0.2.0
 
 * Added a `NEWS.md` file to track changes to the package.

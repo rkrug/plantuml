@@ -13,7 +13,6 @@ Imports:
   grid,
   png,
   magrittr,
-  rsvg,
-  grImport2
+  grImport
 LazyData: true
 RoxygenNote: 6.0.1

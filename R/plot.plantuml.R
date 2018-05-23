@@ -18,8 +18,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom png readPNG
 #' @importFrom grid grid.raster
-#' @importFrom rsvg rsvg_svg
-#' @importFrom grImport2 readPicture grid.picture
+#' @importFrom grImport PostScriptTrace readPicture picture
 #' @importFrom graphics plot
 #'
 #' @examples
@@ -49,6 +48,8 @@ plot.plantuml <- function(
     if (vector) {
       fn <- tempfile( fileext = ".svg")
       ffmt <- "-tsvg"
+      fn <- tempfile( fileext = ".eps")
+      ffmt <- "-teps"
     } else {
       fn <- tempfile( fileext = ".png")
       ffmt <- "-tpng"
@@ -64,42 +65,49 @@ plot.plantuml <- function(
 
   if (is.null(file)) {
     if (vector) {
+      # system2(
+      #   command = "java",
+      #   input = x$code,
+      #   args = paste(cmd, "-p", ffmt, plantumlOpt),
+      #   stdout = TRUE
+      # ) %>%
+      #   paste0(., collapse = "") %>%
+      #   charToRaw(.) %>%
+      #   rsvg::rsvg_svg(NULL, file = NULL) %>%
+      #   rawToChar(.) %>%
+      #   grImport2::readPicture(.) %>%
+      #   grImport2::grid.picture(.)
+
       system2(
         command = "java",
         input = x$code,
         args = paste(cmd, "-p", ffmt, plantumlOpt),
-        stdout = TRUE
-      ) %>%
-        paste0(., collapse = "") %>%
-        charToRaw(.) %>%
-        rsvg::rsvg_svg(NULL, file = NULL) %>%
-        rawToChar(.) %>%
-        grImport2::readPicture(.) %>%
-        grImport2::grid.picture(.)
-
-      # fnrgl <- gsub(".eps", ".rgml", fn)
-      # grImport::PostScriptTrace(
-      #   file = fn,
-      #   outfilename = fnrgl
-      # )
-      # prgml <- grImport::readPicture(
-      #   rgmlFile = fnrgl
-      # )
-      # plot(
-      #   range(prgml@summary@xscale),
-      #   range(prgml@summary@yscale),
-      #   type = "n",
-      #   axes = FALSE,
-      #   xlab = "",
-      #   ylab = ""
-      # )
-      # picture(
-      #   picture = prgml,
-      #   xleft   = prgml@summary@xscale["xmin"],
-      #   xright  = prgml@summary@xscale["xmax"],
-      #   ybottom = prgml@summary@yscale["ymin"],
-      #   ytop    = prgml@summary@yscale["ymax"]
-      # )
+        stdout = fn
+      )
+      fnrgl <- gsub(".eps", ".rgml", fn)
+      grImport::PostScriptTrace(
+        file = fn,
+        outfilename = fnrgl
+      )
+      prgml <- grImport::readPicture(
+        rgmlFile = fnrgl
+      )
+      plot(
+        range(prgml@summary@xscale),
+        range(prgml@summary@yscale),
+        type = "n",
+        axes = FALSE,
+        xlab = "",
+        ylab = "",
+        asp = 1
+      )
+      picture(
+        picture = prgml,
+        xleft   = prgml@summary@xscale["xmin"],
+        xright  = prgml@summary@xscale["xmax"],
+        ybottom = prgml@summary@yscale["ymin"],
+        ytop    = prgml@summary@yscale["ymax"]
+      )
     } else {
       system2(
         command = "java",
