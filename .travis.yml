@@ -11,5 +11,11 @@ sudo: false
 
 cache: packages
 
+addons:
+  apt:
+    packages:
+      - openjdk-10-jdk
+      - graphviz
+
 ####
 
