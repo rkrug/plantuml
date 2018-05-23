@@ -14,7 +14,7 @@ cache: packages
 addons:
   apt:
     sources:
-      - ppa:webupd8team/java
+      - sourceline: 'ppa:webupd8team/java'
     packages:
       - openjdk-10-jdk
       - graphviz
