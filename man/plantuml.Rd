@@ -18,12 +18,31 @@ This can be plotted.
 }
 \examples{
 \dontrun{
- x <- '
- @startuml --> "First Activity" -->[You can put also labels] "Second Activity"
- -->
- @enduml
- '
- x <- plantuml( x )
- plot( x ) }
+x <- list(
+  a = 1:10,
+  b = letters[1:4],
+  c = data.frame(
+    x = 1:10,
+    y = c(TRUE, FALSE)
+  )
+)
+x <- plantuml(x)
+plot( x
+
+x <- '
+(*) --> "Initialization"
+
+if "Some Test" then
+-->[true] "Some Activity"
+--> "Another activity"
+-right-> (*)
+else
+  ->[false] "Something else"
+-->[Ending process] (*)
+endif
+'
+x <- plantuml( x )
+plot( x )
+}
 
 }

@@ -47,7 +47,6 @@ updatePlantumlJar()
 First, we define a plantuml object based on some plantuml code 
 ```{r definePlantuml}
 library(plantuml)
-library(magrittr)
 x <- '
 (*) --> "Initialization"
 

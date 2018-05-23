@@ -4,6 +4,9 @@
 #' This can be plotted.
 #'
 #' @param x character sting containing plantuml code.
+#' @param complete if \code{TRUE}, enclose the plantuml statements in \code{"@startuml"} and \code{"@enduml"}
+#' @param nm normally not for user - TODO I have to check... embarassing
+#' @param ... additional arguments - not used here
 #'
 #' @return object of class \code{plantuml} which can be plotted.
 #' @export
@@ -21,7 +24,8 @@
 as.plantuml.vma <- function(
   x,
   complete = FALSE,
-  nm = NULL
+  nm = NULL,
+  ...
 ) {
   puml <- plantuml()
   #

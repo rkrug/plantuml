@@ -4,10 +4,16 @@
 \alias{as.plantuml.logical}
 \title{Convert a character to a \code{plantuml} object}
 \usage{
-\method{as.plantuml}{logical}(x, complete = FALSE, nm = NULL)
+\method{as.plantuml}{logical}(x, complete = FALSE, nm = NULL, ...)
 }
 \arguments{
 \item{x}{character sting containing plantuml code.}
+
+\item{complete}{if \code{TRUE}, enclose the plantuml statements in \code{"@startuml"} and \code{"@enduml"}}
+
+\item{nm}{normally not for user - TODO I have to check... embarassing}
+
+\item{...}{additional arguments - not used here}
 }
 \value{
 object of class \code{plantuml} which can be plotted.
