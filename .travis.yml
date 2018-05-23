@@ -15,7 +15,10 @@ addons:
   apt:
     packages:
       - openjdk-10-jdk
-      - graphviz
+#      - graphviz
 
 ####
 
+before_install:
+  apt-get install software-properties-common
+  add-apt-repository ppa:webupd8team/java
