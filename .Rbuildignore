@@ -3,3 +3,4 @@
 ^README.*$
 ^.*plantuml\.jar$
 ^\.travis\.yml$
+^codecov\.yml$

@@ -19,3 +19,6 @@ addons:
       - ghostscript
 
 ####
+
+after_success:
+- Rscript -e 'covr::codecov()'
