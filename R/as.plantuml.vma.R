@@ -33,24 +33,9 @@ as.plantuml.vma <- function(
     nm <- deparse(substitute(x))
   }
   #
-  puml$code <-  paste0(
-    "\n '### ### vma ### ### ### \n ",
-    "object ", nm,
-    " \n ",
-    nm, " : class  = ", paste( class(x), collapse = "; " ), " \n ",
-    nm, " : typeof  = ", typeof(x), " \n ",
-    nm, " : mode  = ", mode(x), " \n ",
-    nm, " : length = ", length(x), " \n "
-  )
-  if (!is.null(attributes(x))) {
-    for (i in 1:length(attributes(x))) {
-      puml$code <- paste0(
-        puml$code, " \n ",
-        nm, " : ", names(attributes(x))[i], " = ", paste0(attributes(x)[[i]], collapse = " "),
-        " \n "
-      )
-    }
-  }
+  puml$code <-  "\n '### ### vma ### ### ### \n"
+  puml <- addInfo( x = x, nm = nm, puml = puml )
+  puml <- addAttributes( x = x, nm = nm, puml = puml )
   #
   if (complete) {
     puml$code <- paste("@startuml \n ", puml$code, " \n @enduml")

@@ -33,16 +33,9 @@ as.plantuml.default <- function(
     nm <- deparse(substitute(x))
   }
   #
-  puml$code <-  paste0(
-    "\n '### ### default ### ### ### \n ",
-    "object ", nm,
-    " \n ",
-    nm, " : class  = ", paste( class(x), collapse = "; " ), " \n ",
-    nm, " : typeof  = ", typeof(x), " \n ",
-    nm, " : mode  = ", mode(x), " \n ",
-    nm, " : length = ", length(x), " \n ",
-    nm, " : Not Further Supported in plantuml!", " \n "
-  )
+  puml$code <- "\n '### ### default ### ### ### \n"
+  puml <- addInfo( x = x, nm = nm, puml = puml )
+  puml <- addAttributes( x = x, nm = nm, puml = puml )
   #
   if (complete) {
     puml$code <- paste("@startuml \n ", puml$code, " \n @enduml")
