@@ -10,6 +10,7 @@
 #'   of plantuml to get the list of available file formats]
 #' @param plantuml_opt additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}
 #' @param vector if \code{TRUE} use svg as intermediate format, if \code{FALSE} use png. Only effects plotting in device.
+#' @param java_opt additional options for java. see java documentation for details.
 #' @param ... additional arguments for the plot function \code{grid::grid.raster()}
 #'
 #' @return returns file name (including absolute path) of the created graph.
@@ -32,12 +33,14 @@
 #' \dontrun{
 #' #' x <- as.plantuml( plantumlCode )
 #' plot( x )
+#' plot(as.plantuml(x), java_opt = "-Djava.awt.headless=true")
 #' }
 plot.plantuml <- function(
   x,
   file = NULL,
   plantuml_opt = "",
   vector = TRUE,
+  java_opt = "",
   ...
   ){
   if (!x$complete) {
@@ -82,7 +85,7 @@ plot.plantuml <- function(
       system2(
         command = "java",
         input = x$code,
-        args = paste(cmd, "-p", ffmt, plantuml_opt),
+        args = paste(java_opt, cmd, "-p", ffmt, plantuml_opt),
         stdout = fn
       )
       fnrgl <- gsub(".eps", ".rgml", fn)
@@ -113,7 +116,7 @@ plot.plantuml <- function(
       system2(
         command = "java",
         input = x$code,
-        args = paste(cmd, "-p", ffmt, plantuml_opt),
+        args = paste(java_opt, cmd, "-p", ffmt, plantuml_opt),
         stdout = fn
       )
       puml <- png::readPNG(
@@ -129,7 +132,7 @@ plot.plantuml <- function(
     system2(
       command = "java",
       input = x$code,
-      args = paste(cmd, "-p", ffmt, plantuml_opt),
+      args = paste(java_opt, cmd, "-p", ffmt, plantuml_opt),
       stdout = fn
     )
   }

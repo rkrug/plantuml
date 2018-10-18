@@ -4,8 +4,8 @@
 \alias{plot.plantuml}
 \title{Generate UML graph from plantuml}
 \usage{
-\method{plot}{plantuml}(x, file = NULL, plantuml_opt = "", vector = TRUE,
-  ...)
+\method{plot}{plantuml}(x, file = NULL, plantuml_opt = "",
+  vector = TRUE, java_opt = "", ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
@@ -18,6 +18,8 @@ of plantuml to get the list of available file formats]}
 \item{plantuml_opt}{additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}}
 
 \item{vector}{if \code{TRUE} use svg as intermediate format, if \code{FALSE} use png. Only effects plotting in device.}
+
+\item{java_opt}{additional options for java. see java documentation for details.}
 
 \item{...}{additional arguments for the plot function \code{grid::grid.raster()}}
 }
@@ -39,5 +41,6 @@ plantumlCode <- '
 \dontrun{
 #' x <- as.plantuml( plantumlCode )
 plot( x )
+plot(as.plantuml(x), java_opt = "-Djava.awt.headless=true")
 }
 }
