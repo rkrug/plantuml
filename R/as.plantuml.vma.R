@@ -43,7 +43,7 @@ as.plantuml.vma <- function(
     nm, " : length = ", length(x), " \n "
   )
   if (!is.null(attributes(x))) {
-    for (i in 1:length(attributes)) {
+    for (i in 1:length(attributes(x))) {
       puml$code <- paste0(
         puml$code, " \n ",
         nm, " : ", names(attributes(x))[i], " = ", paste0(attributes(x)[[i]], collapse = " "),
