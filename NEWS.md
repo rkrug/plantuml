@@ -2,6 +2,7 @@
 * add java_opt argument to plot.plantuml() to allow additional java arguments. Thanks samssann in https://github.com/rkrug/plantuml/issues/1
 * add factor support
 * Fix wrong itteration through attributes which resulted in only the first attribute being shown
+* Fixes in Documentation
 
 # plantuml 0.2.2.1
 version bump

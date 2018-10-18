@@ -31,7 +31,7 @@
 #'  @enduml
 #' '
 #' \dontrun{
-#' #' x <- as.plantuml( plantumlCode )
+#' x <- as.plantuml( plantumlCode )
 #' plot( x )
 #' plot(as.plantuml(x), java_opt = "-Djava.awt.headless=true")
 #' }
