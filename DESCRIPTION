@@ -1,7 +1,7 @@
 Package: plantuml
 Type: Package
 Title: Crete UML graphs using PLANTUML
-Version: 0.2.2.1
+Version: 0.2.2.2
 Author: Rainer M Krug <Rainer@krugs.de>
 Maintainer: Rainer M Krug <Rainer@krugs.de>
 Description: Create UML graphs using the PLANTUML language. 
@@ -13,9 +13,9 @@ Imports:
   grid,
   png,
   magrittr,
-  grImport
+  grImport (>= 0.9-1)
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Suggests: knitr,
     rmarkdown,
     covr

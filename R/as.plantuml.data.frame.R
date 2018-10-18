@@ -37,7 +37,7 @@ as.plantuml.data.frame <- function(
     "\n '### ### data.frame ### ### ### \n ",
     "object ", nm,
     " \n ",
-    nm, " : class  = ", class(x), " \n ",
+    nm, " : class  = ", paste( class(x), collapse = "; " ), " \n ",
     nm, " : typeof  = ", typeof(x), " \n ",
     nm, " : mode  = ", mode(x), " \n ",
     nm, " : length = ", length(x), " \n "

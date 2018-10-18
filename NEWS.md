@@ -1,4 +1,7 @@
 # plantuml 0.2.2.1
+* fixed error when object has more than one class
+
+# plantuml 0.2.2.1
 * add BasicUsage vignette
 * fix du=ocumentation errors
 
