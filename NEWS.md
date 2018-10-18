@@ -4,6 +4,9 @@
 * Fix wrong itteration through attributes which resulted in only the first attribute being shown
 * Fixes in Documentation
 
+* CHANGES:
+* Generate class diagram instead of object diagram - nicer to see tattriburtes and contains.
+
 # plantuml 0.2.2.1
 version bump
 
