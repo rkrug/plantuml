@@ -46,7 +46,7 @@ as.plantuml.list <- function(
         nm = nme
         )$code,
       " \n ",
-      nm, "*-->", nme, " \n "
+      paste0("\"", nm, "\" *--> \"", nme, "\" \n ")
     )
   }
   if (complete) {

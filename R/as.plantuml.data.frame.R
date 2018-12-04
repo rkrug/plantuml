@@ -42,7 +42,7 @@ as.plantuml.data.frame <- function(
     puml$code <- paste(
       puml$code,
       as.plantuml( x = x[[i]], nm = nme )$code, " \n ",
-      nm, "*-->", nme, " \n "
+      paste0("\"", nm, "\" *--> \"", nme, "\" \n ")
     )
   }
   if (complete) {

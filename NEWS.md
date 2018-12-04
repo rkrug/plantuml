@@ -1,3 +1,6 @@
+# plantuml 0.2.3
+* quote names of objects to avoid errors with non-text-characters
+
 # plantuml 0.2.2.3
 * add java_opt argument to plot.plantuml() to allow additional java arguments. Thanks samssann in https://github.com/rkrug/plantuml/issues/1
 * add factor support
