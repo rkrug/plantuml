@@ -5,6 +5,8 @@ PlantUML in R
 
 -----
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1922215.svg)](https://doi.org/10.5281/zenodo.1922215)
+
 [![Build
 Status](https://travis-ci.org/rkrug/plantuml.svg?branch=master)](https://travis-ci.org/rkrug/plantuml)
 [![Coverage
@@ -19,18 +21,6 @@ This package provides the functionality to create UML graphs using the
 [PlantUML](http://plantuml.com/) language.
 
 # Installation
-
-## **<span style="color:red">ATTENTION</span>**
-
-This packege `plantuml` uses the package `grImport` for plotting to a
-graphics device. In the CRAN version (`0.9-0`)the function
-`PostScriptTrace()` does not clean up a temporary file which iscreated
-in theworking directory. This ahs been fixed in R-Forge. I recommend to
-install the package from the github mirror from R-Forge by using
-
-``` r
-devtools::install_github("rforge/grimport/pkg/grImport")
-```
 
 ## Prerequisites
 

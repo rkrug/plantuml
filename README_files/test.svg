@@ -17,11 +17,11 @@ endif
 
 PlantUML version 1.2018.05(Sat May 05 22:00:17 CEST 2018)
 (GPL source distribution)
-Java Runtime: Java(TM) SE Runtime Environment
-JVM: Java HotSpot(TM) 64-Bit Server VM
-Java Version: 9.0.4+11
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.1+13
 Operating System: Mac OS X
-OS Version: 10.13.4
+OS Version: 10.13.6
 Default Encoding: UTF-8
 Language: en
 Country: CH

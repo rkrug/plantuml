@@ -1,3 +1,8 @@
+# plantuml 0.2.3.1
+
+* add GPL 3 License
+* add DOI to Readme
+
 # plantuml 0.2.3
 * quote names of objects to avoid errors with non-text-characters
 

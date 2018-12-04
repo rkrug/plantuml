@@ -13,9 +13,11 @@ devtools::load_all(here::here())
 ```
 -----
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1922215.svg)](https://doi.org/10.5281/zenodo.1922215)
+
 [![Build Status](https://travis-ci.org/rkrug/plantuml.svg?branch=master)](https://travis-ci.org/rkrug/plantuml)
 [![Coverage Status](https://img.shields.io/codecov/c/github/rkrug/plantuml/master.svg)](https://codecov.io/github/rkrug/plantuml?branch=master)
- [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
  
  -----
  
@@ -24,13 +26,6 @@ devtools::load_all(here::here())
 This package provides the functionality to create UML graphs using the [PlantUML](http://plantuml.com/) language.
 
 # Installation
-
-## **<span style="color:red">ATTENTION</span>**
-This packege `plantuml` uses the package `grImport` for plotting to a graphics device. In the CRAN version (`0.9-0`)the function `PostScriptTrace()` does not clean up a temporary file which iscreated in theworking directory. This ahs been fixed in R-Forge. I recommend to install the package from the github mirror from R-Forge by using
-
-```{r installation_ATTENTION, eval = FALSE}
-devtools::install_github("rforge/grimport/pkg/grImport")
-```
 
 ## Prerequisites
 The actual work is done by the program [plantuml](http://plantuml.com/). Please see [the plantuml installation page](http://plantuml.com/faq-install) for prerequisites of running plantuml. You don't have tio install the plantuml.jar file, as the packagae maintains it's own version (see below).
