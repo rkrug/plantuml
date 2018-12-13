@@ -5,7 +5,7 @@
 \title{Generate UML graph from plantuml}
 \usage{
 \method{plot}{plantuml}(x, file = NULL, plantuml_opt = "",
-  vector = TRUE, java_opt = "", ...)
+  vector = TRUE, java_opt = "-Djava.awt.headless=true -splash:no", ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}

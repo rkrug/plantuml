@@ -40,7 +40,7 @@ plot.plantuml <- function(
   file = NULL,
   plantuml_opt = "",
   vector = TRUE,
-  java_opt = "",
+  java_opt = "-Djava.awt.headless=true -splash:no",
   ...
   ){
   ##

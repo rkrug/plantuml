@@ -1,10 +1,16 @@
 
 # plantuml 0.2.3.1
 
-* add GPL 3 License
-* add DOI to Readme
+## Change in default behaviour
+* added "-Djava.awt.headless=true -splash:no" as default java_opt to keep java quiet
+
+## Minor changes
 * add argumwent *beta* to function updatePlantumlJar() to enable download from beta versions
 * added check if plantuml.jar has been downloaded - will download it automatically when not downloaded
+
+## Diverse
+* add GPL 3 License
+* add DOI to Readme
 
 # plantuml 0.2.3
 * quote names of objects to avoid errors with non-text-characters
