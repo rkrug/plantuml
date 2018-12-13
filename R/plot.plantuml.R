@@ -43,6 +43,13 @@ plot.plantuml <- function(
   java_opt = "",
   ...
   ){
+  ##
+  if (system.file("jar", "plantuml.jar", package = "plantuml") == "") {
+    cat("##########\nplantuml.jar file has not been downloaded.\nTrying to download it by running the command 'updatePlantumlJar()' to download the file...\n")
+    updatePlantumlJar()
+    cat("Done!\n##########\n")
+  }
+  ##
   if (!x$complete) {
     x$code <- paste("@startuml \n ", x$code, " \n @enduml")
   }
