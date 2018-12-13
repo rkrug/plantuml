@@ -4,9 +4,11 @@
 \alias{updatePlantumlJar}
 \title{Update or download \code{plantuml.jar} binary}
 \usage{
-updatePlantumlJar(...)
+updatePlantumlJar(beta = FALSE, ...)
 }
 \arguments{
+\item{beta}{should the beta version be downloaded, default \code{FALSE}}
+
 \item{...}{additional arguments for the \code{download.file()} function}
 }
 \value{

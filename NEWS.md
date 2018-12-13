@@ -1,7 +1,9 @@
+
 # plantuml 0.2.3.1
 
 * add GPL 3 License
 * add DOI to Readme
+* add argumwent *beta* to function updatePlantumlJar() to enable download from beta versions
 
 # plantuml 0.2.3
 * quote names of objects to avoid errors with non-text-characters

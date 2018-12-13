@@ -3,6 +3,7 @@
 #' The file \code{plantuml.jar} is downloaded from Sourceforge and saved as
 #' \code{"plantuml.jar"} in the folder \code{system.file("jar", package =
 #' "plantuml")} of the package.
+#' @param beta should the beta version be downloaded, default \code{FALSE}
 #' @param ... additional arguments for the \code{download.file()} function
 #'
 #' @return the result from the \code{download.file()}
@@ -13,9 +14,18 @@
 #' \dontrun{
 #' updatePlantumlJar()
 #' }
-updatePlantumlJar <- function(...) {
+updatePlantumlJar <- function(
+  beta = FALSE,
+  ...
+) {
+  url <- ifelse(
+    beta,
+    "http://beta.plantuml.net/plantuml.jar",
+    "https://sourceforge.net/projects/plantuml/files/latest/download"
+  )
+  ##
   download.file(
-    url = "https://sourceforge.net/projects/plantuml/files/latest/download",
+    url = url,
     destfile = file.path(
       system.file("jar", package = "plantuml"),
       "plantuml.jar"
