@@ -1,0 +1,14 @@
+$code
+[1] "\n '### ### vma ### ### ### \n \n \"x\" : class  = character \n \"x\" : typeof  = character \n \"x\" : mode  = character \n \"x\" : length = 7 \n "
+
+$x
+NULL
+
+$evaluated
+[1] FALSE
+
+$complete
+[1] TRUE
+
+attr(,"class")
+[1] "plantuml"

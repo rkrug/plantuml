@@ -18,17 +18,6 @@ This can be plotted.
 }
 \examples{
 \dontrun{
-x <- list(
-  a = 1:10,
-  b = letters[1:4],
-  c = data.frame(
-    x = 1:10,
-    y = c(TRUE, FALSE)
-  )
-)
-x <- plantuml(x)
-plot( x
-
 x <- '
 (*) --> "Initialization"
 

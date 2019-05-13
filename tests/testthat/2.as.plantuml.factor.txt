@@ -1,0 +1,14 @@
+$code
+[1] "\n '### ### vma ### ### ### \n \n \"x\" : class  = factor \n \"x\" : typeof  = integer \n \"x\" : mode  = numeric \n \"x\" : length = 10 \n  \n \"x\" : __attributes__ \n  \n \"x\" : .levels = A B C D E F G H I J \n "
+
+$x
+NULL
+
+$evaluated
+[1] FALSE
+
+$complete
+[1] TRUE
+
+attr(,"class")
+[1] "plantuml"

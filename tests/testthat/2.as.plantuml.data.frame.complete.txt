@@ -1,0 +1,14 @@
+$code
+[1] "@startuml \n  \n '### ### data.frame ### ### ### \n \n \"data.frame(a = 1:5, b = letters[1:5])\" : class  = data.frame \n \"data.frame(a = 1:5, b = letters[1:5])\" : typeof  = list \n \"data.frame(a = 1:5, b = letters[1:5])\" : mode  = list \n \"data.frame(a = 1:5, b = letters[1:5])\" : length = 2 \n  \n \"data.frame(a = 1:5, b = letters[1:5])\" : __attributes__ \n  \n \"data.frame(a = 1:5, b = letters[1:5])\" : .names = a b \n  \n \"data.frame(a = 1:5, b = letters[1:5])\" : .row.names = 1 2 3 4 5 \n  \n '### ### vma ### ### ### \n \n \"data.frame(a = 1:5, b = letters[1:5]).1.a\" : class  = integer \n \"data.frame(a = 1:5, b = letters[1:5]).1.a\" : typeof  = integer \n \"data.frame(a = 1:5, b = letters[1:5]).1.a\" : mode  = numeric \n \"data.frame(a = 1:5, b = letters[1:5]).1.a\" : length = 5 \n   \n  \"data.frame(a = 1:5, b = letters[1:5])\" *--> \"data.frame(a = 1:5, b = letters[1:5]).1.a\" \n  \n '### ### vma ### ### ### \n \n \"data.frame(a = 1:5, b = letters[1:5]).2.b\" : class  = factor \n \"data.frame(a = 1:5, b = letters[1:5]).2.b\" : typeof  = integer \n \"data.frame(a = 1:5, b = letters[1:5]).2.b\" : mode  = numeric \n \"data.frame(a = 1:5, b = letters[1:5]).2.b\" : length = 5 \n  \n \"data.frame(a = 1:5, b = letters[1:5]).2.b\" : __attributes__ \n  \n \"data.frame(a = 1:5, b = letters[1:5]).2.b\" : .levels = a b c d e \n   \n  \"data.frame(a = 1:5, b = letters[1:5])\" *--> \"data.frame(a = 1:5, b = letters[1:5]).2.b\" \n   \n @enduml"
+
+$x
+NULL
+
+$evaluated
+[1] FALSE
+
+$complete
+[1] TRUE
+
+attr(,"class")
+[1] "plantuml"
