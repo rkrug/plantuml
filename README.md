@@ -172,4 +172,4 @@ plot(
   - make selection dependant on installed packages, as `vector = TRUE`
     requires postscript to be installed\!
   - update documentation and
-  - add tests
+  - add tests for `plot.plantuml()`

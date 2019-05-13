@@ -1,0 +1,14 @@
+$code
+[1] "\n '### ### default ### ### ### \n \n \"data.frame(a = 1:5, b = letters[1:5])\" : class  = data.frame \n \"data.frame(a = 1:5, b = letters[1:5])\" : typeof  = list \n \"data.frame(a = 1:5, b = letters[1:5])\" : mode  = list \n \"data.frame(a = 1:5, b = letters[1:5])\" : length = 2 \n  \n \"data.frame(a = 1:5, b = letters[1:5])\" : __attributes__ \n  \n \"data.frame(a = 1:5, b = letters[1:5])\" : .names = a b \n  \n \"data.frame(a = 1:5, b = letters[1:5])\" : .row.names = 1 2 3 4 5 \n "
+
+$x
+NULL
+
+$evaluated
+[1] FALSE
+
+$complete
+[1] TRUE
+
+attr(,"class")
+[1] "plantuml"

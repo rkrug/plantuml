@@ -15,13 +15,13 @@ endif
 
 @enduml
 
-PlantUML version 1.2018.05(Sat May 05 22:00:17 CEST 2018)
+PlantUML version 1.2019.05(Sat Apr 20 18:45:36 CEST 2019)
 (GPL source distribution)
 Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
-Java Version: 11.0.1+13
+Java Version: 12.0.1+12
 Operating System: Mac OS X
-OS Version: 10.13.6
+OS Version: 10.14.4
 Default Encoding: UTF-8
 Language: en
 Country: CH

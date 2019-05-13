@@ -47,6 +47,17 @@ test_that(
 )
 
 test_that(
+  "as.plantuml.default returns correct plantuml object",
+  {
+    expect_known_output(
+      object = as.plantuml.default( x = data.frame(a = 1:5, b = letters[1:5]) ),
+      print = TRUE,
+      file = "2.as.plantuml.default.txt"
+    )
+  }
+)
+
+test_that(
   "as.plantuml.factor returns correct plantuml object",
   {
     expect_known_output(
@@ -134,6 +145,17 @@ test_that(
       object = as.plantuml( x = data.frame(a = 1:5, b = letters[1:5]), complete = TRUE ),
       print = TRUE,
       file = "2.as.plantuml.data.frame.complete.txt"
+    )
+  }
+)
+
+test_that(
+  "as.plantuml.default returns correct plantuml object",
+  {
+    expect_known_output(
+      object = as.plantuml.default( x = data.frame(a = 1:5, b = letters[1:5]), complete = TRUE ),
+      print = TRUE,
+      file = "2.as.plantuml.default.complete.txt"
     )
   }
 )
