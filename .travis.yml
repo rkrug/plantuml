@@ -14,7 +14,7 @@ cache: packages
 addons:
   apt:
     packages:
-      - oracle-java8-set-default
+      - oracle-java11-set-default
       - graphviz
       - ghostscript
 
