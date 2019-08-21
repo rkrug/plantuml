@@ -2,7 +2,7 @@ $code
 [1] "\n '### ### vma ### ### ### \n \n \"x\" : class  = character \n \"x\" : typeof  = character \n \"x\" : mode  = character \n \"x\" : length = 7 \n "
 
 $x
-NULL
+character(0)
 
 $evaluated
 [1] FALSE

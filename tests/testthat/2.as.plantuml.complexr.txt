@@ -2,7 +2,7 @@ $code
 [1] "\n '### ### vma ### ### ### \n \n \"x\" : class  = complex \n \"x\" : typeof  = complex \n \"x\" : mode  = complex \n \"x\" : length = 3 \n "
 
 $x
-NULL
+character(0)
 
 $evaluated
 [1] FALSE

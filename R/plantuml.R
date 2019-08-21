@@ -29,12 +29,13 @@
 plantuml <- function(
   x = NULL
   ) {
-  x <- list(
+  x <- trimws(x)
+  puml <- list(
     code = x,
     x = x,
     evaluated = FALSE,
     complete = TRUE
   )
-  attr(x, "class") <- "plantuml"
-  return(x)
+  attr(puml, "class") <- "plantuml"
+  return(puml)
 }

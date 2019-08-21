@@ -2,7 +2,7 @@ $code
 [1] "@startuml \n  \n '### ### vma ### ### ### \n \n \"x\" : class  = numeric \n \"x\" : typeof  = double \n \"x\" : mode  = numeric \n \"x\" : length = 7 \n   \n @enduml"
 
 $x
-NULL
+character(0)
 
 $evaluated
 [1] FALSE

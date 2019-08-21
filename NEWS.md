@@ -1,9 +1,15 @@
+# plantuml 0.2.5
+
+## Bug fix
+* remove leading and trailing whitespace
+
 
 # plantuml 0.2.3.1
 
 ## Change in default behaviour
-* added "-Djava.awt.headless=true -splash:no" as default java_opt to keep java quiet
-
+* added "-Djava.awt.headless=true -splash:no" as default java_opt to keep java quiet  
+  Sebastyian Sauer reported https://github.com/rkrug/plantuml/issues/8 which was caused by a trailing linebreak. Seems to be a probl;em in plantuml, but fixed here.
+  
 ## Minor changes
 * add argumwent *beta* to function updatePlantumlJar() to enable download from beta versions
 * added check if plantuml.jar has been downloaded - will download it automatically when not downloaded
