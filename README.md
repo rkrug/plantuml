@@ -90,6 +90,12 @@ plot(
   )
 ```
 
+    ## ##########
+    ## plantuml.jar file has not been downloaded.
+    ## Trying to download it by running the command 'updatePlantumlJar()' to download the file...
+    ## Done!
+    ## ##########
+
 ![](README_files/figure-gfm/exampleDeviceVector-1.png)<!-- -->
 
 ## Plot via raster format
