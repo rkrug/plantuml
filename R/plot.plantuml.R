@@ -4,15 +4,21 @@
 #' TODO can I use vector formats?
 #'
 #' @param x plantuml code to draw the UML graph
-#' @param file if \code{file} is \code{NULL}, a png is created, saved in a
-#'   temporary file and drawn in a device. If file is a file name, the graph is
-#'   saved in the file and the type is based on the extensions. See limitations
-#'   of plantuml to get the list of available file formats]
-#' @param plantuml_opt additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}
-#' @param vector if \code{TRUE} use svg as intermediate format, if \code{FALSE} use png. Only effects plotting in device.
-#' @param java_opt additional options for java. see java documentation for details.
-#' @param ... additional arguments for the plot function \code{grid::grid.raster()}
+#' @param file
+#' - **`file` is `NULL**: the graph is drawn in the graphics device.
+#' - **`file` is a file name**: the graph is saved in the file and the type
+#'   is based on the extensions.
+#'- **`file` is `NULL`**: the data which would have been saved in the file
+#'  is returned in a character vector. **This is only useful for text formats
+#'  like `eps` or `svg`!**
 #'
+#' @param plantuml_opt additional options for plantuml in addition to \code{-p}
+#'   and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.
+#' @param vector if \code{TRUE} use `svg` as intermediate format, if \code{FALSE}
+#'   use `png`. Only effects plotting in device.
+#' @param ... additional arguments for the `plot` function and the `plantuml_run` function.
+#'
+#' @md
 #' @return returns file name (including absolute path) of the created graph.
 #'
 #' @export
@@ -40,61 +46,40 @@ plot.plantuml <- function(
   file = NULL,
   plantuml_opt = "",
   vector = TRUE,
-  java_opt = "-Djava.awt.headless=true -splash:no",
   ...
   ){
-  ##
-  if (system.file("jar", "plantuml.jar", package = "plantuml") == "") {
-    cat("##########\nplantuml.jar file has not been downloaded.\nTrying to download it by running the command 'updatePlantumlJar()' to download the file...\n")
-    updatePlantumlJar()
-    cat("Done!\n##########\n")
-  }
-  ##
+
   if (!x$complete) {
     x$code <- paste("@startuml \n ", x$code, " \n @enduml")
   }
   if ( is.null(file) ) {
     if (vector) {
-      fn <- tempfile( fileext = ".svg")
-      ffmt <- "-tsvg"
+      # fn <- tempfile( fileext = ".svg")
+      # ffmt <- "-tsvg"
       fn <- tempfile( fileext = ".eps")
       ffmt <- "-teps"
+      plantuml_opt = paste("-p", ffmt, plantuml_opt)
     } else {
       fn <- tempfile( fileext = ".png")
       ffmt <- "-tpng"
+      plantuml_opt = paste("-p", ffmt, plantuml_opt)
     }
+  } else if (file == "") {
+    plantuml_opt = paste("-p",plantuml_opt)
   } else {
     fn <- file
     pos <- regexpr("\\.([[:alnum:]]+)$", fn)
     ext <- ifelse( pos > -1L, substring(file, pos + 1L), "")
     ffmt <- paste0("-t", ext)
+    plantuml_opt = paste("-p", ffmt, plantuml_opt)
   }
 
-  cmd <- paste0(
-    "-jar \"",
-    system.file("jar", "plantuml.jar", package = "plantuml"),
-    "\""
-  )
   if (is.null(file)) {
     if (vector) {
-      # system2(
-      #   command = "java",
-      #   input = x$code,
-      #   args = paste(cmd, "-p", ffmt, plantuml_opt),
-      #   stdout = TRUE
-      # ) %>%
-      #   paste0(., collapse = "") %>%
-      #   charToRaw(.) %>%
-      #   rsvg::rsvg_svg(NULL, file = NULL) %>%
-      #   rawToChar(.) %>%
-      #   grImport2::readPicture(.) %>%
-      #   grImport2::grid.picture(.)
-
-      system2(
-        command = "java",
-        input = x$code,
-        args = paste(java_opt, cmd, "-p", ffmt, plantuml_opt),
-        stdout = fn
+      result <- plantuml_run(
+        plantuml_opt = plantuml_opt,
+        stdout = fn,
+        input = x$code
       )
       fnrgl <- gsub(".eps", ".rgml", fn)
       grImport::PostScriptTrace(
@@ -121,11 +106,10 @@ plot.plantuml <- function(
         ytop    = prgml@summary@yscale["ymax"]
       )
     } else {
-      system2(
-        command = "java",
-        input = x$code,
-        args = paste(java_opt, cmd, "-p", ffmt, plantuml_opt),
-        stdout = fn
+      result <- plantuml_run(
+        plantuml_opt = plantuml_opt,
+        stdout = fn,
+        input = x$code
       )
       puml <- png::readPNG(
         fn,
@@ -136,13 +120,18 @@ plot.plantuml <- function(
         ...
       )
     }
+  } else if (file == "") {
+    result <- plantuml_run(
+      plantuml_opt = plantuml_opt,
+      stdout = TRUE,
+      input = x$code
+    )
   } else {
-    system2(
-      command = "java",
-      input = x$code,
-      args = paste(java_opt, cmd, "-p", ffmt, plantuml_opt),
-      stdout = fn
+    result <- plantuml_run(
+      plantuml_opt = plantuml_opt,
+      stdout = fn,
+      input = x$code
     )
   }
-  invisible()
+  return(result)
 }

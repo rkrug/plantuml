@@ -1,14 +1,13 @@
-context("check as.plantuml.xxx")
+context("02 check as.plantuml.xxx")
 
 # as.plantuml.xxx(...) ----------------------------------------------------
 
 test_that(
   "as.plantuml.numeric returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = c(1:5, NA, NaN) ),
-      print = TRUE,
-      file = "2.as.plantuml.numeric.txt"
+      file = "ref-0ref-02.as.plantuml.numeric.rda"
     )
   }
 )
@@ -16,10 +15,9 @@ test_that(
 test_that(
   "as.plantuml.character returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = c(letters[1:5], NA, NaN) ),
-      print = TRUE,
-      file = "2.as.plantuml.character.txt"
+      file = "ref-02.as.plantuml.character.rda"
     )
   }
 )
@@ -27,10 +25,9 @@ test_that(
 test_that(
   "as.plantuml.complex returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = complex(real = 3:3, imaginary = 1:3) ),
-      print = TRUE,
-      file = "2.as.plantuml.complexr.txt"
+      file = "ref-02.as.plantuml.complexr.rda"
     )
   }
 )
@@ -38,10 +35,9 @@ test_that(
 test_that(
   "as.plantuml.data.frame returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = data.frame(a = 1:5, b = letters[1:5]) ),
-      print = TRUE,
-      file = "2.as.plantuml.data.frame.txt"
+      file = "ref-02.as.plantuml.data.frame.rda"
     )
   }
 )
@@ -49,10 +45,9 @@ test_that(
 test_that(
   "as.plantuml.default returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml.default( x = data.frame(a = 1:5, b = letters[1:5]) ),
-      print = TRUE,
-      file = "2.as.plantuml.default.txt"
+      file = "ref-02.as.plantuml.default.rda"
     )
   }
 )
@@ -60,22 +55,9 @@ test_that(
 test_that(
   "as.plantuml.factor returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = factor(LETTERS[1:10]) ),
-      print = TRUE,
-      file = "2.as.plantuml.factor.txt"
-    )
-  }
-)
-
-
-test_that(
-  "as.plantuml.factor returns correct plantuml object",
-  {
-    expect_known_output(
-      object = as.plantuml( x = factor(LETTERS[1:10]) ),
-      print = TRUE,
-      file = "2.as.plantuml.factor.txt"
+      file = "ref-02.as.plantuml.factor.rda"
     )
   }
 )
@@ -84,10 +66,20 @@ test_that(
 test_that(
   "as.plantuml.factor returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = factor(LETTERS[1:10]) ),
-      print = TRUE,
-      file = "2.as.plantuml.factor.txt"
+      file = "ref-02.as.plantuml.factor.rda"
+    )
+  }
+)
+
+
+test_that(
+  "as.plantuml.factor returns correct plantuml object",
+  {
+    expect_known_value(
+      object = as.plantuml( x = factor(LETTERS[1:10]) ),
+      file = "ref-02.as.plantuml.factor.rda"
     )
   }
 )
@@ -95,10 +87,9 @@ test_that(
 test_that(
   "as.plantuml.integer returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = 1L:10L ),
-      print = TRUE,
-      file = "2.as.plantuml.integer.txt"
+      file = "ref-02.as.plantuml.integer.rda"
     )
   }
 )
@@ -106,10 +97,9 @@ test_that(
 test_that(
   "as.plantuml.list returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = list( a = 1L:10L, b = NA, c = "LETTERS"[1:10] ) ),
-      print = TRUE,
-      file = "2.as.plantuml.list.txt"
+      file = "ref-02.as.plantuml.list.rda"
     )
   }
 )
@@ -117,10 +107,9 @@ test_that(
 test_that(
   "as.plantuml.logical returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = c(TRUE, FALSE, NA) ),
-      print = TRUE,
-      file = "2.as.plantuml.logical.txt"
+      file = "ref-02.as.plantuml.logical.rda"
     )
   }
 )
@@ -130,10 +119,9 @@ test_that(
 test_that(
   "as.plantuml.numeric returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = c(1:5, NA, NaN), complete = TRUE ),
-      print = TRUE,
-      file = "2.as.plantuml.numeric.complete.txt"
+      file = "ref-02.as.plantuml.numeric.complete.rda"
     )
   }
 )
@@ -141,10 +129,9 @@ test_that(
 test_that(
   "as.plantuml.data.frame returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = data.frame(a = 1:5, b = letters[1:5]), complete = TRUE ),
-      print = TRUE,
-      file = "2.as.plantuml.data.frame.complete.txt"
+      file = "ref-02.as.plantuml.data.frame.complete.rda"
     )
   }
 )
@@ -152,10 +139,9 @@ test_that(
 test_that(
   "as.plantuml.default returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml.default( x = data.frame(a = 1:5, b = letters[1:5]), complete = TRUE ),
-      print = TRUE,
-      file = "2.as.plantuml.default.complete.txt"
+      file = "ref-02.as.plantuml.default.complete.rda"
     )
   }
 )
@@ -163,10 +149,9 @@ test_that(
 test_that(
   "as.plantuml.list returns correct plantuml object",
   {
-    expect_known_output(
+    expect_known_value(
       object = as.plantuml( x = list( a = 1L:10L, b = NA, c = "LETTERS"[1:10] ), complete = TRUE ),
-      print = TRUE,
-      file = "2.as.plantuml.list.complete.txt"
+      file = "ref-02.as.plantuml.list.complete.rda"
     )
   }
 )

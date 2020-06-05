@@ -1,3 +1,11 @@
+# HEAD master branch master
+
+# plantuml 0.2.7
+
+- `plantuml_run()`: new function to run plantuml without the need for using system calls
+- `plot.plantuml()`: added the possibility to return the graph as a return value when file == "" and replaced calls   to `system2()` with `plantuml_run()`
+- added tests to `plot.plantuml()`
+
 # plantuml 0.2.6
 
 ## Bug Fix

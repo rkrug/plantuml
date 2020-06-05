@@ -4,30 +4,27 @@
 \alias{plot.plantuml}
 \title{Generate UML graph from plantuml}
 \usage{
-\method{plot}{plantuml}(
-  x,
-  file = NULL,
-  plantuml_opt = "",
-  vector = TRUE,
-  java_opt = "-Djava.awt.headless=true -splash:no",
-  ...
-)
+\method{plot}{plantuml}(x, file = NULL, plantuml_opt = "", vector = TRUE, ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
 
-\item{file}{if \code{file} is \code{NULL}, a png is created, saved in a
-temporary file and drawn in a device. If file is a file name, the graph is
-saved in the file and the type is based on the extensions. See limitations
-of plantuml to get the list of available file formats]}
+\item{file}{\itemize{
+\item \strong{\code{file} is `NULL}: the graph is drawn in the graphics device.
+\item \strong{\code{file} is a file name}: the graph is saved in the file and the type
+is based on the extensions.
+\item \strong{\code{file} is \code{NULL}}: the data which would have been saved in the file
+is returned in a character vector. \strong{This is only useful for text formats
+like \code{eps} or \code{svg}!}
+}}
 
-\item{plantuml_opt}{additional options for plantuml in addition to \code{-p} and \code{-tFILETYPE}}
+\item{plantuml_opt}{additional options for plantuml in addition to \code{-p}
+and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.}
 
-\item{vector}{if \code{TRUE} use svg as intermediate format, if \code{FALSE} use png. Only effects plotting in device.}
+\item{vector}{if \code{TRUE} use \code{svg} as intermediate format, if \code{FALSE}
+use \code{png}. Only effects plotting in device.}
 
-\item{java_opt}{additional options for java. see java documentation for details.}
-
-\item{...}{additional arguments for the plot function \code{grid::grid.raster()}}
+\item{...}{additional arguments for the \code{plot} function and the \code{plantuml_run} function.}
 }
 \value{
 returns file name (including absolute path) of the created graph.
