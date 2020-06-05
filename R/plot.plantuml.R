@@ -71,8 +71,9 @@ plot.plantuml <- function(
   }
 
   cmd <- paste0(
-    "-jar ",
-    system.file("jar", "plantuml.jar", package = "plantuml")
+    "-jar \"",
+    system.file("jar", "plantuml.jar", package = "plantuml"),
+    "\""
   )
   if (is.null(file)) {
     if (vector) {

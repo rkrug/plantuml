@@ -1,3 +1,8 @@
+# plantuml 0.2.6
+
+## Bug Fix
+- #9 https://github.com/rkrug/plantuml/issues/9 path to jar not enclosed in inverted commes, therefore problems when path to jar contains spaces. Thanks at @jstrin for reporting.
+
 # plantuml 0.2.5
 
 ## Bug fix
