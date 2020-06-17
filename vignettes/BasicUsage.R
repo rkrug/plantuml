@@ -1,14 +1,14 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 library(plantuml)
 
-## ----installation_plantuml, eval = FALSE---------------------------------
+## ----installation_plantuml, eval = FALSE--------------------------------------
 #  updatePlantumlJar()
 
-## ----definePlantuml------------------------------------------------------
+## ----definePlantuml-----------------------------------------------------------
 library(plantuml)
 x <- '
 (*) --> "Initialization"
@@ -26,7 +26,7 @@ x <- plantuml(
   x
 )
 
-## ----exampleDeviceVector-------------------------------------------------
+## ----exampleDeviceVector------------------------------------------------------
 plot( 
   x = x
 # vector = TRUE

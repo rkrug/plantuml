@@ -6,3 +6,6 @@
 ^\.travis\.yml$
 ^codecov\.yml$
 ^.lintr$
+^Makefile$
+^plantuml\.bbprojectd$
+^docker$

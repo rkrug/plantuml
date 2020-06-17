@@ -19,8 +19,9 @@
 #'
 #' @return the result from the call to `system2()`
 #'
+#' @export
 #' @examples
-#' plantuml_run(run)
+#' plantuml_run()
 #'
 plantuml_run <- function(
   plantuml_opt = "-help",
