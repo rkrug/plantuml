@@ -2,6 +2,7 @@
 
 context("03 check plot.plantuml() file = ''")
 
+skip("does not work unless local!")
 test_that(
   "plot using png to variable",
   expect_known_value(
@@ -14,6 +15,7 @@ test_that(
   )
 )
 
+skip("does not work unless local!")
 test_that(
   "plot using svg to variable",
   expect_known_value(

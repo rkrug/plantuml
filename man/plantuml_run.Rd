@@ -42,6 +42,6 @@ the provided java and plantuml commands.
 This is effectively a wrapper around \code{system2()} with some values set to run \code{plantuml}.
 }
 \examples{
-plantuml_run(run)
+plantuml_run()
 
 }

@@ -1,0 +1,45 @@
+---
+title: "plantuml test"
+author: "Rainer M Krug"
+date: "6/17/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(plantuml)
+knitr::knit_engines$set(plantuml = plantuml_knit_engine)
+```
+
+## R Markdown
+```{plantuml test, eval = TRUE, plantuml.format = "png", plantuml.path = "."}
+start
+''''''''''''
+:= Install and load `dmdScheme` in R
+..R code..
+""install.packages("dmdScheme")""
+""library("dmdScheme")"";
+''''''''''''
+:= Download dmdScheme template
+..R code..
+""open_new_spreadsheet(""
+""    "emeScheme",""
+""    file = "theNewScheme.xlsx",""
+""    format = TRUE""
+"")"";
+''''''''''''
+repeat
+  := Edit spreadsheet and save the scheme in 'theNewScheme.xlsx';
+repeat while (next iteration of scheme development);
+-> done;
+''''''''''''
+:= Build scheme definition package
+..R..
+""scheme_make(""
+""  schemeDefinition,""
+""  examples = NULL,""
+""  install_R_package = NULL,""
+""  path = ".", overwrite = FALSE""
+"")"";
+''''''''''''
+stop
+```
