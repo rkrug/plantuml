@@ -1,11 +1,19 @@
 Package: plantuml
 Type: Package
 Title: Crete UML graphs using PLANTUML
-Version: 0.2.7
-Author: Rainer M Krug <Rainer@krugs.de>
+Version: 0.3
+Date: 2020-06-17
+Authors@R: 
+    c(person(given = "Rainer M.",
+             family = "Krug",
+             role = c("aut", "cre"),
+             email = "Rainer@Krugs.de",
+             comment = c(ORCID = "0000-0002-7490-0066")))
 Maintainer: Rainer M Krug <Rainer@krugs.de>
 Description: Create UML graphs using the PLANTUML language. 
    These are either shown in a graphics device or saved as a file.
+URL: https://github.com/rkrug/plantuml
+BugReports: https://github.com/rkrug/plantuml/issues
 License: GPL-3
 Encoding: UTF-8
 Imports:
