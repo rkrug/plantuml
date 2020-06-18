@@ -17,7 +17,7 @@ This function provides a knit engine for the plantuml. It has the following addi
 \itemize{
 \item \strong{plantuml.format}: the format of the generated image.
 For formats which return images, these will be inserted,
-formats resulting in text qwill be included as text.
+formats resulting in text qill be included as text.
 At the moment, the following are supported:
 \itemize{
 \item \strong{png}	To generate image using PNG format (default).
