@@ -9,22 +9,9 @@ output: html_document
 plantuml::plantuml_knit_engine_register()
 ```
 
-## Now Graph and code?
-Does not work at the moment - why?
-
-```{plantuml both, eval = TRUE, echo = TRUE, plantuml.format = "png", plantuml.path = "graphs"}
-@startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: Another authentication Response
-@enduml
-```
-
 
 ## A simple chart as png
-```{plantuml diagram_png, eval = TRUE, plantuml.format = "png", plantuml.path = "graphs"}
+```{plantuml diagram_png, eval = TRUE, echo = FALSE, plantuml.format = "png", plantuml.path = "graphs"}
 left to right direction
 actor "Food Critic" as fc
 package Restaurant {
@@ -37,7 +24,21 @@ fc --> UC2
 fc --> UC3
 ```
 
-## A simple chart as svg
+## A simple chart as png and with code
+```{plantuml diagram_png_code, eval = TRUE, echo = TRUE, plantuml.format = "png", plantuml.path = "graphs"}
+left to right direction
+actor "Food Critic" as fc
+package Restaurant {
+  usecase "Eat Food" as UC1
+  usecase "Pay for Food" as UC2
+  usecase "Drink" as UC3
+}
+fc --> UC1
+fc --> UC2
+fc --> UC3
+```
+
+## A simple chart as svg with code
 ```{plantuml diagram_svg, eval = TRUE, plantuml.format = "svg", plantuml.path = "graphs"}
 robust "DNS Resolver" as DNS
 robust "Web Browser" as WB
@@ -64,7 +65,7 @@ DNS is Processing
 DNS is Idle
 ```
 
-## Now the code
+## Now only the code
 ```{plantuml code, eval = FALSE, plantuml.format = "png", plantuml.path = "graphs"}
 @startuml
 Alice -> Bob: Authentication Request

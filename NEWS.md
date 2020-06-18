@@ -1,4 +1,9 @@
-# HEAD master branch master
+# v0.3.1
+- added function to register knit engine `plantuml_knit_engine_register()`
+- fixed wrong behaviour when `echo = TRUE` and `eval = TRUE`
+
+# v0.3
+- added knit engine so that PlantUML code can be directly knitted in a RMarkdown document
 
 # plantuml 0.2.7
 

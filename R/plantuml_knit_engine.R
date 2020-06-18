@@ -37,6 +37,7 @@ plantuml_knit_engine <-  function(options) {
     path <- options$plantuml.path
   }
   ###
+  result <- list(out = "", code = "")
   if (options$eval) {
     #
     puml <- plantuml(options$code)
@@ -89,17 +90,18 @@ plantuml_knit_engine <-  function(options) {
       out <- list(readLines(fig))
     }
     ###
-    knitr::engine_output(
+    result$out <- knitr::engine_output(
       options = options,
-      out = out,
-      # code = options$code
-    )
-  } else {
-    out <- NULL
-    knitr::engine_output(
-      options = options,
-      code = options$code,
       out = out
     )
   }
+  if (options$echo) {
+    result$code <- knitr::engine_output(
+      options = options,
+      code = options$code,
+      out = NULL
+    )
+  }
+
+  return(paste(result$code, result$out, sep = "\n\n"))
 }
