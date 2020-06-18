@@ -43,7 +43,8 @@ This is effectively a wrapper around \code{system2()} with some values set to ru
 }
 \examples{
 \dontrun{
-# This will take some time when you run it for the first time as it will download \code{plantuml.jar}
+# This will take some time when you run it
+# for the first time as it will download \code{plantuml.jar}
   plantuml_run()
 }
 }

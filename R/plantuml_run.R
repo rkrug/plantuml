@@ -22,7 +22,8 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' # This will take some time when you run it for the first time as it will download \code{plantuml.jar}
+#' # This will take some time when you run it
+#' # for the first time as it will download \code{plantuml.jar}
 #'   plantuml_run()
 #' }
 plantuml_run <- function(

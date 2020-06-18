@@ -6,9 +6,9 @@ Authors@R:
     c(person(given = "Rainer M.",
              family = "Krug",
              role = c("aut", "cre"),
-             email = "Rainer@Krugs.de",
+             email = "Rainer@krugs.de",
              comment = c(ORCID = "0000-0002-7490-0066")))
-Maintainer: Rainer M Krug <Rainer@krugs.de>
+Maintainer: Rainer M. Krug <Rainer@krugs.de>
 Description: Create UML graphs using the PlanttUML language. 
    These are either shown in a graphics device or saved as a file.
 URL: https://github.com/rkrug/plantuml
