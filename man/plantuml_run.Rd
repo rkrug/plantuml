@@ -42,6 +42,9 @@ the provided java and plantuml commands.
 This is effectively a wrapper around \code{system2()} with some values set to run \code{plantuml}.
 }
 \examples{
-plantuml_run()
-
+\dontrun{
+# This will take some time when you run it
+# for the first time as it will download \code{plantuml.jar}
+  plantuml_run()
+}
 }

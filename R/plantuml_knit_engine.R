@@ -3,7 +3,7 @@
 #' This function provides a knit engine for the plantuml. It has the following additional functions:
 #'  - **plantuml.format**: the format of the generated image.
 #'    For formats which return images, these will be inserted,
-#'    formats resulting in text qwill be included as text.
+#'    formats resulting in text qill be included as text.
 #'    At the moment, the following are supported:
 #'      - **png**	To generate image using PNG format (default).
 #'      - **svg**	To generate image using SVG format.
@@ -27,12 +27,17 @@
 #' ## for an example RMarkdown file usint this knit engine.
 #' }
 plantuml_knit_engine <-  function(options) {
+  if (system.file(package = "knitr") == "") {
+    stop ("This function need the package `knitr` to be installed!")
+  }
+  ##
   if (is.null(options$plantuml.path)) {
     path <-  "."
   } else {
     path <- options$plantuml.path
   }
   ###
+  result <- list(out = "", code = "")
   if (options$eval) {
     #
     puml <- plantuml(options$code)
@@ -46,13 +51,13 @@ plantuml_knit_engine <-  function(options) {
     } else {
       switch(
         options$plantuml.format,
-        png = {
+        "png" = {
           fig_type <- "png"
           fig_opt <- "-tpng"
           output_type <- "image"
           fig <- paste0(options$label, ".", fig_type)
         },
-        svg = {
+        "svg" = {
           fig_type <- "svg"
           fig_opt <- "-tsvg"
           output_type <- "image"
@@ -85,16 +90,18 @@ plantuml_knit_engine <-  function(options) {
       out <- list(readLines(fig))
     }
     ###
-    knitr::engine_output(
+    result$out <- knitr::engine_output(
       options = options,
-      out = out
-    )
-  } else {
-    out <- NULL
-    knitr::engine_output(
-      options = options,
-      code = options$code,
       out = out
     )
   }
+  if (options$echo) {
+    result$code <- knitr::engine_output(
+      options = options,
+      code = options$code,
+      out = NULL
+    )
+  }
+
+  return(paste(result$code, result$out, sep = "\n\n"))
 }

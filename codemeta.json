@@ -1,13 +1,16 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "plantuml",
-  "description": "Create UML graphs using the PLANTUML language. \n   These are either shown in a graphics device or saved as a file.",
-  "name": "plantuml: Crete UML graphs using PLANTUML",
+  "description": "Create UML graphs using the PlanttUML language. \n   These are either shown in a graphics device or saved as a file.",
+  "name": "plantuml: Create UML Graphs using PlantUML Syntax",
   "codeRepository": "https://github.com/rkrug/plantuml",
   "issueTracker": "https://github.com/rkrug/plantuml/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.3",
+  "version": "0.3.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -20,7 +23,7 @@
       "@type": "Person",
       "givenName": "Rainer M.",
       "familyName": "Krug",
-      "email": "Rainer@Krugs.de",
+      "email": "Rainer@krugs.de",
       "@id": "https://orcid.org/0000-0002-7490-0066"
     }
   ],
@@ -32,7 +35,7 @@
       "@type": "Person",
       "givenName": "Rainer M.",
       "familyName": "Krug",
-      "email": "Rainer@Krugs.de",
+      "email": "Rainer@krugs.de",
       "@id": "https://orcid.org/0000-0002-7490-0066"
     }
   ],
@@ -142,7 +145,10 @@
   ],
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
-  "fileSize": "70.032KB",
-  "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],
+  "fileSize": "40.545KB",
+  "contIntegration": [
+    "https://travis-ci.org/rkrug/plantuml",
+    "https://codecov.io/github/rkrug/plantuml?branch=master"
+  ],
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing"
 }

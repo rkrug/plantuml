@@ -6,40 +6,72 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-library(plantuml)
-knitr::knit_engines$set(plantuml = plantuml_knit_engine)
+plantuml::plantuml_knit_engine_register()
 ```
 
-## R Markdown
-```{plantuml test, eval = TRUE, plantuml.format = "png", plantuml.path = "."}
-start
-''''''''''''
-:= Install and load `dmdScheme` in R
-..R code..
-""install.packages("dmdScheme")""
-""library("dmdScheme")"";
-''''''''''''
-:= Download dmdScheme template
-..R code..
-""open_new_spreadsheet(""
-""    "emeScheme",""
-""    file = "theNewScheme.xlsx",""
-""    format = TRUE""
-"")"";
-''''''''''''
-repeat
-  := Edit spreadsheet and save the scheme in 'theNewScheme.xlsx';
-repeat while (next iteration of scheme development);
--> done;
-''''''''''''
-:= Build scheme definition package
-..R..
-""scheme_make(""
-""  schemeDefinition,""
-""  examples = NULL,""
-""  install_R_package = NULL,""
-""  path = ".", overwrite = FALSE""
-"")"";
-''''''''''''
-stop
+
+## A simple chart as png
+```{plantuml diagram_png, eval = TRUE, echo = FALSE, plantuml.format = "png", plantuml.path = "graphs"}
+left to right direction
+actor "Food Critic" as fc
+package Restaurant {
+  usecase "Eat Food" as UC1
+  usecase "Pay for Food" as UC2
+  usecase "Drink" as UC3
+}
+fc --> UC1
+fc --> UC2
+fc --> UC3
+```
+
+## A simple chart as png and with code
+```{plantuml diagram_png_code, eval = TRUE, echo = TRUE, plantuml.format = "png", plantuml.path = "graphs"}
+left to right direction
+actor "Food Critic" as fc
+package Restaurant {
+  usecase "Eat Food" as UC1
+  usecase "Pay for Food" as UC2
+  usecase "Drink" as UC3
+}
+fc --> UC1
+fc --> UC2
+fc --> UC3
+```
+
+## A simple chart as svg with code
+```{plantuml diagram_svg, eval = TRUE, plantuml.format = "svg", plantuml.path = "graphs"}
+robust "DNS Resolver" as DNS
+robust "Web Browser" as WB
+concise "Web User" as WU
+
+@0
+WU is Idle
+WB is Idle
+DNS is Idle
+
+@+100
+WU -> WB : URL
+WU is Waiting
+WB is Processing
+
+@+200
+WB is Waiting
+WB -> DNS@+50 : Resolve URL
+
+@+100
+DNS is Processing
+
+@+300
+DNS is Idle
+```
+
+## Now only the code
+```{plantuml code, eval = FALSE, plantuml.format = "png", plantuml.path = "graphs"}
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
 ```
