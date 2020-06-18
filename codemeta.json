@@ -1,9 +1,12 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "plantuml",
-  "description": "Create UML graphs using the PLANTUML language. \n   These are either shown in a graphics device or saved as a file.",
-  "name": "plantuml: Crete UML graphs using PLANTUML",
+  "description": "Create UML graphs using the PlanttUML language. \n   These are either shown in a graphics device or saved as a file.",
+  "name": "plantuml: Create UML Graphs using PlantUML Syntax",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.3.0.1",
   "programmingLanguage": {
@@ -13,16 +16,25 @@
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.0.1 (2020-06-06)",
-  "author": {},
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Rainer M.",
+      "familyName": "Krug",
+      "email": "Rainer@Krugs.de",
+      "@id": "https://orcid.org/0000-0002-7490-0066"
+    }
+  ],
   "contributor": {},
   "copyrightHolder": {},
   "funder": {},
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": ["Rainer", "M"],
+      "givenName": "Rainer M.",
       "familyName": "Krug",
-      "email": "Rainer@krugs.de"
+      "email": "Rainer@Krugs.de",
+      "@id": "https://orcid.org/0000-0002-7490-0066"
     }
   ],
   "softwareSuggestions": [
@@ -132,7 +144,11 @@
   "codeRepository": "https://github.com/rkrug/plantuml",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
-  "fileSize": "69.917KB",
-  "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing"
+  "fileSize": "396.23KB",
+  "contIntegration": [
+    "https://travis-ci.org/rkrug/plantuml",
+    "https://codecov.io/github/rkrug/plantuml?branch=master"
+  ],
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
+  "issueTracker": "https://github.com/rkrug/plantuml/issues"
 }

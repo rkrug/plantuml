@@ -27,6 +27,10 @@
 #' ## for an example RMarkdown file usint this knit engine.
 #' }
 plantuml_knit_engine <-  function(options) {
+  if (system.file(package = "knitr") == "") {
+    stop ("This function need the package `knitr` to be installed!")
+  }
+  ##
   if (is.null(options$plantuml.path)) {
     path <-  "."
   } else {
@@ -46,13 +50,13 @@ plantuml_knit_engine <-  function(options) {
     } else {
       switch(
         options$plantuml.format,
-        png = {
+        "png" = {
           fig_type <- "png"
           fig_opt <- "-tpng"
           output_type <- "image"
           fig <- paste0(options$label, ".", fig_type)
         },
-        svg = {
+        "svg" = {
           fig_type <- "svg"
           fig_opt <- "-tsvg"
           output_type <- "image"
@@ -87,7 +91,8 @@ plantuml_knit_engine <-  function(options) {
     ###
     knitr::engine_output(
       options = options,
-      out = out
+      out = out,
+      # code = options$code
     )
   } else {
     out <- NULL
