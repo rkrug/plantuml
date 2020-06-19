@@ -1,3 +1,7 @@
+# 0.3.2
+- Adds `mode = "wd"` to the download of `plantuml.jar` to avoid corruption on windows
+
+
 # v0.3.1
 - added function to register knit engine `plantuml_knit_engine_register()`
 - fixed wrong behaviour when `echo = TRUE` and `eval = TRUE`

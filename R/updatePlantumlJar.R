@@ -30,6 +30,7 @@ updatePlantumlJar <- function(
       system.file("jar", package = "plantuml"),
       "plantuml.jar"
     ),
+    mode = "wb",
     ...
   )
 }
