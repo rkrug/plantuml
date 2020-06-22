@@ -58,25 +58,29 @@ all: check #clean_web web clean_check
 
 ####
 
-readme: $(READMEMD)
-Readme.md: $(READMERMD)
-	@Rscript -e "rmarkdown::render('$(READMERMD)', output_format = 'rmarkdown::github_document')"
-	rm -f $(READMEHTML)
+# readme: $(READMEMD)
+# Readme.md: $(READMERMD)
+# 	@Rscript -e "rmarkdown::render('$(READMERMD)', output_format = 'rmarkdown::github_document')"
+# 	rm -f $(READMEHTML)
 
-clean_readme:
-	rm -f $(READMEMD)
+# clean_readme:
+# 	rm -f $(READMEMD)
+
+web:
+	@Rscript -e "pkgdown::build_site()"
+
 
 ####
 
-# vignettes: $(VIGHTML)
-#
-# $(VIGHTML): $(VIGRMD)
-# 	@Rscript -e "devtools::build_vignettes()"
-#
-# clean_vignettes:
-# 	@Rscript -e "devtools::clean_vignettes()"
-#
-# #####
+vignettes: $(VIGHTML)
+
+$(VIGHTML): $(VIGRMD)
+	@Rscript -e "devtools::build_vignettes()"
+
+clean_vignettes:
+	@Rscript -e "devtools::clean_vignettes()"
+
+#####
 #
 # html:	$(HTML)
 # # %.html: %.Rmd

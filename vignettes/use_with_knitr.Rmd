@@ -5,6 +5,8 @@ vignette: >
   %\VignetteIndexEntry{Use with `knitr`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+resource_files:
+  - graphs/*
 ---
 
 ```{r, include = FALSE}
