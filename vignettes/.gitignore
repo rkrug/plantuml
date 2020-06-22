@@ -1,2 +1,3 @@
 *.html
-use_with_knitr.html
+*.R
+use_with_knitr.R

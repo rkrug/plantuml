@@ -1,0 +1,59 @@
+---
+title: "Basic Usage of the `plantuml` package"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Basic Usage of the `plantuml` package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(plantuml)
+```
+
+# Overview
+This package provides the functionality to create UML graphs using the [PlantUML](http://plantuml.com/) language.
+
+# Installation of plantuml binary
+The package does not come with the plantuml binary, which needs to be installed as well. repeated calling of this function updates the binary.
+```{r installation_plantuml, eval = FALSE}
+updatePlantumlJar()
+```
+
+# Plotting Plantuml graphics
+## Define plantuml code
+First, we define a plantuml object based on some plantuml code 
+```{r definePlantuml}
+library(plantuml)
+x <- '
+(*) --> "Initialization"
+
+if "Some Test" then
+  -->[true] "Some Activity"
+  --> "Another activity"
+  -right-> (*)
+else
+  ->[false] "Something else"
+  -->[Ending process] (*)
+endif
+'
+x <- plantuml( 
+  x
+)
+```
+
+## Plot via vector format
+Now we plot in in a device using vector format (svg) as intermediate format, which is the default
+
+```{r exampleDeviceVector}
+plot( 
+  x = x
+# vector = TRUE
+  )
+```
