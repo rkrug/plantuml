@@ -10,6 +10,8 @@
 #'      - **eps**	To generate text in EPS format.
 #'  - **plantuml.path**: the path where the resulting files will be saved.
 #'    Default is the same directory as the `.Rmd` file is in. The path will be created if it does not exist.
+#'  - **plantuml.preview**: if `TRUE`, an inline preview will be shown in RStudio.
+#'    **Attention: the processing takse twice as long as without this option!**.
 #'
 #' Thanks to Emiliano Heyns (retorquere) for giving me the idea for this
 #' functiion https://github.com/rkrug/plantuml/issues/10#issue-639795529
@@ -94,7 +96,15 @@ plantuml_knit_engine <-  function(options) {
       options = options,
       out = out
     )
+    ###
+    if (isTRUE(options$plantuml.preview)) {
+      plot(
+        x = puml,
+        vector = TRUE
+      )
+    }
   }
+
   if (options$echo) {
     result$code <- knitr::engine_output(
       options = options,

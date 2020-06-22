@@ -1,3 +1,9 @@
+# v0.3.3
+- added `plantuml.preview` option to kitr engine which will show a preview in RStudio
+
+# v0.3.2
+- ??
+
 # v0.3.1
 - added function to register knit engine `plantuml_knit_engine_register()`
 - fixed wrong behaviour when `echo = TRUE` and `eval = TRUE`
