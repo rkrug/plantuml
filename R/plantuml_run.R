@@ -3,6 +3,7 @@
 #' The in the package installation included `plantuml` binary is executed using
 #' the provided java and plantuml commands.
 #' This is effectively a wrapper around `system2()` with some values set to run `plantuml`.
+#' @param plantuml_jar path + filename to the plantuml jar file
 #' @param plantuml_opt options for plantuml. The default is `-help` to show all
 #'   options of plantuml
 #' @param java_bin path to the `java` binary. The dafaulkt is `java`, i;e; it
@@ -27,9 +28,10 @@
 #'   plantuml_run()
 #' }
 plantuml_run <- function(
-  plantuml_opt = "-help",
-  java_bin = "java",
-  java_opt = "-Djava.awt.headless=true -splash:no",
+  plantuml_jar = getOption("plantuml.jar"),
+  plantuml_opt = getOption("plantuml.opt"),
+  java_bin = getOption("plantuml.java_bin"),
+  java_opt = getOption("plantuml.java_opt"),
   stdout = "",
   stderr = "",
   stdin = "",
