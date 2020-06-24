@@ -5,9 +5,11 @@
 \title{Run the plantuml binary}
 \usage{
 plantuml_run(
+  plantuml_jar = file.path(getPlantumlOption("jar_path"),
+    getPlantumlOption("jar_name")),
   plantuml_opt = "-help",
-  java_bin = "java",
-  java_opt = "-Djava.awt.headless=true -splash:no",
+  java_bin = getPlantumlOption("java_bin"),
+  java_opt = getPlantumlOption("java_opt"),
   stdout = "",
   stderr = "",
   stdin = "",
@@ -15,6 +17,8 @@ plantuml_run(
 )
 }
 \arguments{
+\item{plantuml_jar}{path + filename to the plantuml jar file}
+
 \item{plantuml_opt}{options for plantuml. The default is \code{-help} to show all
 options of plantuml}
 

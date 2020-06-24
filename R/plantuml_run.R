@@ -28,10 +28,10 @@
 #'   plantuml_run()
 #' }
 plantuml_run <- function(
-  plantuml_jar = getOption("plantuml.jar"),
-  plantuml_opt = getOption("plantuml.opt"),
-  java_bin = getOption("plantuml.java_bin"),
-  java_opt = getOption("plantuml.java_opt"),
+  plantuml_jar = file.path( getPlantumlOption("jar_path"), getPlantumlOption("jar_name")),
+  plantuml_opt = "-help",
+  java_bin = getPlantumlOption("java_bin"),
+  java_opt = getPlantumlOption("java_opt"),
   stdout = "",
   stderr = "",
   stdin = "",
@@ -39,8 +39,7 @@ plantuml_run <- function(
 ){
 
   # Checks ------------------------------------------------------------------
-
-  if (system.file("jar", "plantuml.jar", package = "plantuml") == "") {
+  if (!file.exists(plantuml_jar)) {
     message(
       "##############################\n",
       "plantuml.jar file has not been downloaded.\n",
@@ -58,7 +57,7 @@ plantuml_run <- function(
 
   cmd <- paste0(
     "-jar \"",
-    system.file("jar", "plantuml.jar", package = "plantuml"),
+    plantuml_jar,
     "\""
   )
   result <- system2(

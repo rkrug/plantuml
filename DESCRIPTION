@@ -1,7 +1,7 @@
 Package: plantuml
 Type: Package
 Title: Create UML Graphs using PlantUML Syntax
-Version: 0.3.3
+Version: 0.3.4
 Date: 2002-06-22
 Authors@R: 
     c(person(given = "Rainer M.",
@@ -21,7 +21,8 @@ Imports:
   grid,
   png,
   magrittr,
-  grImport (>= 0.9-1)
+  grImport (>= 0.9-1),
+  backports
 LazyData: true
 RoxygenNote: 7.1.0
 Suggests: 

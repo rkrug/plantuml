@@ -1,20 +1,10 @@
-
+#' @import backports
+#' @importFrom utils getFromNamespace
 .onAttach <- function(libname, pkgname) {
-
-  if ( is.null(getOption("plantuml.jar")) ){
-    options( plantuml.jar = path.expand("~/jar/plantuml.jar") )
-  }
-
-  if ( is.null(getOption("plantuml.opt")) ){
-    options( plantuml.jar = path.expand("-help") )
-  }
-
-  if ( is.null(getOption("plantuml.java")) ){
-    options( plantuml.jar = Sys.which("java") )
-  }
-
-  if ( is.null(getOption("plantuml.java_opt")) ){
-    options( plantuml.jar = "-Djava.awt.headless=true -splash:no" )
-  }
-
+  setPlantumlOption(
+    jar_path = file.path( utils::getFromNamespace("R_user_dir", "backports")(package = "plantuml"), "jar"),
+    jar_name = "plantuml.jar",
+    java_bin = Sys.which("java"),
+    java_opt = "-Djava.awt.headless=true -splash:no"
+  )
 }

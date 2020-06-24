@@ -77,7 +77,11 @@ plantuml_knit_engine <-  function(options) {
 
     ###
     tmp_fig <- tempfile(fileext = fig_type)
-    dir.create(path, showWarnings = FALSE, recursive = TRUE)
+    dir.create(
+      path,
+      showWarnings = FALSE,
+      recursive = TRUE
+    )
     fig <- file.path(path, fig)
     ###
     plot(

@@ -4,20 +4,23 @@
 \alias{updatePlantumlJar}
 \title{Update or download \code{plantuml.jar} binary}
 \usage{
-updatePlantumlJar(beta = FALSE, ...)
+updatePlantumlJar(beta = FALSE, agree = NULL, ...)
 }
 \arguments{
 \item{beta}{should the beta version be downloaded, default \code{FALSE}}
 
+\item{agree}{if TRUE, agree to create a directory into which to download the \code{plantuml.jar} file}
+
 \item{...}{additional arguments for the \code{download.file()} function}
 }
 \value{
-the result from the \code{download.file()}
+the path and name of the downloaded file
 }
 \description{
 The file \code{plantuml.jar} is downloaded from Sourceforge and saved as
 \code{"plantuml.jar"} in the folder \code{system.file("jar", package =
-"plantuml")} of the package.
+"plantuml")} of the package. The source code for \code{plantuml} can be
+found at \url{https://github.com/plantuml/plantuml}
 }
 \examples{
 \dontrun{

@@ -80,6 +80,10 @@ $(VIGHTML): $(VIGRMD)
 clean_vignettes:
 	@Rscript -e "devtools::clean_vignettes()"
 
+
+metadata:
+	@Rscript -e "codemetar::write_codemeta()"
+
 #####
 #
 # html:	$(HTML)
@@ -110,7 +114,7 @@ clean_vignettes:
 docs:
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
 
-build:
+build: metadata
 	cd ..;\
 	R CMD build $(PKGSRC)
 
