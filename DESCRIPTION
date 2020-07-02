@@ -1,7 +1,7 @@
 Package: plantuml
 Type: Package
 Title: Create UML Graphs using PlantUML Syntax
-Version: 0.3.4
+Version: 0.3.5
 Date: 2002-06-22
 Authors@R: 
     c(person(given = "Rainer M.",
@@ -18,7 +18,6 @@ License: GPL-3
 Encoding: UTF-8
 Imports:
   utils,
-  grid,
   png,
   magrittr,
   grImport (>= 0.9-1),

@@ -15,6 +15,7 @@
 #' @param stderr See `system2()`
 #' @param stdin See `system2()`
 #' @param input See `system2()`
+#' @param agree if TRUE, agree to create a directory into which to download the \code{plantuml.jar} file
 #'
 #' @md
 #'
@@ -35,7 +36,8 @@ plantuml_run <- function(
   stdout = "",
   stderr = "",
   stdin = "",
-  input = NULL
+  input = NULL,
+  agree = FALSE
 ){
 
   # Checks ------------------------------------------------------------------
@@ -46,7 +48,7 @@ plantuml_run <- function(
       "Trying to download it by running the command 'updatePlantumlJar()' to download the file...\n",
       "##############################\n"
     )
-    updatePlantumlJar()
+    updatePlantumlJar(agree = agree)
     message(
       "Done!\n",
       "##############################\n"
