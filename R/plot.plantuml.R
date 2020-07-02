@@ -23,8 +23,6 @@
 #'
 #' @export
 #' @importFrom magrittr %>%
-#' @importFrom png readPNG
-#' @importFrom grid grid.raster
 #' @importFrom grImport PostScriptTrace readPicture picture
 #' @importFrom graphics plot
 #'
@@ -115,9 +113,21 @@ plot.plantuml <- function(
         fn,
         info = TRUE
       )
-      grid::grid.raster(
-        puml,
-        ...
+      plot(
+        range(0, attr(puml, "dim")[[2]]),
+        range(0, attr(puml, "dim")[[1]]),
+        type = "n",
+        axes = FALSE,
+        xlab = "",
+        ylab = "",
+        asp = 1
+      )
+      rasterImage(
+        image = puml,
+        xleft = 0,
+        xright = attr(puml, "dim")[[2]],
+        ybottom = 0,
+        ytop = attr(puml, "dim")[[1]]
       )
     }
   } else if (file == "") {
