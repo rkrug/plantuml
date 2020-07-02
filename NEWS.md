@@ -1,3 +1,7 @@
+# plantuml 0.3.5
+- move jar location to R_usr_dir() so that it will not cause problems during testing or on machines withn limited access. The jar will "survive" a new installation of the package.
+- add options to plantuml to make the finding oj java and the plantuml jar easier
+
 # plantuml 0.3.4
 - replace preview with png preview, as eps caused problems (see https://github.com/rkrug/plantuml/issues/17) - thanks @retorquere
 
