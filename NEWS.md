@@ -1,3 +1,6 @@
+# plantuml 0.3.4
+- replace preview with png preview, as eps caused problems (see https://github.com/rkrug/plantuml/issues/17) - thanks @retorquere
+
 # plantuml 0.3.3
 - added `plantuml.preview` option to kitr engine which will show a preview in RStudio
 
