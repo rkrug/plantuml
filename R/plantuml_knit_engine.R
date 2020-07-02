@@ -104,7 +104,7 @@ plantuml_knit_engine <-  function(options) {
     if (isTRUE(options$plantuml.preview)) {
       plot(
         x = puml,
-        vector = TRUE
+        vector = FALSE
       )
     }
   }
