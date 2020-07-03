@@ -43,6 +43,12 @@ plantuml_update <- function(
   return(jarfile)
 }
 
+
+#' RENAMED to plantuml_update()!
+#'
+#' @param ... some parameter
+#'
+#'
 #' @export
 updatePlantumlJar <- function(...) {
   warning("The function `updatePlantumlJar()` has been renamed to `plamtuml_update()!\nPlease chenge in your scripts!` ")
