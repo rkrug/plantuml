@@ -97,6 +97,12 @@
   "softwareRequirements": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 3.1.0"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
