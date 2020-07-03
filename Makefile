@@ -66,6 +66,9 @@ all: check #clean_web web clean_check
 # clean_readme:
 # 	rm -f $(READMEMD)
 
+clean_web:
+	rm -rf ./docs
+
 web:
 	@Rscript -e "pkgdown::build_site()"
 
@@ -188,4 +191,4 @@ docker_run:
 
 
 
-.PHONY: list files update clean clean_vignettes clean_web clean_html publish docs scheme_package
+.PHONY: web clean_web list files update clean clean_vignettes clean_web clean_html publish docs scheme_package
