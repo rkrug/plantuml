@@ -114,6 +114,11 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "graphics",
+      "name": "graphics"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
       "provider": {

@@ -25,7 +25,7 @@
 #' @importFrom png readPNG
 #' @importFrom magrittr %>%
 #' @importFrom grImport PostScriptTrace readPicture picture
-#' @importFrom graphics plot
+#' @importFrom graphics plot rasterImage
 #'
 #' @examples
 #' plantumlCode <- '
@@ -123,7 +123,7 @@ plot.plantuml <- function(
         ylab = "",
         asp = 1
       )
-      rasterImage(
+      graphics::rasterImage(
         image = puml,
         xleft = 0,
         xright = attr(puml, "dim")[[2]],
