@@ -132,10 +132,21 @@
     <div id="plantuml-035" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.5">
 <a href="#plantuml-035" class="anchor"></a>plantuml 0.3.5</h1>
+<div id="major-and-breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#major-and-breaking-changes" class="anchor"></a>Major and Breaking changes</h2>
+<ul>
+<li>renamed updatePlantumlJar() to update_plantuml()!!!</li>
+</ul>
+</div>
+<div id="other-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-changes" class="anchor"></a>Other changes</h2>
 <ul>
 <li>move jar location to R_usr_dir() so that it will not cause problems during testing or on machines withn limited access. The jar will “survive” a new installation of the package.</li>
 <li>add options to plantuml to make the finding oj java and the plantuml jar easier</li>
 </ul>
+</div>
 </div>
     <div id="plantuml-034" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.4">
@@ -225,7 +236,7 @@ Sebastyian Sauer reported <a href="https://github.com/rkrug/plantuml/issues/8" c
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
 <ul>
-<li>add argumwent <em>beta</em> to function updatePlantumlJar() to enable download from beta versions</li>
+<li>add argumwent <em>beta</em> to function plantuml_update() to enable download from beta versions</li>
 <li>added check if plantuml.jar has been downloaded - will download it automatically when not downloaded</li>
 </ul>
 </div>

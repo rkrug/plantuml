@@ -1,5 +1,8 @@
 # plantuml 0.3.5
-- renamed updatePlantumlJar() to update_plantuml()
+## Major and Breaking changes
+- renamed updatePlantumlJar() to update_plantuml()!!!
+
+## Other changes
 - move jar location to R_usr_dir() so that it will not cause problems during testing or on machines withn limited access. The jar will "survive" a new installation of the package.
 - add options to plantuml to make the finding oj java and the plantuml jar easier
 

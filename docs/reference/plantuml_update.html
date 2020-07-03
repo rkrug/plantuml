@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update or download <code>plantuml.jar</code> binary — updatePlantumlJar • plantuml</title>
+<title>Update or download <code>plantuml.jar</code> binary — plantuml_update • plantuml</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Update or download <code>plantuml.jar</code> binary — updatePlantumlJar" />
+<meta property="og:title" content="Update or download <code>plantuml.jar</code> binary — plantuml_update" />
 <meta property="og:description" content="The file plantuml.jar is downloaded from Sourceforge and saved as
 &quot;plantuml.jar&quot; in the folder system.file(&quot;jar&quot;, package =
 &quot;plantuml&quot;) of the package. The source code for plantuml can be
@@ -130,8 +130,8 @@ found at https://github.com/plantuml/plantuml" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Update or download <code>plantuml.jar</code> binary</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rkrug/plantuml/blob/master/R/updatePlantumlJar.R'><code>R/updatePlantumlJar.R</code></a></small>
-    <div class="hidden name"><code>updatePlantumlJar.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/rkrug/plantuml/blob/master/R/plantuml_update.R'><code>R/plantuml_update.R</code></a></small>
+    <div class="hidden name"><code>plantuml_update.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -141,7 +141,7 @@ found at https://github.com/plantuml/plantuml" />
 found at <a href='https://github.com/plantuml/plantuml'>https://github.com/plantuml/plantuml</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>updatePlantumlJar</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>agree</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>plantuml_update</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,10 +149,6 @@ found at <a href='https://github.com/plantuml/plantuml'>https://github.com/plant
     <tr>
       <th>beta</th>
       <td><p>should the beta version be downloaded, default <code>FALSE</code></p></td>
-    </tr>
-    <tr>
-      <th>agree</th>
-      <td><p>if TRUE, agree to create a directory into which to download the <code>plantuml.jar</code> file</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -166,7 +162,7 @@ found at <a href='https://github.com/plantuml/plantuml'>https://github.com/plant
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>updatePlantumlJar</span>()
+<span class='fu'>plantuml_update</span>()
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
