@@ -2,8 +2,8 @@
 % Please edit documentation in R/plantuml-package.R
 \docType{package}
 \name{plantuml-package}
-\alias{plantuml}
 \alias{plantuml-package}
+\alias{_PACKAGE}
 \title{plantuml: Create UML Graphs using PlantUML Syntax}
 \description{
 Create UML graphs using the PlanttUML language. 

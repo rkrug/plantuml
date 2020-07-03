@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plantuml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5</span>
       </span>
     </div>
 
@@ -82,7 +82,7 @@
 
       
 
-      </header><script src="use_with_knitr_files/header-attrs-2.2/header-attrs.js"></script><div class="row">
+      </header><script src="use_with_knitr_files/header-attrs-2.3/header-attrs.js"></script><script src="use_with_knitr_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Use with <code>knitr</code>
@@ -99,8 +99,14 @@
 <div id="register-the-plantuml-knitr-engine" class="section level1">
 <h1 class="hasAnchor">
 <a href="#register-the-plantuml-knitr-engine" class="anchor"></a>Register the plantuml knitr engine</h1>
-<p>The plantuml knitr engine <code><a href="../reference/plantuml_knit_engine.html">plantuml_knit_engine()</a></code> needs to be registered with knitr. The easiest is to use thew helper function <code>plantuml_knit_engine_register</code> in the <code>setup</code> code chunk:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">plantuml</span><span class="kw ns">::</span><span class="fu"><a href="../reference/plantuml_knit_engine_register.html">plantuml_knit_engine_register</a></span>()</pre></body></html></div>
+<p>The plantuml knitr engine <code><a href="../reference/plantuml_knit_engine.html">plantuml_knit_engine()</a></code> needs to be registered with knitr. The easiest is to use thew helper function <code>plantuml_knit_engine_register</code> in the <code>setup</code> code chunk. It is important to load the package <code>plantuml</code> before, as some options need to be set.</p>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">plantuml</span>)
+<span class="fu"><a href="../reference/plantuml_knit_engine_register.html">plantuml_knit_engine_register</a></span>()</pre></body></html></div>
+<div id="plantuml-code-chunk-options" class="section level2">
+<h2 class="hasAnchor">
+<a href="#plantuml-code-chunk-options" class="anchor"></a>PlantUML Code Chunk Options</h2>
+<p>The following options are available, in addition to the standard options: - <code>plantuml_format</code>: the format of the resulting file. At the moment, <code>png</code> (the default), <code>svg</code>, and <code>eps</code> are implemented. - <code>plantuml.path</code>: the path at which the resulting graphs should be saved. If the directory does not exist, it will be created. - <code>plantuml.preview</code>: if the graph should be shown as an inline preview in the Rmarkdown document in Rstudio. This option results in generating the image twice, which may lead to a substantial increase of the processing time. The preview is <strong>always</strong> a vector preview, irrespective of the file <code>plantuml_format</code></p>
+</div>
 <div id="a-simple-chart-as-png" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-simple-chart-as-png" class="anchor"></a>A simple chart as png</h2>

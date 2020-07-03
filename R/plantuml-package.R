@@ -1,4 +1,5 @@
 #' @keywords internal
+#' @aliases plantuml-package
 #' @import backports
 #'
 "_PACKAGE"
