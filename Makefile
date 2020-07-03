@@ -69,7 +69,7 @@ all: check #clean_web web clean_check
 clean_web:
 	rm -rf ./docs
 
-web:
+web: clean_web
 	@Rscript -e "pkgdown::build_site()"
 
 
