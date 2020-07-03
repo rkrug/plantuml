@@ -13,8 +13,7 @@ plantuml_run(
   stdout = "",
   stderr = "",
   stdin = "",
-  input = NULL,
-  agree = FALSE
+  input = NULL
 )
 }
 \arguments{
@@ -37,8 +36,6 @@ execution of plantuml}
 \item{stdin}{See \code{system2()}}
 
 \item{input}{See \code{system2()}}
-
-\item{agree}{if TRUE, agree to create a directory into which to download the \code{plantuml.jar} file}
 }
 \value{
 the result from the call to \code{system2()}
