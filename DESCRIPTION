@@ -1,8 +1,8 @@
 Package: plantuml
 Type: Package
 Title: Create UML Graphs using PlantUML Syntax
-Version: 0.3.5
-Date: 2002-06-22
+Version: 0.4
+Date: 2002-07-03
 Authors@R: 
     c(person(given = "Rainer M.",
              family = "Krug",
@@ -10,13 +10,13 @@ Authors@R:
              email = "Rainer@krugs.de",
              comment = c(ORCID = "0000-0002-7490-0066")))
 Maintainer: Rainer M. Krug <Rainer@krugs.de>
-Description: Create UML graphs using the PlanttUML language. 
+Description: Create UML graphs using the PlantUML language. 
    These are either shown in a graphics device or saved as a file.
 URL: https://github.com/rkrug/plantuml
 BugReports: https://github.com/rkrug/plantuml/issues
 License: GPL-3
 Encoding: UTF-8
-Depends: R (>= 3.2.0)
+Depends: R (>= 3.5.0)
 Imports:
   utils,
   png,

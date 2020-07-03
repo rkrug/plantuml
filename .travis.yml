@@ -22,6 +22,7 @@ matrix:
     before_install:
   - r: release
   - r: oldrel
+  - r: 3.5
   - r: 3.2
 
 before_install:
