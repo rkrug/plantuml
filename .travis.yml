@@ -22,7 +22,7 @@ matrix:
     before_install:
   - r: release
   - r: oldrel
-  - r: 3.1
+  - r: 3.2
 
 before_install:
 - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
