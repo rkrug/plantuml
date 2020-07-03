@@ -23,7 +23,7 @@ This package provides the functionality to create UML graphs using the [PlantUML
 # Installation of plantuml binary
 The package does not come with the plantuml binary, which needs to be installed as well. repeated calling of this function updates the binary.
 ```{r installation_plantuml, eval = FALSE}
-updatePlantumlJar()
+plantuml_update()
 ```
 
 # Plotting Plantuml graphics

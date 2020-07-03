@@ -6,7 +6,7 @@ knitr::opts_chunk$set(
 library(plantuml)
 
 ## ----installation_plantuml, eval = FALSE--------------------------------------
-#  updatePlantumlJar()
+#  plantuml_update()
 
 ## ----definePlantuml-----------------------------------------------------------
 library(plantuml)
@@ -22,12 +22,12 @@ else
   -->[Ending process] (*)
 endif
 '
-x <- plantuml( 
+x <- plantuml(
   x
 )
 
 ## ----exampleDeviceVector------------------------------------------------------
-plot( 
+plot(
   x = x
 # vector = TRUE
   )

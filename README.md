@@ -50,7 +50,7 @@ devtools::install_github("rkrug/plantuml")
 # download and install the PlantUML jar file from \link{http://plantuml.com/download}
 # whenever you call this command again, the plantuml binary will be updated to the newest version
 library(plantuml)
-updatePlantumlJar()
+plantuml_update()
 ```
 
 # Plotting Plantuml graphics
@@ -92,7 +92,7 @@ plot(
 
     ## ##########
     ## plantuml.jar file has not been downloaded.
-    ## Trying to download it by running the command 'updatePlantumlJar()' to download the file...
+    ## Trying to download it by running the command 'plantuml_update()' to download the file...
     ## Done!
     ## ##########
 

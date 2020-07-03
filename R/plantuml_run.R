@@ -43,10 +43,10 @@ plantuml_run <- function(
     message(
       "##############################\n",
       "plantuml.jar file has not been downloaded.\n",
-      "Trying to download it by running the command 'updatePlantumlJar()' to download the file...\n",
+      "Trying to download it by running the command 'plantuml_update()' to download the file...\n",
       "##############################\n"
     )
-    updatePlantumlJar()
+    plantuml_update()
     message(
       "Done!\n",
       "##############################\n"

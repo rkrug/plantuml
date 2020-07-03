@@ -1,4 +1,5 @@
 # plantuml 0.3.5
+- renamed updatePlantumlJar() to update_plantuml()
 - move jar location to R_usr_dir() so that it will not cause problems during testing or on machines withn limited access. The jar will "survive" a new installation of the package.
 - add options to plantuml to make the finding oj java and the plantuml jar easier
 
@@ -42,7 +43,7 @@
   Sebastyian Sauer reported https://github.com/rkrug/plantuml/issues/8 which was caused by a trailing linebreak. Seems to be a probl;em in plantuml, but fixed here.
   
 ## Minor changes
-* add argumwent *beta* to function updatePlantumlJar() to enable download from beta versions
+* add argumwent *beta* to function plantuml_update() to enable download from beta versions
 * added check if plantuml.jar has been downloaded - will download it automatically when not downloaded
 
 ## Diverse

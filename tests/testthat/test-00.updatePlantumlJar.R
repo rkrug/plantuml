@@ -9,20 +9,20 @@ test_that(
 )
 
 test_that(
-  "updatePlantumlJar(beta = TRUE)",
+  "plantuml_update(beta = TRUE)",
   {
     expect_error(
-      object = updatePlantumlJar( beta = TRUE, quiet = TRUE ),
+      object = plantuml_update( beta = TRUE, quiet = TRUE ),
       regexp = NA
     )
   }
 )
 
 test_that(
-  "updatePlantumlJar(beta = FALSE)",
+  "plantuml_update(beta = FALSE)",
   {
     expect_error(
-      object = updatePlantumlJar( beta = FALSE, quiet = TRUE ),
+      object = plantuml_update( beta = FALSE, quiet = TRUE ),
       regexp = NA
     )
   }

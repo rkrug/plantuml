@@ -13,9 +13,9 @@
 #' @importFrom utils download.file
 #' @examples
 #' \dontrun{
-#' updatePlantumlJar()
+#' plantuml_update()
 #' }
-updatePlantumlJar <- function(
+plantuml_update <- function(
   beta = FALSE,
   ...
 ) {
@@ -41,4 +41,10 @@ updatePlantumlJar <- function(
     ...
   )
   return(jarfile)
+}
+
+#' @export
+updatePlantumlJar <- function(...) {
+  warning("The function `updatePlantumlJar()` has been renamed to `plamtuml_update()!\nPlease chenge in your scripts!` ")
+  plantuml_update(...)
 }
