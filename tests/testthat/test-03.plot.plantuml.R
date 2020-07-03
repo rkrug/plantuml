@@ -3,6 +3,7 @@
 context("03 check plot.plantuml() file = ''")
 
 skip_on_cran()
+skip_on_travis()
 
 test_that(
   "plot using png to variable",
