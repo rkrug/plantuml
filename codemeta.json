@@ -14,7 +14,6 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.2",
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.0.2 (2020-06-22)",
@@ -99,7 +98,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 3.5.0"
+      "version": ">= 3.6.3"
     },
     {
       "@type": "SoftwareApplication",
@@ -163,9 +162,7 @@
   ],
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
-  "contIntegration": [
-    "https://travis-ci.org/rkrug/plantuml",
-    "https://codecov.io/github/rkrug/plantuml?branch=master"
-  ],
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing"
+  "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
+  "fileSize": "979.197KB"
 }
