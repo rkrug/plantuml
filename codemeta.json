@@ -98,7 +98,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 3.6.3"
+      "version": "> 3.6"
     },
     {
       "@type": "SoftwareApplication",
@@ -164,5 +164,5 @@
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "fileSize": "979.197KB"
+  "fileSize": "979.183KB"
 }
