@@ -3,7 +3,7 @@ PlantUML in R
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
------
+------------------------------------------------------------------------
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1922215.svg)](https://doi.org/10.5281/zenodo.1922215)
 
@@ -13,16 +13,19 @@ Status](https://travis-ci.org/rkrug/plantuml.svg?branch=master)](https://travis-
 Status](https://img.shields.io/codecov/c/github/rkrug/plantuml/master.svg)](https://codecov.io/github/rkrug/plantuml?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
------
+------------------------------------------------------------------------
 
-# Overview
+Overview
+========
 
 This package provides the functionality to create UML graphs using the
 [PlantUML](http://plantuml.com/) language.
 
-# Installation
+Installation
+============
 
-## Prerequisites
+Prerequisites
+-------------
 
 The actual work is done by the program [plantuml](http://plantuml.com/).
 Please see [the plantuml installation
@@ -33,96 +36,98 @@ packagae maintains it’s own version (see below).
 As the package is only on github, you need `devtools` to install it
 easily as a prerequisite
 
-``` r
-install.packages("devtools")
-```
+    install.packages("devtools")
 
-## Installation of plantuml
+Installation of plantuml
+------------------------
 
 The package is not on CRAN, so you have to install it from github. Also,
 it doez not come with the plantuml binary, which needs to be installed
 as well:
 
-``` r
-# Install plantuml from github
-devtools::install_github("rkrug/plantuml")
+    # Install plantuml from github
+    devtools::install_github("rkrug/plantuml")
 
-# download and install the PlantUML jar file from \link{http://plantuml.com/download}
-# whenever you call this command again, the plantuml binary will be updated to the newest version
-library(plantuml)
-updatePlantumlJar()
-```
+    # download and install the PlantUML jar file from \link{http://plantuml.com/download}
+    # whenever you call this command again, the plantuml binary will be updated to the newest version
+    library(plantuml)
+    plantuml_update()
 
-# Plotting Plantuml graphics
+Plotting Plantuml graphics
+==========================
 
-## Define plantuml code
+Define plantuml code
+--------------------
 
 First, we define a plantuml object based on some plantuml code
 
-``` r
-library(plantuml)
-x <- '
-(*) --> "Initialization"
+    library(plantuml)
+    x <- '
+    (*) --> "Initialization"
 
-if "Some Test" then
-  -->[true] "Some Activity"
-  --> "Another activity"
-  -right-> (*)
-else
-  ->[false] "Something else"
-  -->[Ending process] (*)
-endif
-'
-x <- plantuml( 
-  x
-)
-```
+    if "Some Test" then
+      -->[true] "Some Activity"
+      --> "Another activity"
+      -right-> (*)
+    else
+      ->[false] "Something else"
+      -->[Ending process] (*)
+    endif
+    '
+    x <- plantuml( 
+      x
+    )
 
-## Plot via vector format
+Plot via vector format
+----------------------
 
 Now we plot in in a device using vector format (svg) as intermediate
 format, which is the default
 
-``` r
-plot( 
-  x = x
-# vector = TRUE
-  )
-```
+    plot( 
+      x = x
+    # vector = TRUE
+      )
 
-    ## ##########
+    ## ##############################
     ## plantuml.jar file has not been downloaded.
-    ## Trying to download it by running the command 'updatePlantumlJar()' to download the file...
+    ## Trying to download it by running the command 'plantuml_update()' to download the file...
+    ## ##############################
+
     ## Done!
-    ## ##########
+    ## ##############################
 
 ![](README_files/figure-gfm/exampleDeviceVector-1.png)<!-- -->
 
-## Plot via raster format
+    ## [1] 0
+
+Plot via raster format
+----------------------
 
 When using `vector = FALSE` uses a raster format (png) as intermediate
 format
 
-``` r
-plot( 
-  x = x,
-  vector = FALSE
-  )
-```
+    plot( 
+      x = x,
+      vector = FALSE
+      )
 
 ![](README_files/figure-gfm/exampleDeviceRaster-1.png)<!-- -->
 
-## Plotting to a file
+    ## [1] 0
+
+Plotting to a file
+------------------
 
 To save the graph in a file, we simply specify the `file` argument in
 the plot command:
 
-``` r
-plot( 
-  x, 
-  file = "./README_files/test.svg" 
-)
-```
+    plot( 
+      x, 
+      file = "./README_files/test.svg" 
+    )
+
+    ## [1] 0
 
 And here is the file
 
@@ -144,7 +149,8 @@ Suported extensions in plantuml are:
     - latex     To generate images using LaTeX/Tikz format
     - latex:nopreamble  To generate images using LaTeX/Tikz format without preamble
 
-# Plotting R objects
+Plotting R objects
+==================
 
 In addition to plotting based on plantuml code some basic functionality
 to document R objects has been included.
@@ -157,25 +163,23 @@ know and leave sugestions in the issue tracker.</span>**
 
 One example is:
 
-``` r
-x <- list(
-  a = 1:10,
-  b = letters[1:4],
-  c = data.frame(
-    x = 1:10,
-    y = c(TRUE, FALSE)
-  )
-)
-plot(
-  as.plantuml(x)
-)
-```
+    x <- list(
+      a = 1:10,
+      b = letters[1:4],
+      c = data.frame(
+        x = 1:10,
+        y = c(TRUE, FALSE)
+      )
+    )
+    plot(
+      as.plantuml(x)
+    )
 
 ![](README_files/figure-gfm/exampleObject-1.png)<!-- -->
 
-# **<span style="color:red">TODO</span>**
+    ## [1] 0
 
-  - make selection dependant on installed packages, as `vector = TRUE`
-    requires postscript to be installed\!
-  - update documentation and
-  - add tests for `plot.plantuml()`
+<!-- # **<span style="color:red">TODO</span>** -->
+<!-- - make selection dependant on installed packages, as `vector = TRUE` requires postscript to be installed! -->
+<!-- - update documentation and  -->
+<!-- - add tests for `plot.plantuml()` -->

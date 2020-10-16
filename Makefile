@@ -66,7 +66,10 @@ all: check #clean_web web clean_check
 # clean_readme:
 # 	rm -f $(READMEMD)
 
-web:
+clean_web:
+	rm -rf ./docs
+
+web: clean_web
 	@Rscript -e "pkgdown::build_site()"
 
 
@@ -79,6 +82,10 @@ $(VIGHTML): $(VIGRMD)
 
 clean_vignettes:
 	@Rscript -e "devtools::clean_vignettes()"
+
+
+metadata:
+	@Rscript -e "codemetar::write_codemeta()"
 
 #####
 #
@@ -108,11 +115,9 @@ clean_vignettes:
 ####
 
 docs:
+	Rscript -e "codemetar::write_codemeta()"
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
-
-build:
-	cd ..;\
-	R CMD build $(PKGSRC)
+	Rscript -e "pkgdown::build_site()"
 
 ####
 
@@ -184,4 +189,4 @@ docker_run:
 
 
 
-.PHONY: list files update clean clean_vignettes clean_web clean_html publish docs scheme_package
+.PHONY: web clean_web list files update clean clean_vignettes clean_web clean_html publish docs scheme_package

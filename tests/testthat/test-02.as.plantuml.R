@@ -35,6 +35,7 @@ test_that(
 test_that(
   "as.plantuml.data.frame returns correct plantuml object",
   {
+    skip_if_not(version$major >= 4)
     expect_known_value(
       object = as.plantuml( x = data.frame(a = 1:5, b = letters[1:5]) ),
       file = "ref-02.as.plantuml.data.frame.rda"
@@ -129,6 +130,7 @@ test_that(
 test_that(
   "as.plantuml.data.frame returns correct plantuml object",
   {
+    skip_if_not(version$major >= 4)
     expect_known_value(
       object = as.plantuml( x = data.frame(a = 1:5, b = letters[1:5]), complete = TRUE ),
       file = "ref-02.as.plantuml.data.frame.complete.rda"

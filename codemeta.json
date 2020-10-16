@@ -5,19 +5,18 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "plantuml",
-  "description": "Create UML graphs using the PlanttUML language. \n   These are either shown in a graphics device or saved as a file.",
+  "description": "Create UML graphs using the PlantUML language. \n   These are either shown in a graphics device or saved as a file.",
   "name": "plantuml: Create UML Graphs using PlantUML Syntax",
   "codeRepository": "https://github.com/rkrug/plantuml",
   "issueTracker": "https://github.com/rkrug/plantuml/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.3.4",
+  "version": "0.4",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "author": [
     {
       "@type": "Person",
@@ -97,6 +96,12 @@
   "softwareRequirements": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": "> 3.6"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
@@ -111,6 +116,11 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=png"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "graphics",
+      "name": "graphics"
     },
     {
       "@type": "SoftwareApplication",
@@ -136,13 +146,23 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=grImport"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "backports",
+      "name": "backports",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=backports"
     }
   ],
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
-  "contIntegration": [
-    "https://travis-ci.org/rkrug/plantuml",
-    "https://codecov.io/github/rkrug/plantuml?branch=master"
-  ],
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing"
+  "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
+  "fileSize": "1081.198KB"
 }

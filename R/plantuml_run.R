@@ -3,6 +3,7 @@
 #' The in the package installation included `plantuml` binary is executed using
 #' the provided java and plantuml commands.
 #' This is effectively a wrapper around `system2()` with some values set to run `plantuml`.
+#' @param plantuml_jar path + filename to the plantuml jar file
 #' @param plantuml_opt options for plantuml. The default is `-help` to show all
 #'   options of plantuml
 #' @param java_bin path to the `java` binary. The dafaulkt is `java`, i;e; it
@@ -27,9 +28,10 @@
 #'   plantuml_run()
 #' }
 plantuml_run <- function(
+  plantuml_jar = file.path( getPlantumlOption("jar_path"), getPlantumlOption("jar_name")),
   plantuml_opt = "-help",
-  java_bin = "java",
-  java_opt = "-Djava.awt.headless=true -splash:no",
+  java_bin = getPlantumlOption("java_bin"),
+  java_opt = getPlantumlOption("java_opt"),
   stdout = "",
   stderr = "",
   stdin = "",
@@ -37,15 +39,14 @@ plantuml_run <- function(
 ){
 
   # Checks ------------------------------------------------------------------
-
-  if (system.file("jar", "plantuml.jar", package = "plantuml") == "") {
+  if (!file.exists(plantuml_jar)) {
     message(
       "##############################\n",
       "plantuml.jar file has not been downloaded.\n",
-      "Trying to download it by running the command 'updatePlantumlJar()' to download the file...\n",
+      "Trying to download it by running the command 'plantuml_update()' to download the file...\n",
       "##############################\n"
     )
-    updatePlantumlJar()
+    plantuml_update()
     message(
       "Done!\n",
       "##############################\n"
@@ -56,7 +57,7 @@ plantuml_run <- function(
 
   cmd <- paste0(
     "-jar \"",
-    system.file("jar", "plantuml.jar", package = "plantuml"),
+    plantuml_jar,
     "\""
   )
   result <- system2(

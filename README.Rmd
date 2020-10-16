@@ -45,7 +45,7 @@ devtools::install_github("rkrug/plantuml")
 # download and install the PlantUML jar file from \link{http://plantuml.com/download}
 # whenever you call this command again, the plantuml binary will be updated to the newest version
 library(plantuml)
-updatePlantumlJar()
+plantuml_update()
 ```
 
 # Plotting Plantuml graphics
@@ -144,8 +144,8 @@ plot(
 
 ```
 
-# **<span style="color:red">TODO</span>**
-- make selection dependant on installed packages, as `vector = TRUE` requires postscript to be installed!
-- update documentation and 
-- add tests for `plot.plantuml()`
+<!-- # **<span style="color:red">TODO</span>** -->
+<!-- - make selection dependant on installed packages, as `vector = TRUE` requires postscript to be installed! -->
+<!-- - update documentation and  -->
+<!-- - add tests for `plot.plantuml()` -->
  

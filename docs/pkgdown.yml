@@ -1,8 +1,8 @@
-pandoc: 2.9.2.1
+pandoc: 2.10.1
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   BasicUsage: BasicUsage.html
   use_with_knitr: use_with_knitr.html
-last_built: 2020-06-22T15:31Z
+last_built: 2020-10-16T14:41Z
 
