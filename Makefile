@@ -115,11 +115,9 @@ metadata:
 ####
 
 docs:
+	Rscript -e "codemetar::write_codemeta()"
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
 
-build: metadata
-	cd ..;\
-	R CMD build $(PKGSRC)
 
 ####
 

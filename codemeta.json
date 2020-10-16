@@ -16,7 +16,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "author": [
     {
       "@type": "Person",
@@ -164,5 +164,5 @@
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "fileSize": "979.183KB"
+  "fileSize": "979.176KB"
 }
