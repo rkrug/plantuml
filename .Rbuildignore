@@ -15,3 +15,4 @@
 ^pkgdown$
 ^doc$
 ^Meta$
+^\.github$
