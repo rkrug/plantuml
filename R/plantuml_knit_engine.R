@@ -68,7 +68,7 @@ plantuml_knit_engine <-  function(options) {
         "eps" = {
           fig_type <- "eps"
           fig_opt <- "-teps"
-          output_type <- "image"
+          output_type <- ifelse(knitr::is_latex_output(), "image", "text")
           fig <- paste0(options$label, ".", fig_type)
         },
         stop("Unsupported `plantuml.format`!")
