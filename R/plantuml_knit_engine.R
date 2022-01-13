@@ -7,7 +7,8 @@
 #'    At the moment, the following are supported:
 #'      - **png**	To generate image using PNG format (default).
 #'      - **svg**	To generate image using SVG format.
-#'      - **eps**	To generate text in EPS format.
+#'      - **eps**	To generate text in EPS format; or generates an image when
+#'      outputting LaTeX rather than HTML formats.
 #'  - **plantuml.path**: the path where the resulting files will be saved.
 #'    Default is the same directory as the `.Rmd` file is in. The path will be created if it does not exist.
 #'  - **plantuml.preview**: if `TRUE`, an inline preview will be shown in RStudio.
