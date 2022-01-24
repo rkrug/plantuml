@@ -51,6 +51,6 @@ plantuml_update <- function(
 #'
 #' @export
 updatePlantumlJar <- function(...) {
-  warning("The function `updatePlantumlJar()` has been renamed to `plamtuml_update()!\nPlease chenge in your scripts!` ")
+  warning("The function `updatePlantumlJar()` has been renamed to `plantuml_update()`!\nPlease change in your scripts!")
   plantuml_update(...)
 }
