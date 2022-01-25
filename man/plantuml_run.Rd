@@ -42,8 +42,8 @@ the result from the call to \code{system2()}
 }
 \description{
 The in the package installation included \code{plantuml} binary is executed using
-the provided java and plantuml commands.
-This is effectively a wrapper around \code{system2()} with some values set to run \code{plantuml}.
+the provided java and plantuml commands. This is effectively a wrapper around
+\code{system2()} with some values set to run \code{plantuml}.
 }
 \examples{
 \dontrun{

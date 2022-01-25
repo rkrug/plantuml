@@ -43,7 +43,7 @@ else
   -->[Ending process] (*)
 endif
 '
-x <- plantuml( 
+x <- plantuml(
   x
 )
 ```
@@ -52,7 +52,7 @@ x <- plantuml(
 Now we plot in in a device using vector format (svg) as intermediate format, which is the default
 
 ```{r exampleDeviceVector}
-plot( 
+plot(
   x = x
 # vector = TRUE
   )

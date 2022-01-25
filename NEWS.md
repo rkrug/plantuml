@@ -1,3 +1,7 @@
+# plantuml 0.4 dev branch
+## Major and Breaking changes
+- included a function to generate the graph on a plantuml server, i.e. independant of a local installation. TO BE DISCUSSED.
+
 # plantuml 0.3.5
 ## Major and Breaking changes
 - renamed updatePlantumlJar() to update_plantuml()!!!

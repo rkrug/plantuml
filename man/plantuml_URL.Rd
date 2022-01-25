@@ -6,17 +6,29 @@
 \usage{
 plantuml_URL(
   plantuml = "@startuml\\nBob -> Alice : hello\\n@enduml",
-  server_url = "http://www.plantuml.com/plantuml/png/",
+  file = NULL,
+  server_url = "http://www.plantuml.com/plantuml/",
+  type = "png",
   open_in_browser = FALSE
 )
 }
 \arguments{
 \item{plantuml}{The plantuml code}
 
-\item{server_url}{The base url of the server}
+\item{file}{either a character string naming a file into which the graph
+will be saved. The extension will overwrite the \code{type} parameter.
+If \code{NULL} the result will only be shown and (when \code{open_in_browser = TRUE}).
+Default: \code{NULL}.}
+
+\item{server_url}{The base url of the server. Should end with a single \code{/}}
+
+\item{type}{the type of the returned figure. At the moment supported:
+\code{png}, \code{svg} or \code{txt} for ASCIIArt.}
+
+\item{open_in_browser}{if TRUE, the result will be opened in the browser.}
 }
 \value{
-complete url
+complete url to retrieve the graph.
 }
 \description{
 Generate PlantUML Server URL

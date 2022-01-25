@@ -96,18 +96,53 @@ encode6bit <- function(
 #' Generate PlantUML Server URL
 #'
 #' @param plantuml The plantuml code
-#' @param server_url The base url of the server
+#' @param server_url The base url of the server. Should end with a single `/`
+#' @param file either a character string naming a file into which the graph
+#'   will be saved. The extension will overwrite the `type` parameter.
+#'   If `NULL` the result will only be shown and (when `open_in_browser = TRUE`).
+#'   Default: `NULL`.
+#' @param type the type of the returned figure. At the moment supported:
+#'   `png`, `svg` or `txt` for ASCIIArt.
+#' @param open_in_browser if TRUE, the result will be opened in the browser.
 #'
-#' @return complete url
+#' @return complete url to retrieve the graph.
+#' @md
+#'
+#' @importFrom utils browseURL download.file
 #' @export
 #'
 #' @examples
 #'
 plantuml_URL <- function(
   plantuml = "@startuml\nBob -> Alice : hello\n@enduml",
-  server_url = "http://www.plantuml.com/plantuml/png/",
+  file = NULL,
+  server_url = "http://www.plantuml.com/plantuml/",
+  type = "png",
   open_in_browser = FALSE
 ){
+  types <- c("png", "svg", "txt")
+
+  if (substr(server_url, nchar(server_url), nchar(server_url)) != "/") {
+    server_url <- paste0(server_url, "/")
+  }
+
+  if (!is.null(file)) {
+    ext <- strsplit(file, "\\.")
+    ext <- ext[[1]][[length(ext[[1]])]]
+    if (ext %in% types) {
+      type <- ext
+    }
+  }
+
+  if (!(type %in% types)){
+    stop(
+      "`type` has to be one of the allowed types:\n",
+      paste0(types, collapse = "; ")
+    )
+  }
+
+  server_url <- paste0(server_url, type, "/")
+  #
   # comp <- brotli::brotli_compress(charToRaw(plantuml))
   # enc <- paste0("0", encode64(comp))
   #
@@ -115,8 +150,13 @@ plantuml_URL <- function(
   enc <- paste0("~1", encode64(comp))
   #
   url <- paste0(server_url, enc)
+  #
   if (open_in_browser){
-    browseURL(url)
+    utils::browseURL(url)
+  }
+  #
+  if (!is.null(file)) {
+    utils::download.file(url, file)
   }
   return(url)
 }

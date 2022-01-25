@@ -1,8 +1,8 @@
 #' Run the plantuml binary
 #'
 #' The in the package installation included `plantuml` binary is executed using
-#' the provided java and plantuml commands.
-#' This is effectively a wrapper around `system2()` with some values set to run `plantuml`.
+#' the provided java and plantuml commands. This is effectively a wrapper around
+#' `system2()` with some values set to run `plantuml`.
 #' @param plantuml_jar path + filename to the plantuml jar file
 #' @param plantuml_opt options for plantuml. The default is `-help` to show all
 #'   options of plantuml
