@@ -11,8 +11,8 @@ encode64 <- function(
       r <- paste0(
         r,
         append3bytes(
-          intToUtf8(data[i+1]),
-          intToUtf8(data[i+2]),
+          as.integer(data[i+1]),
+          as.integer(data[i+2]),
           0
         )
       )
@@ -20,7 +20,7 @@ encode64 <- function(
       r <- paste0(
         r,
         append3bytes(
-          intToUtf8(data[i+1]),
+          as.integer(data[i+1]),
           0,
           0
         )
@@ -29,9 +29,9 @@ encode64 <- function(
       r <- paste0(
         r,
         append3bytes(
-          intToUtf8(data[i+1]),
-          intToUtf8(data[i+2]),
-          intToUtf8(data[i+3])
+          as.integer(data[i+1]),
+          as.integer(data[i+2]),
+          as.integer(data[i+3])
         )
       )
     }
@@ -68,30 +68,29 @@ encode6bit <- function(
   int
 ){
   if (int < 10) {
-    char <- intToUtf8(48 + int)
+    return(intToUtf8(48 + int))
   }
   int  <- int - 10
   #
   if (int < 26) {
-    char <- intToUtf8(65 + int)
+    return( intToUtf8(65 + int))
   }
   int  <- int - 26
   #
   if (int < 26) {
-    char <- intToUtf8(97 + int)
+    return(intToUtf8(97 + int))
   }
   int  <- int - 26
   #
   if (int == 0) {
-    char <- "-"
+    return("-")
   }
   #
   if (int == 1) {
-    char <- "_"
+    return("_")
   }
-  char <- "?"
-  #
-  return(char)
+  return("?")
+
 }
 
 #' Generate PlantUML Server URL
@@ -106,14 +105,18 @@ encode6bit <- function(
 #'
 plantuml_URL <- function(
   plantuml = "@startuml\nBob -> Alice : hello\n@enduml",
-  server_url = "http://www.plantuml.com/plantuml/png/"
+  server_url = "http://www.plantuml.com/plantuml/png/",
+  open_in_browser = FALSE
 ){
-  plantuml <- enc2utf8(plantuml)
-  comp <- brotli::brotli_compress(charToRaw(plantuml))
-  # comp <- memCompress(charToRaw('plantuml'), "gzip")
-
-  enc <- encode64(comp)
-  url <- paste0(server_url, "/", enc)
-
+  # comp <- brotli::brotli_compress(charToRaw(plantuml))
+  # enc <- paste0("0", encode64(comp))
+  #
+  comp <- memCompress(charToRaw(plantuml), "gzip")
+  enc <- paste0("~1", encode64(comp))
+  #
+  url <- paste0(server_url, enc)
+  if (open_in_browser){
+    browseURL(url)
+  }
   return(url)
 }

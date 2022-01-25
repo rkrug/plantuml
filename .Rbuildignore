@@ -4,6 +4,7 @@
 ^README.*$
 ^.*plantuml\.jar$
 ^\.travis\.yml$
+^travis\.OLD$
 ^codecov\.yml$
 ^.lintr$
 ^Makefile$

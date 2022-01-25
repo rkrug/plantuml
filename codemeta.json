@@ -1,11 +1,8 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "plantuml",
-  "description": "Create UML graphs using the PlantUML language. \n   These are either shown in a graphics device or saved as a file.",
+  "description": "Create UML graphs using the PlantUML language. These are either shown in a graphics device or saved as a file.",
   "name": "plantuml: Create UML Graphs using PlantUML Syntax",
   "codeRepository": "https://github.com/rkrug/plantuml",
   "issueTracker": "https://github.com/rkrug/plantuml/issues",
@@ -16,7 +13,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
+  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
   "author": [
     {
       "@type": "Person",
@@ -26,9 +23,6 @@
       "@id": "https://orcid.org/0000-0002-7490-0066"
     }
   ],
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -93,19 +87,19 @@
       "name": "tools"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": "> 3.6"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "png",
       "name": "png",
@@ -117,12 +111,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=png"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "graphics",
       "name": "graphics"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -134,7 +128,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "grImport",
       "name": "grImport",
@@ -147,7 +141,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=grImport"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "backports",
       "name": "backports",
@@ -158,11 +152,12 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=backports"
-    }
-  ],
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "228.091KB",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "fileSize": "979.176KB"
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing"
 }
