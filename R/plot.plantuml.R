@@ -46,47 +46,55 @@ plot.plantuml <- function(
   plantuml_opt = "",
   vector = TRUE,
   ...
-  ){
+){
 
-  if (!x$complete) {
-    x$code <- paste("@startuml \n ", x$code, " \n @enduml")
-  }
-  if ( is.null(file) ) {
-    if (vector) {
-      # fn <- tempfile( fileext = ".svg")
-      # ffmt <- "-tsvg"
-      fn <- tempfile( fileext = ".eps")
-      ffmt <- "-teps"
-      plantuml_opt = paste("-p", ffmt, plantuml_opt)
-    } else {
-      fn <- tempfile( fileext = ".png")
-      ffmt <- "-tpng"
-      plantuml_opt = paste("-p", ffmt, plantuml_opt)
-    }
-  } else if (file == "") {
-    plantuml_opt = paste("-p",plantuml_opt)
-  } else {
-    fn <- file
-    pos <- regexpr("\\.([[:alnum:]]+)$", fn)
-    ext <- ifelse( pos > -1L, substring(file, pos + 1L), "")
-    ffmt <- paste0("-t", ext)
-    plantuml_opt = paste("-p", ffmt, plantuml_opt)
-  }
+
+  result <- get_graph(
+    x = x,
+    file = file,
+    vector = vector,
+    plantuml_opt = plantuml_opt
+  )
+
+  # if (!x$complete) {
+  #   x$code <- paste("@startuml \n ", x$code, " \n @enduml")
+  # }
+  # if ( is.null(file) ) {
+  #   if (vector) {
+  #     # fn <- tempfile( fileext = ".svg")
+  #     # ffmt <- "-tsvg"
+  #     fn <- tempfile( fileext = ".eps")
+  #     ffmt <- "-teps"
+  #     plantuml_opt = paste("-p", ffmt, plantuml_opt)
+  #   } else {
+  #     fn <- tempfile( fileext = ".png")
+  #     ffmt <- "-tpng"
+  #     plantuml_opt = paste("-p", ffmt, plantuml_opt)
+  #   }
+  # } else if (file == "") {
+  #   plantuml_opt = paste("-p",plantuml_opt)
+  # } else {
+  #   fn <- file
+  #   pos <- regexpr("\\.([[:alnum:]]+)$", fn)
+  #   ext <- ifelse( pos > -1L, substring(file, pos + 1L), "")
+  #   ffmt <- paste0("-t", ext)
+  #   plantuml_opt = paste("-p", ffmt, plantuml_opt)
+  # }
 
   if (is.null(file)) {
     if (vector) {
-      result <- plantuml_run(
-        plantuml_opt = plantuml_opt,
-        stdout = fn,
-        input = x$code
+      ps <- tempfile(fileext = ".ps")
+      rgml <- tempfile(fileext = ".xml")
+      rsvg::rsvg_ps(
+        svg = result,
+        file = ps
       )
-      fnrgl <- gsub(".eps", ".rgml", fn)
       grImport::PostScriptTrace(
-        file = fn,
-        outfilename = fnrgl
+        file = ps,
+        outfilename = rgml
       )
       prgml <- grImport::readPicture(
-        rgmlFile = fnrgl
+        rgmlFile = rgml
       )
       plot(
         range(prgml@summary@xscale),
@@ -105,11 +113,11 @@ plot.plantuml <- function(
         ytop    = prgml@summary@yscale["ymax"]
       )
     } else {
-      result <- plantuml_run(
-        plantuml_opt = plantuml_opt,
-        stdout = fn,
-        input = x$code
-      )
+      # result <- plantuml_run(
+      #   plantuml_opt = plantuml_opt,
+      #   stdout = fn,
+      #   input = x$code
+      # )
       puml <- png::readPNG(
         fn,
         info = TRUE
@@ -132,17 +140,18 @@ plot.plantuml <- function(
       )
     }
   } else if (file == "") {
-    result <- plantuml_run(
-      plantuml_opt = plantuml_opt,
-      stdout = TRUE,
-      input = x$code
-    )
+    # THIS NEEDS TWEAKING!!!!!
+    # result <- plantuml_run(
+    #   plantuml_opt = plantuml_opt,
+    #   stdout = TRUE,
+    #   input = x$code
+    # )
   } else {
-    result <- plantuml_run(
-      plantuml_opt = plantuml_opt,
-      stdout = fn,
-      input = x$code
-    )
+    # result <- plantuml_run(
+    #   plantuml_opt = plantuml_opt,
+    #   stdout = fn,
+    #   input = x$code
+    # )
   }
   return(result)
 }

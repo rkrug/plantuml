@@ -1,6 +1,8 @@
 # plantuml 0.4 dev branch
 ## Major and Breaking changes
-- included a function to generate the graph on a plantuml server, i.e. independant of a local installation. TO BE DISCUSSED.
+- included a function to generate the graph on a plantuml server, i.e. independant of a local installation. 
+- use Smetana instead of `dot` (see [here for details](https://plantuml.io/smetana02))
+- default vector format as `svg` instead of `eps`
 
 # plantuml 0.3.5
 ## Major and Breaking changes

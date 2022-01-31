@@ -25,22 +25,19 @@ plantuml_update <- function(
     "https://sourceforge.net/projects/plantuml/files/latest/download"
   )
   ##
-  if (!dir.exists(getPlantumlOption("jar_path"))) {
-    dir.create(
-      getPlantumlOption("jar_path"),
-      showWarnings = FALSE,
-      recursive = TRUE
-    )
-  }
+  dir.create(
+    dirname(getPlantumlOption("jar_name")),
+    showWarnings = FALSE,
+    recursive = TRUE
+  )
   ##
-  jarfile <- file.path(getPlantumlOption("jar_path"), getPlantumlOption("jar_name"))
   download.file(
     url = url,
-    destfile = jarfile,
+    destfile = getPlantumlOption("jar_name"),
     mode = "wb",
     ...
   )
-  return(jarfile)
+  invisible(TRUE)
 }
 
 

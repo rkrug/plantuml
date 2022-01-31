@@ -2,32 +2,42 @@
 % Please edit documentation in R/options.R
 \name{getPlantumlOption}
 \alias{getPlantumlOption}
-\alias{setPlantumlOption}
+\alias{plantumlOptions}
 \title{Getter and Setter for options}
 \usage{
-getPlantumlOption(name = NULL)
+getPlantumlOption(x, default = NULL)
 
-setPlantumlOption(...)
+plantumlOptions(...)
 }
 \arguments{
-\item{name}{name of the option. if \code{NULL}, all will be returned as a \code{list.}}
+\item{x}{a character string holding an option name.}
+
+\item{default}{if the specified option is not set in the options list, this
+value is returned. This facilitates retrieving an option and checking
+whether it is set and setting it separately if not.}
 
 \item{...}{named value to be set in the form of \code{name = value}}
+
+\item{plantuml_opt}{additional options for plantuml in addition to \code{-p}
+and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.}
+
+\item{vector}{if \code{TRUE} use \code{svg} as intermediate format, if \code{FALSE}
+use \code{png}. Only effects plotting in device.}
 }
 \value{
 \itemize{
 \item \code{getPlantumlOption()}: the value of the option
-\item \code{setPlantumlOption()}: the old value of the plantuml options
+\item \code{plantumlOptions()}: the old value of the plantuml options
 }
 }
 \description{
-Getter and Setter for options
+Allow the user to set and examine the parameter used by the package \code{plantuml}
 }
 \examples{
-getPlantumlOption("jar_path")
+getPlantumlOption("jar_name")
 
-setPlantumlOption(jar_path = "something useless!")
+plantumlOptions(jar_name = "something useless!")
 
-getPlantumlOption("jar_path")
+getPlantumlOption("jar_name")
 
 }

@@ -4,10 +4,10 @@
 }
 .onAttach <- function(libname, pkgname) {
 
-  setPlantumlOption(
-    jar_path = file.path( R_user_dir(package = "plantuml", "cache"), "jar"),
-    jar_name = "plantuml.jar",
+  plantumlOptions(
+    jar_name = file.path( R_user_dir(package = "plantuml", "cache"), "jar", "plantuml.jar"),
     java_bin = Sys.which("java"),
-    java_opt = "-Djava.awt.headless=true -splash:no"
+    java_opt = "-Djava.awt.headless=true -splash:no",
+    server_url = "http://www.plantuml.com/plantuml/"
   )
 }

@@ -1,18 +1,27 @@
 #' Getter and Setter for options
 #'
-#' @param name name of the option. if \code{NULL}, all will be returned as a \code{list.}
+#' Allow the user to set and examine the parameter used by the package `plantuml`
+#' @param x a character string holding an option name.
+#' @param default if the specified option is not set in the options list, this
+#'   value is returned. This facilitates retrieving an option and checking
+#'   whether it is set and setting it separately if not.
+#' @param plantuml_opt additional options for plantuml in addition to \code{-p}
+#'   and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.
+#' @param vector if \code{TRUE} use `svg` as intermediate format, if \code{FALSE}
+#'   use `png`. Only effects plotting in device.
 #'
 #' @return - `getPlantumlOption()`: the value of the option
-#' - `setPlantumlOption()`: the old value of the plantuml options
+#' - `plantumlOptions()`: the old value of the plantuml options
+#'
 #' @md
 #' @rdname options
 #' @export
 #'
-getPlantumlOption <- function(name = NULL){
-  if (is.null(name)) {
-    getOption("plantuml")
+getPlantumlOption <- function(x, default = NULL){
+  if (missing(x)) {
+    stop('Error in getPlantumlOption() : argument "x" is missing, with no default')
   } else {
-    getOption("plantuml")[[name]]
+    getOption("plantuml")[[x]]
   }
 }
 
@@ -24,24 +33,27 @@ getPlantumlOption <- function(name = NULL){
 #' @export
 #'
 #' @examples
-#' getPlantumlOption("jar_path")
+#' getPlantumlOption("jar_name")
 #'
-#' setPlantumlOption(jar_path = "something useless!")
+#' plantumlOptions(jar_name = "something useless!")
 #'
-#' getPlantumlOption("jar_path")
+#' getPlantumlOption("jar_name")
 #'
-setPlantumlOption <- function(...){
-  oldPlantuml <- getPlantumlOption()
-  ###
-  plantuml <- oldPlantuml
-  name <- names(list(...))
-  value <- unlist(list(...))
-  for (i in 1:...length()) {
-    plantuml[[name[[i]]]] <- value[[i]]
+plantumlOptions <- function(...){
+  oldPlantuml <- getOption("plantuml")
+  if (...length() > 0) {
+    ###
+    plantuml <- oldPlantuml
+    name <- names(list(...))
+    value <- unlist(list(...))
+    for (i in 1:...length()) {
+      plantuml[[name[[i]]]] <- value[[i]]
+    }
+    options(plantuml = plantuml)
+    ###
+    return(invisible(oldPlantuml))
   }
-  options(plantuml = plantuml)
-  ###
-  invisible(oldPlantuml)
+  return(oldPlantuml)
 }
 
 # `colnames<-.default` <- base::`colnames<-`

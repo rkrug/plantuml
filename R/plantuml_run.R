@@ -28,7 +28,7 @@
 #'   plantuml_run()
 #' }
 plantuml_run <- function(
-  plantuml_jar = file.path( getPlantumlOption("jar_path"), getPlantumlOption("jar_name")),
+  plantuml_jar = getPlantumlOption("jar_name"),
   plantuml_opt = "-help",
   java_bin = getPlantumlOption("java_bin"),
   java_opt = getPlantumlOption("java_opt"),
@@ -64,10 +64,10 @@ plantuml_run <- function(
     command = java_bin,
     args = paste(java_opt, cmd, plantuml_opt),
     stdout = stdout,
-    stderr =stderr,
+    stderr = stderr,
     stdin = stdin,
     input = input
   )
 
-  return(result)
+  return(stdout)
 }

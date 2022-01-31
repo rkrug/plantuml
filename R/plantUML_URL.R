@@ -97,10 +97,6 @@ encode6bit <- function(
 #'
 #' @param plantuml The plantuml code
 #' @param server_url The base url of the server. Should end with a single `/`
-#' @param file either a character string naming a file into which the graph
-#'   will be saved. The extension will overwrite the `type` parameter.
-#'   If `NULL` the result will only be shown and (when `open_in_browser = TRUE`).
-#'   Default: `NULL`.
 #' @param type the type of the returned figure. At the moment supported:
 #'   `png`, `svg` or `txt` for ASCIIArt.
 #' @param open_in_browser if TRUE, the result will be opened in the browser.
@@ -115,8 +111,7 @@ encode6bit <- function(
 #'
 plantuml_URL <- function(
   plantuml = "@startuml\nBob -> Alice : hello\n@enduml",
-  file = NULL,
-  server_url = "http://www.plantuml.com/plantuml/",
+  server_url = getPlantumlOption("server_url"),
   type = "png",
   open_in_browser = FALSE
 ){
@@ -126,13 +121,13 @@ plantuml_URL <- function(
     server_url <- paste0(server_url, "/")
   }
 
-  if (!is.null(file)) {
-    ext <- strsplit(file, "\\.")
-    ext <- ext[[1]][[length(ext[[1]])]]
-    if (ext %in% types) {
-      type <- ext
-    }
-  }
+  # if (!is.null(file)) {
+  #   ext <- strsplit(file, "\\.")
+  #   ext <- ext[[1]][[length(ext[[1]])]]
+  #   if (ext %in% types) {
+  #     type <- ext
+  #   }
+  # }
 
   if (!(type %in% types)){
     stop(
@@ -155,8 +150,8 @@ plantuml_URL <- function(
     utils::browseURL(url)
   }
   #
-  if (!is.null(file)) {
-    utils::download.file(url, file)
-  }
+  # if (!is.null(file)) {
+  #   utils::download.file(url, file)
+  # }
   return(url)
 }
