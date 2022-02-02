@@ -26,6 +26,7 @@ get_graph <- function(
     } else {
       file <- tempfile( fileext = ".png")
     }
+
   }
 
   pos <- regexpr("\\.([[:alnum:]]+)$", file)
@@ -33,23 +34,42 @@ get_graph <- function(
 
   result <- ""
 
-  if ((type %in% c("svg", "png", "txt"))){
-    result <- get_graph_server(
-      x = x,
-      file = file,
-      vector = vector,
-      ...
-    )
-  }
-
-  if (!file.exists(result)){
-    result <- get_graph_local(
-      x = x,
-      file = file,
-      vector = vector,
-      ...
-    )
-  }
-
+  switch (
+    getPlantumlOption("always_use"),
+    "server" = {
+      get_graph_server(
+        x = x,
+        file = file,
+        vector = vector,
+        ...
+      )
+    },
+    "local" = {
+      result <- get_graph_local(
+        x = x,
+        file = file,
+        vector = vector,
+        ...
+      )
+    },
+    "auto" = {
+      if ((type %in% c("svg", "png", "txt"))){
+        result <- get_graph_server(
+          x = x,
+          file = file,
+          vector = vector,
+          ...
+        )
+      }
+      if (!file.exists(result)){
+        result <- get_graph_local(
+          x = x,
+          file = file,
+          vector = vector,
+          ...
+        )
+      }
+    }
+  )
   return(result)
 }

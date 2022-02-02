@@ -92,14 +92,26 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": "> 3.6"
+      "version": "> 4.0"
     },
     "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "rsvg",
+      "name": "rsvg",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rsvg"
+    },
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
-    "3": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "png",
       "name": "png",
@@ -111,12 +123,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=png"
     },
-    "4": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "graphics",
       "name": "graphics"
     },
-    "5": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -128,7 +140,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "grImport",
       "name": "grImport",
@@ -141,7 +153,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=grImport"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "backports",
       "name": "backports",
@@ -155,7 +167,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "230.823KB",
+  "fileSize": "555.626KB",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],

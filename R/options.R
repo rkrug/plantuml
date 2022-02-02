@@ -44,10 +44,8 @@ plantumlOptions <- function(...){
   if (...length() > 0) {
     ###
     plantuml <- oldPlantuml
-    name <- names(list(...))
-    value <- unlist(list(...))
     for (i in 1:...length()) {
-      plantuml[[name[[i]]]] <- value[[i]]
+      plantuml[[...names()[i]]] <- list(...)[[i]]
     }
     options(plantuml = plantuml)
     ###

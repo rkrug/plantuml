@@ -4,10 +4,10 @@
 \alias{get_graph_server}
 \title{Title}
 \usage{
-get_graph_server(x, file = NULL, vector = TRUE, ...)
+get_graph_server(x, file = NULL, force_png = FALSE, ...)
 }
 \arguments{
-\item{x}{plantuml code to draw the UML graph}
+\item{x}{object of \code{plantuml} to draw the UML graph}
 
 \item{file}{\itemize{
 \item \strong{\code{file} is `NULL}: the graph is drawn in the graphics device.
@@ -15,10 +15,10 @@ get_graph_server(x, file = NULL, vector = TRUE, ...)
 is based on the extensions.
 }}
 
+\item{...}{for compatibility with \code{get_graph_local()}. Not used at the moment.}
+
 \item{vector}{if \code{TRUE} use \code{svg} as intermediate format, if \code{FALSE}
 use \code{png}. Only used when file is \code{NULL}.}
-
-\item{...}{for compatibility with \code{get_graph_local()}. Not used at the moment.}
 }
 \value{
 name of the file with the graph
@@ -36,7 +36,7 @@ plantumlCode <- '
 '
 \dontrun{
 x <- as.plantuml( plantumlCode )
-get_graph_server( x )
-plot(as.plantuml(x), java_opt = "-Djava.awt.headless=true")
+fn <- get_graph_server( x )
+browse(fn)
 }
 }

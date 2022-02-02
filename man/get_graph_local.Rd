@@ -4,7 +4,13 @@
 \alias{get_graph_local}
 \title{Title}
 \usage{
-get_graph_local(x, file = NULL, vector = TRUE, plantuml_opt = "", ...)
+get_graph_local(
+  x,
+  file = NULL,
+  vector = TRUE,
+  plantuml_opt = "-Playout=smetana",
+  ...
+)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
