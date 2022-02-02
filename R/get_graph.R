@@ -1,13 +1,14 @@
 #' Title
 #'
 #' @param x plantuml code to draw the UML graph
-#' @param file
-#' - **`file` is `NULL**: the graph is drawn in the graphics device.
-#' - **`file` is a file name**: the graph is saved in the file and the type
-#'   is based on the extensions.
-#' @param vector if \code{TRUE} use `svg` as intermediate format, if \code{FALSE}
-#'   use `png`. Only used when file is `NULL`.
-#' @param ... Additional values for the function `get_graph_local()`.
+#' @param file file name, including extension, to which the returned plantUML graph
+#'   should be saved. The extension has priority over the parameter `force_png`, i.e.
+#'   if the filename has the extension `.svg`, the parameter 'force_png` is ignored.
+#'   If `NULL', the graph is saved to a temporary file.
+#' @param force_png if `TRUE`, a png will be returned from the plantuml server,
+#'   if `FALSE`, a svg will be returned and
+#' @param ... Additional values for the function `get_graph_local()` or `get_graph_server()`
+#'   but not used at the moment.
 #'
 #' @return name of the file with the graph
 #' @md
@@ -17,16 +18,15 @@
 get_graph <- function(
   x,
   file = NULL,
-  vector = TRUE,
+  force_png = FALSE,
   ...
 ){
   if ( is.null(file) ) {
-    if (vector) {
-      file <- tempfile( fileext = ".svg")
-    } else {
+    if (force_png) {
       file <- tempfile( fileext = ".png")
+    } else {
+      file <- tempfile( fileext = ".svg")
     }
-
   }
 
   pos <- regexpr("\\.([[:alnum:]]+)$", file)
@@ -53,6 +53,7 @@ get_graph <- function(
       )
     },
     "auto" = {
+      result <- NULL
       if ((type %in% c("svg", "png", "txt"))){
         result <- get_graph_server(
           x = x,

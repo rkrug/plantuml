@@ -1,12 +1,12 @@
 #' Title
 #'
 #' @param x object of `plantuml` to draw the UML graph
-#' @param file
-#' - **`file` is `NULL**: the graph is drawn in the graphics device.
-#' - **`file` is a file name**: the graph is saved in the file and the type
-#'   is based on the extensions.
-#' @param vector if \code{TRUE} use `svg` as intermediate format, if \code{FALSE}
-#'   use `png`. Only used when file is `NULL`.
+#' @param file file name, including extension, to which the returned plantUML graph
+#'   should be saved. The extension has priority over the parameter `force_png`, i.e.
+#'   if the filename has the extension `.svg`, the parameter 'force_png` is ignored.
+#'   If `NULL', the graph is saved to a temporary file.
+#' @param force_png if `TRUE`, a png will be returned from the plantuml server,
+#'   if `FALSE`, a svg will be returned and
 #' @param ... for compatibility with `get_graph_local()`. Not used at the moment.
 #'
 #' @return name of the file with the graph
@@ -89,13 +89,14 @@ get_graph_server <- function(
 
   if (force_png){
     if (!is.null(file)) { file.copy( from = tmpfile, to = file, overwrite = TRUE) }
-  } else if (type != "svg") {
+  } else  {
     switch (
       type,
       png = rsvg::rsvg_png(svg = tmpfile, file = file),
       pdf = rsvg::rsvg_pdf(svg = tmpfile, file = file),
       ps  = rsvg::rsvg_ps(svg = tmpfile, file = file),
       txt = if (!is.null(file)){ file.copy( from = tmpfile, to = file, overwrite = TRUE) },
+      svg = if (!is.null(file)){ file.copy( from = tmpfile, to = file, overwrite = TRUE) },
       stop("Not supported conversion!")
     )
   }

@@ -9,16 +9,14 @@ get_graph_server(x, file = NULL, force_png = FALSE, ...)
 \arguments{
 \item{x}{object of \code{plantuml} to draw the UML graph}
 
-\item{file}{\itemize{
-\item \strong{\code{file} is `NULL}: the graph is drawn in the graphics device.
-\item \strong{\code{file} is a file name}: the graph is saved in the file and the type
-is based on the extensions.
-}}
+\item{file}{file name, including extension, to which the returned plantUML graph
+should be saved. The extension has priority over the parameter \code{force_png}, i.e.
+if the filename has the extension \code{.svg}, the parameter 'force_png\verb{is ignored. If}NULL', the graph is saved to a temporary file.}
+
+\item{force_png}{if \code{TRUE}, a png will be returned from the plantuml server,
+if \code{FALSE}, a svg will be returned and}
 
 \item{...}{for compatibility with \code{get_graph_local()}. Not used at the moment.}
-
-\item{vector}{if \code{TRUE} use \code{svg} as intermediate format, if \code{FALSE}
-use \code{png}. Only used when file is \code{NULL}.}
 }
 \value{
 name of the file with the graph

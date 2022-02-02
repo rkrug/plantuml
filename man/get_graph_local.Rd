@@ -4,30 +4,19 @@
 \alias{get_graph_local}
 \title{Title}
 \usage{
-get_graph_local(
-  x,
-  file = NULL,
-  vector = TRUE,
-  plantuml_opt = "-Playout=smetana",
-  ...
-)
+get_graph_local(x, file = NULL, force_png = FALSE, ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
 
-\item{file}{\itemize{
-\item \strong{\code{file} is `NULL}: the graph is drawn in the graphics device.
-\item \strong{\code{file} is a file name}: the graph is saved in the file and the type
-is based on the extensions.
-}}
+\item{file}{file name, including extension, to which the returned plantUML graph
+should be saved. The extension has priority over the parameter \code{force_png}, i.e.
+if the filename has the extension \code{.svg}, the parameter 'force_png\verb{is ignored. If}NULL', the graph is saved to a temporary file.}
 
-\item{vector}{if \code{TRUE} use \code{svg} as intermediate format, if \code{FALSE}
-use \code{png}. Only used when file is \code{NULL}.}
+\item{...}{for compatibility with \code{get_graph_server()}. Not used at the moment.}
 
 \item{plantuml_opt}{additional options for plantuml in addition to \code{-p}
 and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.}
-
-\item{...}{for compatibility with \code{get_graph_server()}. Not used at the moment.}
 }
 \value{
 name of the file with the graph
