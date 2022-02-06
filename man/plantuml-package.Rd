@@ -6,8 +6,7 @@
 \alias{_PACKAGE}
 \title{plantuml: Create UML Graphs using PlantUML Syntax}
 \description{
-Create UML graphs using the PlantUML language. 
-   These are either shown in a graphics device or saved as a file.
+Create UML graphs using the PlantUML language. These are either shown in a graphics device or saved as a file.
 }
 \seealso{
 Useful links:

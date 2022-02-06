@@ -22,7 +22,8 @@ At the moment, the following are supported:
 \itemize{
 \item \strong{png}	To generate image using PNG format (default).
 \item \strong{svg}	To generate image using SVG format.
-\item \strong{eps}	To generate text in EPS format.
+\item \strong{eps}	To generate text in EPS format; or generates an image when
+outputting LaTeX rather than HTML formats.
 }
 \item \strong{plantuml.path}: the path where the resulting files will be saved.
 Default is the same directory as the \code{.Rmd} file is in. The path will be created if it does not exist.
