@@ -53,7 +53,7 @@ Now we plot in in a device using vector format (svg) as intermediate format, whi
 
 ```{r exampleDeviceVector}
 plot( 
-  x = x
-# vector = TRUE
-  )
+  x = x,
+  vector = FALSE
+)
 ```
