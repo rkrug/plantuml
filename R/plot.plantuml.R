@@ -12,10 +12,8 @@
 #'  is returned in a character vector. **This is only useful for text formats
 #'  like `eps` or `svg`!**
 #'
-#' @param plantuml_opt additional options for plantuml in addition to \code{-p}
-#'   and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.
-#' @param vector if \code{TRUE} use `svg` as intermediate format, if \code{FALSE}
-#'   use `png`. Only effects plotting in device.
+#' @param force_png if `TRUE`, a 'png' will be used as te initial format,
+#'   if `FALSE`, a svg will be used.
 #' @param ... additional arguments for the `plot` function and the `plantuml_run` function.
 #'
 #' @md
@@ -41,117 +39,63 @@
 #' plot(as.plantuml(x), java_opt = "-Djava.awt.headless=true")
 #' }
 plot.plantuml <- function(
-  x,
-  file = NULL,
-  plantuml_opt = "",
-  vector = TRUE,
-  ...
+    x,
+    file = NULL,
+    width = 1024,
+    height = NULL,
+    css = NULL,
+    ...
 ){
-
-
   result <- get_graph(
     x = x,
     file = file,
-    vector = vector,
-    plantuml_opt = plantuml_opt
   )
 
-  # if (!x$complete) {
-  #   x$code <- paste("@startuml \n ", x$code, " \n @enduml")
-  # }
-  # if ( is.null(file) ) {
-  #   if (vector) {
-  #     # fn <- tempfile( fileext = ".svg")
-  #     # ffmt <- "-tsvg"
-  #     fn <- tempfile( fileext = ".eps")
-  #     ffmt <- "-teps"
-  #     plantuml_opt = paste("-p", ffmt, plantuml_opt)
-  #   } else {
-  #     fn <- tempfile( fileext = ".png")
-  #     ffmt <- "-tpng"
-  #     plantuml_opt = paste("-p", ffmt, plantuml_opt)
-  #   }
-  # } else if (file == "") {
-  #   plantuml_opt = paste("-p",plantuml_opt)
-  # } else {
-  #   fn <- file
-  #   pos <- regexpr("\\.([[:alnum:]]+)$", fn)
-  #   ext <- ifelse( pos > -1L, substring(file, pos + 1L), "")
-  #   ffmt <- paste0("-t", ext)
-  #   plantuml_opt = paste("-p", ffmt, plantuml_opt)
-  # }
+  pos <- regexpr("\\.([[:alnum:]]+)$", result)
+  type <- ifelse( pos > -1L, substring(result, pos + 1L), "")
 
-  if (is.null(file)) {
-    if (vector) {
-      ps <- tempfile(fileext = ".ps")
-      rgml <- tempfile(fileext = ".xml")
-      rsvg::rsvg_ps(
-        svg = result,
-        file = ps
-      )
-      grImport::PostScriptTrace(
-        file = ps,
-        outfilename = rgml
-      )
-      prgml <- grImport::readPicture(
-        rgmlFile = rgml
-      )
-      plot(
-        range(prgml@summary@xscale),
-        range(prgml@summary@yscale),
-        type = "n",
-        axes = FALSE,
-        xlab = "",
-        ylab = "",
-        asp = 1
-      )
-      picture(
-        picture = prgml,
-        xleft   = prgml@summary@xscale["xmin"],
-        xright  = prgml@summary@xscale["xmax"],
-        ybottom = prgml@summary@yscale["ymin"],
-        ytop    = prgml@summary@yscale["ymax"]
-      )
-    } else {
-      # result <- plantuml_run(
-      #   plantuml_opt = plantuml_opt,
-      #   stdout = fn,
-      #   input = x$code
-      # )
-      puml <- png::readPNG(
-        fn,
-        info = TRUE
-      )
-      plot(
-        range(0, attr(puml, "dim")[[2]]),
-        range(0, attr(puml, "dim")[[1]]),
-        type = "n",
-        axes = FALSE,
-        xlab = "",
-        ylab = "",
-        asp = 1
-      )
-      graphics::rasterImage(
-        image = puml,
-        xleft = 0,
-        xright = attr(puml, "dim")[[2]],
-        ybottom = 0,
-        ytop = attr(puml, "dim")[[1]]
-      )
-    }
-  } else if (file == "") {
-    # THIS NEEDS TWEAKING!!!!!
-    # result <- plantuml_run(
-    #   plantuml_opt = plantuml_opt,
-    #   stdout = TRUE,
-    #   input = x$code
-    # )
+  if (type == "svg"){
+    bmp <- as.raster(rsvg::rsvg(result, width = width, height = height))
+    xrange <- c(0, ncol(bmp))
+    yrange <- c(0, nrow(bmp))
+
+    plot(
+      xrange,
+      yrange,
+      type = "n",
+      axes = FALSE,
+      xlab = "",
+      ylab = "",
+      asp = 1
+    )
+    rasterImage(
+      bmp,
+      xleft   = 0, xright = xrange[[2]],
+      ybottom = 0, ytop   = yrange[[2]]
+    )
+  } else if (type == "png"){
+    puml <- png::readPNG(
+      result,
+      info = TRUE
+    )
+    plot(
+      range(0, attr(puml, "dim")[[2]]),
+      range(0, attr(puml, "dim")[[1]]),
+      type = "n",
+      axes = FALSE,
+      xlab = "",
+      ylab = "",
+      asp = 1
+    )
+    graphics::rasterImage(
+      image = puml,
+      xleft = 0,
+      xright = attr(puml, "dim")[[2]],
+      ybottom = 0,
+      ytop = attr(puml, "dim")[[1]]
+    )
   } else {
-    # result <- plantuml_run(
-    #   plantuml_opt = plantuml_opt,
-    #   stdout = fn,
-    #   input = x$code
-    # )
+    warning("When 'file' is specified, it needs to be 'svg' or 'png' to be able to be plotted!")
   }
   return(result)
 }

@@ -4,21 +4,25 @@
 \alias{get_graph}
 \title{Title}
 \usage{
-get_graph(x, file = NULL, vector = TRUE, ...)
+get_graph(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
 
-\item{file}{\itemize{
-\item \strong{\code{file} is `NULL}: the graph is drawn in the graphics device.
-\item \strong{\code{file} is a file name}: the graph is saved in the file and the type
-is based on the extensions.
-}}
+\item{file}{file name, including extension, to which the returned plantUML graph
+should be saved. The extension has priority over the parameter \code{force_png}, i.e.
+if the filename has the extension \code{.svg}, the parameter 'force_png\verb{is ignored. If}NULL', the graph is saved to a temporary file.}
 
-\item{vector}{if \code{TRUE} use \code{svg} as intermediate format, if \code{FALSE}
-use \code{png}. Only used when file is \code{NULL}.}
+\item{width}{output width in pixels or NULL for default.}
 
-\item{...}{Additional values for the function \code{get_graph_local()}.}
+\item{height}{output height in pixels or NULL for default}
+
+\item{css}{path/url to external css file or raw vector with css data.
+This requires your system has a recent version of librsvg.}
+
+\item{...}{Additional values for the function
+\code{get_graph_local()} or \code{get_graph_server()}
+but not used at the moment.}
 }
 \value{
 name of the file with the graph

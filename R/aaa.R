@@ -9,7 +9,7 @@
     java_opt = "-Djava.awt.headless=true -splash:no",
     plantuml_opt = "-Playout=smetana",
     server_url = "http://www.plantuml.com/plantuml/",
-    always_use = "auto",  # "local" "server", "auto",
+    method = "server",  # "local" "server"
     supported_formats = c("svg", "png", "pdf", "ps", "txt")
   )
 }

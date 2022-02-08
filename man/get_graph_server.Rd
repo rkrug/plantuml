@@ -4,19 +4,23 @@
 \alias{get_graph_server}
 \title{Title}
 \usage{
-get_graph_server(x, file = NULL, force_png = FALSE, ...)
+get_graph_server(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
 }
 \arguments{
 \item{x}{object of \code{plantuml} to draw the UML graph}
 
 \item{file}{file name, including extension, to which the returned plantUML graph
-should be saved. The extension has priority over the parameter \code{force_png}, i.e.
-if the filename has the extension \code{.svg}, the parameter 'force_png\verb{is ignored. If}NULL', the graph is saved to a temporary file.}
+should be saved.
+If `NULL', the graph is saved to a temporary file.}
 
-\item{force_png}{if \code{TRUE}, a png will be returned from the plantuml server,
-if \code{FALSE}, a svg will be returned and}
+\item{width}{output width in pixels or NULL for default.}
 
-\item{...}{for compatibility with \code{get_graph_local()}. Not used at the moment.}
+\item{height}{output height in pixels or NULL for default}
+
+\item{css}{path/url to external css file or raw vector with css data.
+This requires your system has a recent version of librsvg.}
+
+\item{...}{Not used at the moment.}
 }
 \value{
 name of the file with the graph

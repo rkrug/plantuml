@@ -4,7 +4,7 @@
 \alias{get_graph_local}
 \title{Title}
 \usage{
-get_graph_local(x, file = NULL, force_png = FALSE, ...)
+get_graph_local(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
@@ -13,10 +13,14 @@ get_graph_local(x, file = NULL, force_png = FALSE, ...)
 should be saved. The extension has priority over the parameter \code{force_png}, i.e.
 if the filename has the extension \code{.svg}, the parameter 'force_png\verb{is ignored. If}NULL', the graph is saved to a temporary file.}
 
-\item{...}{for compatibility with \code{get_graph_server()}. Not used at the moment.}
+\item{width}{output width in pixels or NULL for default.}
 
-\item{plantuml_opt}{additional options for plantuml in addition to \code{-p}
-and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.}
+\item{height}{output height in pixels or NULL for default}
+
+\item{css}{path/url to external css file or raw vector with css data.
+This requires your system has a recent version of librsvg.}
+
+\item{...}{Not used at the moment.}
 }
 \value{
 name of the file with the graph

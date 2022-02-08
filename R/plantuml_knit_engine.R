@@ -42,55 +42,31 @@ plantuml_knit_engine <-  function(options) {
   result <- list(out = "", code = "")
   if (options$eval) {
     #
-    puml <- plantuml(options$code)
+    browser()
+    puml <- plantuml(paste0(options$code, collapse = "/n"))
     ###
 
-    if ( is.null(options$plantuml.format) ) {
-      fig_type <- "png"
-      fig_opt <- "-tpng"
-      output_type <- "image"
-      fig <- paste0(options$label, ".", "png")
-    } else {
-      switch(
-        options$plantuml.format,
-        "png" = {
-          fig_type <- "png"
-          fig_opt <- "-tpng"
-          output_type <- "image"
-          fig <- paste0(options$label, ".", fig_type)
-        },
-        "svg" = {
-          fig_type <- "svg"
-          fig_opt <- "-tsvg"
-          output_type <- "image"
-          fig <- paste0(options$label, ".", fig_type)
-        },
-        "eps" = {
-          fig_type <- "eps"
-          fig_opt <- "-teps"
-          output_type <- "text"
-          fig <- paste0(options$label, ".", fig_type)
-        },
-        stop("Unsupported `plantuml.format`!")
+    if (!(options$plantuml.format %in% getPlantumlOption("supported_formats"))){
+      stop(
+        "The option 'plantuml.format = ", options$plantuml.format, "' is not supported!\n",
+        "see 'getPlantumlOption('supported_formats')' for a list of supported options."
       )
     }
+    if (is.null(options$plantuml.format)){
+      options$plantuml.format <- "png"
+    }
+    fig <- paste0(options$label, ".", options$plantuml.format)
 
     ###
-    tmp_fig <- tempfile(fileext = fig_type)
-    dir.create(
-      path,
-      showWarnings = FALSE,
-      recursive = TRUE
-    )
-    fig <- file.path(path, fig)
+    fig <- file.path(tempdir(), fig)
     ###
-    plot(
+    get_graph(
       x = puml,
-      file = fig,
-      plantuml_opt = fig_opt
+      file = fig
     )
-    file.copy( tmp_fig, fig )
-    if (output_type == "image") {
+
+    # file.copy( tmp_fig, fig )
+    if (options$plantuml.format %in% c("svg", "png", "pdf")) {
       out <- list(knitr::include_graphics(fig))
     } else {
       out <- list(readLines(fig))
@@ -103,8 +79,7 @@ plantuml_knit_engine <-  function(options) {
     ###
     if (isTRUE(options$plantuml.preview)) {
       plot(
-        x = puml,
-        vector = FALSE
+        x = puml
       )
     }
   }

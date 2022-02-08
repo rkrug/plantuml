@@ -4,7 +4,7 @@
 \alias{plot.plantuml}
 \title{Generate UML graph from plantuml}
 \usage{
-\method{plot}{plantuml}(x, file = NULL, plantuml_opt = "", vector = TRUE, ...)
+\method{plot}{plantuml}(x, file = NULL, width = 1024, height = NULL, css = NULL, ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
@@ -18,13 +18,10 @@ is returned in a character vector. \strong{This is only useful for text formats
 like \code{eps} or \code{svg}!}
 }}
 
-\item{plantuml_opt}{additional options for plantuml in addition to \code{-p}
-and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.}
-
-\item{vector}{if \code{TRUE} use \code{svg} as intermediate format, if \code{FALSE}
-use \code{png}. Only effects plotting in device.}
-
 \item{...}{additional arguments for the \code{plot} function and the \code{plantuml_run} function.}
+
+\item{force_png}{if \code{TRUE}, a 'png' will be used as te initial format,
+if \code{FALSE}, a svg will be used.}
 }
 \value{
 returns file name (including absolute path) of the created graph.

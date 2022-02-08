@@ -2,12 +2,13 @@
 #'
 #' @param x object of `plantuml` to draw the UML graph
 #' @param file file name, including extension, to which the returned plantUML graph
-#'   should be saved. The extension has priority over the parameter `force_png`, i.e.
-#'   if the filename has the extension `.svg`, the parameter 'force_png` is ignored.
+#'   should be saved.
 #'   If `NULL', the graph is saved to a temporary file.
-#' @param force_png if `TRUE`, a png will be returned from the plantuml server,
-#'   if `FALSE`, a svg will be returned and
-#' @param ... for compatibility with `get_graph_local()`. Not used at the moment.
+#' @param width	output width in pixels or NULL for default.
+#' @param height	output height in pixels or NULL for default
+#' @param css	path/url to external css file or raw vector with css data.
+#'   This requires your system has a recent version of librsvg.
+#' @param ... Not used at the moment.
 #'
 #' @return name of the file with the graph
 #' @md
@@ -31,7 +32,9 @@
 get_graph_server <- function(
   x,
   file = NULL,
-  force_png = FALSE,
+  width = NULL,
+  height = NULL,
+  css = NULL,
   ...
 ){
 
@@ -49,28 +52,18 @@ get_graph_server <- function(
     type <- ifelse( pos > -1L, substring(file, pos + 1L), "")
     if (!(type %in% getPlantumlOption("supported_formats"))) {
       stop(
-        "Type '", type, "' not supported through plantUML server!"
+        "Type '", type, "' not supported Format!"
       )
     }
-    if (force_png & type == "png") {
-      tmptype <- "png"
-    } else {
-      tmptype <- "svg"
-      force_png <- FALSE
-    }
   } else {
-    tmptype <- ifelse(
-      force_png,
-      "png",
-      "svg"
-    )
-    type <- tmptype
+    type <- "svg"
   }
 
-  if (type == "txt") {
-    tmptype <- "txt"
-  }
-
+  tmptype <- ifelse(
+    type == "txt",
+    "txt",
+    "svg"
+  )
   tmpfile <- tempfile( pattern = "plantuml.", fileext = paste0(".", tmptype))
 
   url <- plantuml_URL(
@@ -87,22 +80,36 @@ get_graph_server <- function(
     result <- tmpfile
   }
 
-  if (force_png){
-    if (!is.null(file)) { file.copy( from = tmpfile, to = file, overwrite = TRUE) }
-  } else  {
-    switch (
-      type,
-      png = rsvg::rsvg_png(svg = tmpfile, file = file),
-      pdf = rsvg::rsvg_pdf(svg = tmpfile, file = file),
-      ps  = rsvg::rsvg_ps(svg = tmpfile, file = file),
-      txt = if (!is.null(file)){ file.copy( from = tmpfile, to = file, overwrite = TRUE) },
-      svg = if (!is.null(file)){ file.copy( from = tmpfile, to = file, overwrite = TRUE) },
-      stop("Not supported conversion!")
-    )
-  }
-
   if (is.null(file)){
     file <- tmpfile
+  } else {
+    switch (
+      type,
+      svg = file.copy( from = tmpfile, to = file, overwrite = TRUE),
+      png = rsvg::rsvg_png(
+        svg = tmpfile,
+        file = file,
+        width = width,
+        height = height,
+        css = css
+      ),
+      pdf = rsvg::rsvg_pdf(
+        svg = tmpfile,
+        file = file,
+        width = width,
+        height = height,
+        css = css
+      ),
+      ps = rsvg::rsvg_ps(
+        svg = tmpfile,
+        file = file,
+        width = width,
+        height = height,
+        css = css
+      ),
+      txt = file.copy( from = tmpfile, to = file, overwrite = TRUE),
+      stop("Not supported conversion!")
+    )
   }
 
   return(file)

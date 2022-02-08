@@ -5,9 +5,11 @@
 #'   should be saved. The extension has priority over the parameter `force_png`, i.e.
 #'   if the filename has the extension `.svg`, the parameter 'force_png` is ignored.
 #'   If `NULL', the graph is saved to a temporary file.
-#' @param plantuml_opt additional options for plantuml in addition to \code{-p}
-#'   and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.
-#' @param ... for compatibility with `get_graph_server()`. Not used at the moment.
+#' @param width	output width in pixels or NULL for default.
+#' @param height	output height in pixels or NULL for default
+#' @param css	path/url to external css file or raw vector with css data.
+#'   This requires your system has a recent version of librsvg.
+#' @param ... Not used at the moment.
 #'
 #' @return name of the file with the graph
 #' @md
@@ -17,7 +19,9 @@
 get_graph_local <- function(
   x,
   file = NULL,
-  force_png = FALSE,
+  width = NULL,
+  height = NULL,
+  css = NULL,
   ...
 ){
 
@@ -33,30 +37,21 @@ get_graph_local <- function(
   if (!is.null(file)) {
     pos <- regexpr("\\.([[:alnum:]]+)$", file)
     type <- ifelse( pos > -1L, substring(file, pos + 1L), "")
+
     if (!(type %in% getPlantumlOption("supported_formats"))) {
       stop(
         "Type '", type, "' not supported through plantUML server!"
       )
     }
-    if (force_png & type == "png") {
-      tmptype <- "png"
-    } else {
-      tmptype <- "svg"
-      force_png <- FALSE
-    }
   } else {
-    tmptype <- ifelse(
-      force_png,
-      "png",
-      "svg"
-    )
-    type <- tmptype
+    type <- "svg"
   }
 
-  if (type == "txt") {
-    tmptype <- "txt"
-  }
-
+  tmptype <- ifelse(
+    type == "txt",
+    "txt",
+    "svg"
+  )
   tmpfile <- tempfile( pattern = "plantuml.", fileext = paste0(".", tmptype))
 
   result <- plantuml_run(
@@ -71,22 +66,18 @@ get_graph_local <- function(
     result <- tmpfile
   }
 
-  if (force_png){
-    if (!is.null(file)) { file.copy( from = tmpfile, to = file, overwrite = TRUE) }
+  if (is.null(file)){
+    file <- tmpfile
   } else {
     switch (
       type,
+      svg = file.copy( from = tmpfile, to = file, overwrite = TRUE),
       png = rsvg::rsvg_png(svg = tmpfile, file = file),
       pdf = rsvg::rsvg_pdf(svg = tmpfile, file = file),
       ps  = rsvg::rsvg_ps(svg = tmpfile, file = file),
-      txt = if (!is.null(file)){ file.copy( from = tmpfile, to = file, overwrite = TRUE) },
-      svg = if (!is.null(file)){ file.copy( from = tmpfile, to = file, overwrite = TRUE) },
+      txt = file.copy( from = tmpfile, to = file, overwrite = TRUE),
       stop("Not supported conversion!")
     )
-  }
-
-  if (is.null(file)){
-    file <- tmpfile
   }
 
   return(file)
