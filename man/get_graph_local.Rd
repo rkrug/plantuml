@@ -10,8 +10,8 @@ get_graph_local(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
 \item{x}{plantuml code to draw the UML graph}
 
 \item{file}{file name, including extension, to which the returned plantUML graph
-should be saved. The extension has priority over the parameter \code{force_png}, i.e.
-if the filename has the extension \code{.svg}, the parameter 'force_png\verb{is ignored. If}NULL', the graph is saved to a temporary file.}
+should be saved.
+If `NULL', the graph is saved to a temporary file.}
 
 \item{width}{output width in pixels or NULL for default.}
 

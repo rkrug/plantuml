@@ -12,8 +12,6 @@
 #'  is returned in a character vector. **This is only useful for text formats
 #'  like `eps` or `svg`!**
 #'
-#' @param force_png if `TRUE`, a 'png' will be used as te initial format,
-#'   if `FALSE`, a svg will be used.
 #' @param ... additional arguments for the `plot` function and the `plantuml_run` function.
 #'
 #' @md

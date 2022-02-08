@@ -42,8 +42,7 @@ plantuml_knit_engine <-  function(options) {
   result <- list(out = "", code = "")
   if (options$eval) {
     #
-    browser()
-    puml <- plantuml(paste0(options$code, collapse = "/n"))
+    puml <- paste0(options$code, collapse = "\n")
     ###
 
     if (!(options$plantuml.format %in% getPlantumlOption("supported_formats"))){
@@ -79,7 +78,7 @@ plantuml_knit_engine <-  function(options) {
     ###
     if (isTRUE(options$plantuml.preview)) {
       plot(
-        x = puml
+        x = plantuml(puml)
       )
     }
   }

@@ -97,3 +97,14 @@ Alice -> Bob: Another authentication Request
 Alice <-- Bob: Another authentication Response
 @enduml
 ```
+
+## And now as ASCII Art
+```{plantuml asciiart, eval = TRUE, plantuml.format = "txt", plantuml.path = "graphs"}
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+```

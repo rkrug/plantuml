@@ -19,9 +19,6 @@ like \code{eps} or \code{svg}!}
 }}
 
 \item{...}{additional arguments for the \code{plot} function and the \code{plantuml_run} function.}
-
-\item{force_png}{if \code{TRUE}, a 'png' will be used as te initial format,
-if \code{FALSE}, a svg will be used.}
 }
 \value{
 returns file name (including absolute path) of the created graph.

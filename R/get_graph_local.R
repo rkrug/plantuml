@@ -2,8 +2,7 @@
 #'
 #' @param x plantuml code to draw the UML graph
 #' @param file file name, including extension, to which the returned plantUML graph
-#'   should be saved. The extension has priority over the parameter `force_png`, i.e.
-#'   if the filename has the extension `.svg`, the parameter 'force_png` is ignored.
+#'   should be saved.
 #'   If `NULL', the graph is saved to a temporary file.
 #' @param width	output width in pixels or NULL for default.
 #' @param height	output height in pixels or NULL for default
