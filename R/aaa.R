@@ -12,4 +12,5 @@
     method = "server",  # "local" "server"
     supported_formats = c("svg", "png", "pdf", "ps", "txt")
   )
+  plantuml_knit_engine_register()
 }

@@ -1,10 +1,18 @@
-# plantuml 0.4 dev branch
+# plantuml 0.5 dev branch
+
 ## Major and Breaking changes
+
 - included a function to generate the graph on a plantuml server, i.e. independant of a local installation. 
 - use Smetana instead of `dot` (see [here for details](https://plantuml.io/smetana02))
 - default vector format as `svg` instead of `eps`
 - Bump R dependency to >= 4.0
 
+## New Features
+
+- added plantuml.format "auto" to knit engine With "auto" the format is changed deepending on the output format. If the output format is html, it is "svg", otherwise "pdf". Tested for pfdf, html and doc.
+
+## other Changes
+- added knit engine registration into .onAttach() so it does not need to be called explicitely.
 # plantuml 0.3.5
 ## Major and Breaking changes
 - renamed updatePlantumlJar() to update_plantuml()!!!
