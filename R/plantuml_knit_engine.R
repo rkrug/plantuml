@@ -45,6 +45,14 @@ plantuml_knit_engine <-  function(options) {
     puml <- paste0(options$code, collapse = "\n")
     ###
 
+    if (options$plantuml.format == "auto"){
+      options$plantuml.format <- ifelse(
+        knitr::is_html_output(),
+        "svg",
+        "pdf"
+      )
+    }
+
     if (!(options$plantuml.format %in% getPlantumlOption("supported_formats"))){
       stop(
         "The option 'plantuml.format = ", options$plantuml.format, "' is not supported!\n",
