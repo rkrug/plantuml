@@ -1,6 +1,7 @@
 ---
 title: "Use with `knitr`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette: default
 vignette: >
   %\VignetteIndexEntry{Use with `knitr`}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,10 +19,9 @@ knitr::opts_chunk$set(
 ```
 # Register the plantuml knitr engine
 
-The plantuml knitr engine `plantuml_knit_engine()` needs to be registered with knitr. The easiest is to use thew helper function `plantuml_knit_engine_register` in the `setup` code chunk. It is important to load the package `plantuml` before, as some options need to be set.
+The plantuml knitr engine `plantuml_knit_engine()` needs to be registered with knitr. The easiest is to use the helper function `plantuml_knit_engine_register` in the `setup` code chunk. It is important to load the package `plantuml` before, as some options need to be set.
 ```{r setup, include=TRUE}
 library(plantuml)
-plantuml_knit_engine_register()
 ```
 
 

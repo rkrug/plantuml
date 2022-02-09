@@ -18,9 +18,6 @@
 #' @return returns file name (including absolute path) of the created graph.
 #'
 #' @export
-#' @importFrom png readPNG
-#' @importFrom magrittr %>%
-#' @importFrom grImport PostScriptTrace readPicture picture
 #' @importFrom graphics plot rasterImage
 #'
 #' @examples

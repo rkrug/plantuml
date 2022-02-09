@@ -22,9 +22,7 @@ Imports:
   utils,
   png,
   graphics,
-  magrittr,
-  grImport (>= 0.9-1),
-  backports
+  magrittr
 LazyData: true
 RoxygenNote: 7.1.2
 Suggests: 
