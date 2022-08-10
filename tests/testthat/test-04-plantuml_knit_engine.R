@@ -1,16 +1,26 @@
-context("04 knitr_engine")
+test_that(
+  "An R Markdown document can be rendered", {
+    expect_snapshot_file( #IMPLEMENT THIS
+      {
+        outputdir <- tempfile()
+        dir.create(outputdir)
+        outputfile <- file.path(outputdir, "rmd-04.html")
 
-test_that("An R Markdown document can be rendered using reticulate", {
-  # skip_on_cran()
-  # skip_if_not_installed("rmarkdown")
+        rmarkdown::render(
+          input = "./rmd-04.Rmd",
+          output_dir = outputdir,
+          quiet = TRUE,
+          output_file = outputfile
+        )
+        file.exists("./rmd-04.html")
+      }
+    )
+  }
+)
 
-  status <- rmarkdown::render("rmd-04.Rmd", quiet = TRUE)
-
-  expect_true(
-    file.exists(status),
-    "example.Rmd rendered successfully"
-  )
-  expect_true(
+test_that(
+  "The graphs are created as expected", {
+  expect_snapshot_file(
     file.exists("./graphs/diagram_png.png"),
     "diagram_png.png created successfully"
   )
@@ -26,7 +36,7 @@ test_that("An R Markdown document can be rendered using reticulate", {
     file.exists("./graphs/diagram_svg.svg"),
     "diagram_svg.svg created successfully"
   )
-
-  unlink(status)
-  unlink("./graphs", recursive = TRUE)
-})
+  # unlink("./rmd-04.html")
+  # unlink("./graphs", recursive = TRUE)
+  }
+)

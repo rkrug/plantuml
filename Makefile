@@ -120,6 +120,7 @@ docs:
 
 
 ####
+build: build-cran
 
 build-cran:
 	cd ..;\

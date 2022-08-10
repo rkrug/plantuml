@@ -8,6 +8,7 @@
 #' @param height	output height in pixels or NULL for default
 #' @param css	path/url to external css file or raw vector with css data.
 #'   This requires your system has a recent version of librsvg.
+#' @param quiet	If `TRUE`, suppress status messages from the download
 #' @param ... Not used at the moment.
 #'
 #' @return name of the file with the graph
@@ -35,6 +36,7 @@ get_graph_server <- function(
   width = NULL,
   height = NULL,
   css = NULL,
+  quiet = TRUE,
   ...
 ){
 
@@ -71,7 +73,7 @@ get_graph_server <- function(
     type = tmptype
   )
 
-  result <- utils::download.file(url, tmpfile)
+  result <- utils::download.file(url, tmpfile, quiet = quiet)
 
   if (result != 0) {
     unlink(file)

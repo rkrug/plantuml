@@ -4,7 +4,15 @@
 \alias{get_graph_server}
 \title{Title}
 \usage{
-get_graph_server(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
+get_graph_server(
+  x,
+  file = NULL,
+  width = NULL,
+  height = NULL,
+  css = NULL,
+  quiet = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{object of \code{plantuml} to draw the UML graph}
@@ -19,6 +27,8 @@ If `NULL', the graph is saved to a temporary file.}
 
 \item{css}{path/url to external css file or raw vector with css data.
 This requires your system has a recent version of librsvg.}
+
+\item{quiet}{If \code{TRUE}, suppress status messages from the download}
 
 \item{...}{Not used at the moment.}
 }
