@@ -7,7 +7,7 @@
 plantuml_URL(
   plantuml = "@startuml\\nBob -> Alice : hello\\n@enduml",
   server_url = getPlantumlOption("server_url"),
-  type = "png",
+  type = "svg",
   open_in_browser = FALSE
 )
 }
@@ -17,7 +17,7 @@ plantuml_URL(
 \item{server_url}{The base url of the server. Should end with a single \code{/}}
 
 \item{type}{the type of the returned figure. At the moment supported:
-\code{png}, \code{svg} or \code{txt} for ASCIIArt.}
+\code{png}, \code{svg} \code{txt}, or \code{map}. See \link{https://plantuml.com/server} for further details.}
 
 \item{open_in_browser}{if TRUE, the result will be opened in the browser.}
 }
@@ -26,7 +26,4 @@ complete url to retrieve the graph.
 }
 \description{
 Generate PlantUML Server URL
-}
-\examples{
-
 }

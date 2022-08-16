@@ -1,13 +1,11 @@
-#' Title
+#' Generate PlantUML graph using PlantUml jar file
 #'
 #' @param x plantuml code to draw the UML graph
 #' @param file file name, including extension, to which the returned plantUML graph
 #'   should be saved.
 #'   If `NULL', the graph is saved to a temporary file.
-#' @param width	output width in pixels or NULL for default.
-#' @param height	output height in pixels or NULL for default
-#' @param css	path/url to external css file or raw vector with css data.
-#'   This requires your system has a recent version of librsvg.
+#' @param type type of the generated graph. Only \code{png} and \code{svg} are supported.
+#'   Default: \code{svg}.
 #' @param ... Not used at the moment.
 #'
 #' @return name of the file with the graph
@@ -18,65 +16,17 @@
 get_graph_local <- function(
   x,
   file = NULL,
-  width = NULL,
-  height = NULL,
-  css = NULL,
+  type =
   ...
 ){
-
-  if (inherits(x, what = "plantuml")) {
-    if (!x$complete) {
-      x$code <- paste("@startuml \n ", x$code, " \n @enduml")
-    }
-    x <- x$code
-  } else if (!inherits(x, what = "character")) {
-    stop("'x' has to be of class 'plantuml' or a 'character` vector containing the plantuml code!")
-  }
-
-  if (!is.null(file)) {
-    pos <- regexpr("\\.([[:alnum:]]+)$", file)
-    type <- ifelse( pos > -1L, substring(file, pos + 1L), "")
-
-    if (!(type %in% getPlantumlOption("supported_formats"))) {
-      stop(
-        "Type '", type, "' not supported through plantUML server!"
-      )
-    }
-  } else {
-    type <- "svg"
-  }
-
-  tmptype <- ifelse(
-    type == "txt",
-    "txt",
-    "svg"
-  )
-  tmpfile <- tempfile( pattern = "plantuml.", fileext = paste0(".", tmptype))
-
   result <- plantuml_run(
     x = x,
-    file = tmpfile
+    file = file
   )
 
   if (result != 0) {
     unlink(file)
     stop("Error in generating graph!")
-  } else {
-    result <- tmpfile
-  }
-
-  if (is.null(file)){
-    file <- tmpfile
-  } else {
-    switch (
-      type,
-      svg = file.copy( from = tmpfile, to = file, overwrite = TRUE),
-      png = rsvg::rsvg_png(svg = tmpfile, file = file),
-      pdf = rsvg::rsvg_pdf(svg = tmpfile, file = file),
-      ps  = rsvg::rsvg_ps(svg = tmpfile, file = file),
-      txt = file.copy( from = tmpfile, to = file, overwrite = TRUE),
-      stop("Not supported conversion!")
-    )
   }
 
   return(file)

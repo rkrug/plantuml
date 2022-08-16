@@ -142,7 +142,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "219.016KB",
+  "fileSize": "219.529KB",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],

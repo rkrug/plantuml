@@ -2,9 +2,9 @@
 % Please edit documentation in R/get_graph_local.R
 \name{get_graph_local}
 \alias{get_graph_local}
-\title{Title}
+\title{Generate PlantUML graph using PlantUml jar file}
 \usage{
-get_graph_local(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
+get_graph_local(x, file = NULL, type = ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
@@ -13,12 +13,8 @@ get_graph_local(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
 should be saved.
 If `NULL', the graph is saved to a temporary file.}
 
-\item{width}{output width in pixels or NULL for default.}
-
-\item{height}{output height in pixels or NULL for default}
-
-\item{css}{path/url to external css file or raw vector with css data.
-This requires your system has a recent version of librsvg.}
+\item{type}{type of the generated graph. Only \code{png} and \code{svg} are supported.
+Default: \code{svg}.}
 
 \item{...}{Not used at the moment.}
 }
@@ -26,5 +22,5 @@ This requires your system has a recent version of librsvg.}
 name of the file with the graph
 }
 \description{
-Title
+Generate PlantUML graph using PlantUml jar file
 }

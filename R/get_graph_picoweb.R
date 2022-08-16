@@ -1,4 +1,4 @@
-#' Generate PlantUML graph using PlantUml web server
+#' Generate PlantUML graph using PicoWeb included in PlantUml jar file
 #'
 #' @param x object of `plantuml` to draw the UML graph
 #' @param file file name, including extension, to which the returned plantUML graph
@@ -28,13 +28,18 @@
 #' fn <- get_graph_server( x )
 #' browse(fn)
 #' }
-get_graph_server <- function(
+get_graph_picoweb <- function(
   x,
   file = NULL,
-  type = "svg",
+  type = NULL,
   quiet = TRUE,
   ...
 ){
+  if (!(type %in% c("svg", "png"))) {
+    stop("Unsupported file type for the selected PicoWeb server included in plantuml!\n",
+    "Only 'svg' and 'png' are supportd.")
+  }
+
   url <- plantuml_URL(
     plantuml = x,
     type = type

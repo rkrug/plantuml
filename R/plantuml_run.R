@@ -57,7 +57,7 @@ plantuml_run <- function(
     pos <- regexpr("\\.([[:alnum:]]+)$", file)
     type <- ifelse( pos > -1L, substring(file, pos + 1L), "")
   } else {
-    type <- "txt"
+    stop("Invalid type for PlantUml graph!")
   }
   plantuml_opt = paste0("-p -t",type, " ", plantuml_opt)
 
