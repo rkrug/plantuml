@@ -15,10 +15,11 @@
 #'   `getPlantumlOption("java_bin")`.
 #' @param java_opt options for the call of `java`. The default is
 #'   read from `getPlantumlOption("java_opt")`.
+#' @param wait if `TRUE`, wait until the process has finished. If `FALSE`, return immediately.
 
 #' @md
 #'
-#' @return the result from the call to `system2()`
+#' @return if wait  is `TRUE` the pid of the process started. Otherwise the result from the call to `system2()`
 #'
 #' @export
 #' @examples
@@ -33,7 +34,8 @@ plantuml_run <- function(
   plantuml_jar = getPlantumlOption("jar_name"),
   plantuml_opt = getPlantumlOption("plantuml_opt"),
   java_bin = getPlantumlOption("java_bin"),
-  java_opt = getPlantumlOption("java_opt")
+  java_opt = getPlantumlOption("java_opt"),
+  wait = FALSE
 ){
 
   # Checks ------------------------------------------------------------------
@@ -67,14 +69,38 @@ plantuml_run <- function(
     "\""
   )
 
+  if (wait == FALSE){
+    pids <- system2(
+      command = "jps",
+      args = "-l",
+      stdout = TRUE
+    )
+    pids <- grep("plantuml", pids, value = TRUE)
+    pids <- sapply(strsplit(pids, " "), "[[", 1)
+    if (length(pids) == 0) {
+      pids <- -99999
+    }
+  }
+
   result <- system2(
     command = java_bin,
     args = paste(java_opt, cmd, plantuml_opt),
     stdout = file,
     stderr = "",
     stdin = "",
-    input = x
+    input = x,
+    wait = wait
   )
 
+  if (wait == FALSE){
+    pid <- system2(
+      command = "jps",
+      args = "-l",
+      stdout = TRUE
+    )
+    pid <- grep("plantuml", pid, value = TRUE)
+    pid <- sapply(strsplit(pid, " "), "[[", 1)
+    pid <- result[!(pid %in% pids)]
+  }
   return(result)
 }

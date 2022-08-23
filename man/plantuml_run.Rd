@@ -10,7 +10,8 @@ plantuml_run(
   plantuml_jar = getPlantumlOption("jar_name"),
   plantuml_opt = getPlantumlOption("plantuml_opt"),
   java_bin = getPlantumlOption("java_bin"),
-  java_opt = getPlantumlOption("java_opt")
+  java_opt = getPlantumlOption("java_opt"),
+  wait = FALSE
 )
 }
 \arguments{
@@ -31,9 +32,11 @@ read from \code{getPlantumlOption("plantuml_opt")}.}
 
 \item{java_opt}{options for the call of \code{java}. The default is
 read from \code{getPlantumlOption("java_opt")}.}
+
+\item{wait}{if \code{TRUE}, wait until the process has finished. If \code{FALSE}, return immediately.}
 }
 \value{
-the result from the call to \code{system2()}
+if wait  is \code{TRUE} the pid of the process started. Otherwise the result from the call to \code{system2()}
 }
 \description{
 The in the package installation included \code{plantuml} binary is executed using

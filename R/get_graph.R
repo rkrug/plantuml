@@ -1,9 +1,35 @@
-#' Title
+#' Get PlantUML graph
 #'
+#' Get the graph from either the local PicoWeb Server included in plantuml or an
+#' online plantuml server.
 #' @param x plantuml code to draw the UML graph
-#' @param file file name, including extension, to which the returned plantUML graph
-#'   should be saved.
-#'   If `NULL', the graph is saved to a temporary file.
+#' @param file file name, including extension, to which the returned plantUML
+#'   graph should be saved. If `NULL', the graph is saved to a temporary file.
+#'   The following extensions are allowed:
+#'     - **svg**: This is the default format and the one **always** used as return format for PlantUML
+#'         for image formats. No conversion neeed.
+#'     - **txt**: Second return format for PlantUML. No conversion neeed.
+#'     - **png**: Converted from **svg** using `rsvg::rsvg_png(
+#'                                                            svg = tmpfile,
+#'                                                            file = file,
+#'                                                            width = width,
+#'                                                            height = height,
+#'                                                            css = css
+#'                                                            )`
+#'     - **pdf** Converted from **svg** using `rsvg::rsvg_pdf(
+#'                                                            svg = tmpfile,
+#'                                                            file = file,
+#'                                                            width = width,
+#'                                                            height = height,
+#'                                                            css = css
+#'                                                            )`
+#'     - **ps**  Converted from **svg** using `rsvg::rsvg_ps(
+#'                                                           svg = tmpfile,
+#'                                                           file = file,
+#'                                                           width = width,
+#'                                                           height = height,
+#'                                                           css = css
+#'                                                          )`
 #' @param width	output width in pixels or NULL for default.
 #' @param height	output height in pixels or NULL for default
 #' @param css	path/url to external css file or raw vector with css data.
@@ -25,6 +51,8 @@ get_graph <- function(
   css = NULL,
   ...
 ){
+  formats <- c("svg", "txt", "png", "pdf", "ps")
+
   if (inherits(x, what = "plantuml")) {
     if (!x$complete) {
       x$code <- paste("@startuml \n ", x$code, " \n @enduml")
@@ -38,9 +66,9 @@ get_graph <- function(
     pos <- regexpr("\\.([[:alnum:]]+)$", file)
     type <- ifelse( pos > -1L, substring(file, pos + 1L), "")
 
-    if (!(type %in% getPlantumlOption("supported_formats"))) {
+    if (!(type %in% formats)) {
       stop(
-        "Type '", type, "' not supported through plantUML server!"
+        "Type '", type, "' not supported!"
       )
     }
   } else {
@@ -54,25 +82,22 @@ get_graph <- function(
   )
   tmpfile <- tempfile( pattern = "plantuml.", fileext = paste0(".", tmptype))
 
-
-  result <- switch (
-    getPlantumlOption("method"),
-    "server" = {
-      get_graph_server(
-        x = x,
-        file = tmpfile,
-        type = type
-      )
-    },
-    "local" = {
-      get_graph_local(
-        x = x,
-        file = tmpfile,
-        type = type,
-        quiet = TRUE
-      )
-    }
+  url <- plantuml_URL(
+    plantuml = x,
+    type = type
   )
+
+  result <- utils::download.file(
+    url,
+    file,
+    quiet = TRUE
+  )
+
+  if (result != 0) {
+    unlink(file)
+    stop("Error in download of PlantUML chart from PlantUML Server / Picoweb Server!")
+  }
+
 
   if (is.null(file)){
     file <- tmpfile
@@ -81,7 +106,8 @@ get_graph <- function(
       type,
       svg = file.copy(
         from = tmpfile,
-        to = file, overwrite = TRUE
+        to = file,
+        overwrite = TRUE
       ),
       png = rsvg::rsvg_png(
         svg = tmpfile,
@@ -104,11 +130,18 @@ get_graph <- function(
         height = height,
         css = css
       ),
-      txt = file.copy( from = tmpfile, to = file, overwrite = TRUE),
+      txt = file.copy(
+        from = tmpfile,
+        to = file,
+        overwrite = TRUE
+      ),
       stop("Not supported conversion!")
     )
   }
 
+  if (file != tmpfile){
+    unlink(tmpfile)
+  }
 
-  return(result)
+  return(file)
 }

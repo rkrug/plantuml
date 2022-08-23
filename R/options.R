@@ -19,7 +19,7 @@
 #'
 getPlantumlOption <- function(x, default = NULL){
   if (missing(x)) {
-    stop('Error in getPlantumlOption() : argument "x" is missing, with no default')
+    getOption("plantuml")
   } else {
     getOption("plantuml")[[x]]
   }
@@ -55,3 +55,5 @@ plantumlOptions <- function(...){
 }
 
 # `colnames<-.default` <- base::`colnames<-`
+
+

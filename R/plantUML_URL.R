@@ -115,17 +115,9 @@ plantuml_URL <- function(
   type = "svg",
   open_in_browser = FALSE
 ){
-  types <- c("png", "svg", "txt", "map")
 
   if (substr(server_url, nchar(server_url), nchar(server_url)) != "/") {
     server_url <- paste0(server_url, "/")
-  }
-
-  if (!(type %in% types)){
-    stop(
-      "`type` has to be one of the allowed types:\n",
-      paste0(types, collapse = "; ")
-    )
   }
 
   server_url <- paste0(server_url, type, "/")

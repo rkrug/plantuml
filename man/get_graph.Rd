@@ -2,16 +2,33 @@
 % Please edit documentation in R/get_graph.R
 \name{get_graph}
 \alias{get_graph}
-\title{Title}
+\title{Get PlantUML graph}
 \usage{
 get_graph(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
 
-\item{file}{file name, including extension, to which the returned plantUML graph
-should be saved.
-If `NULL', the graph is saved to a temporary file.}
+\item{file}{file name, including extension, to which the returned plantUML
+graph should be saved. If \verb{NULL', the graph is saved to a temporary file. The following extensions are allowed: - **svg**: This is the default format and the one **always** used as return format for PlantUML for image formats. No conversion neeed. - **txt**: Second return format for PlantUML. No conversion neeed. - **png**: Converted from **svg** using }rsvg::rsvg_png(
+svg = tmpfile,
+file = file,
+width = width,
+height = height,
+css = css
+)\verb{- **pdf** Converted from **svg** using}rsvg::rsvg_pdf(
+svg = tmpfile,
+file = file,
+width = width,
+height = height,
+css = css
+)\verb{- **ps**  Converted from **svg** using}rsvg::rsvg_ps(
+svg = tmpfile,
+file = file,
+width = width,
+height = height,
+css = css
+)`}
 
 \item{width}{output width in pixels or NULL for default.}
 
@@ -28,5 +45,6 @@ but not used at the moment.}
 name of the file with the graph
 }
 \description{
-Title
+Get the graph from either the local PicoWeb Server included in plantuml or an
+online plantuml server.
 }

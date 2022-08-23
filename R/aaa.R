@@ -6,9 +6,8 @@
     java_bin = Sys.which("java"),
     java_opt = "-Djava.awt.headless=true -splash:no",
     plantuml_opt = "-Playout=smetana",
-    server_url = "http://www.plantuml.com/plantuml/",
-    method = "server",  # "local" "server"
-    supported_formats = c("svg", "png", "pdf", "ps", "txt")
+    server_url = "http://localhost/",
+    server_port = 8765
   )
   plantuml_knit_engine_register()
 }
