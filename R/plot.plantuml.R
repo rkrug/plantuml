@@ -11,7 +11,10 @@
 #'- **`file` is `NULL`**: the data which would have been saved in the file
 #'  is returned in a character vector. **This is only useful for text formats
 #'  like `eps` or `svg`!**
-#'
+#' @param width	output width in pixels or NULL for default.
+#' @param height output height in pixels or NULL for default
+#' @param css	path/url to external css file or raw vector with css data.
+#'   This requires your system has a recent version of librsvg.
 #' @param ... additional arguments for the `plot` function and the `plantuml_run` function.
 #'
 #' @md
@@ -19,6 +22,7 @@
 #'
 #' @export
 #' @importFrom graphics plot rasterImage
+#' @importFrom grDevices as.raster
 #'
 #' @examples
 #' plantumlCode <- '
@@ -50,7 +54,7 @@ plot.plantuml <- function(
   type <- ifelse( pos > -1L, substring(result, pos + 1L), "")
 
   if (type == "svg"){
-    bmp <- as.raster(rsvg::rsvg(result, width = width, height = height))
+    bmp <- grDevices::as.raster(rsvg::rsvg(result, width = width, height = height))
     xrange <- c(0, ncol(bmp))
     yrange <- c(0, nrow(bmp))
 
@@ -90,7 +94,10 @@ plot.plantuml <- function(
       ytop = attr(puml, "dim")[[1]]
     )
   } else {
-    warning("When 'file' is specified, it needs to be 'svg' or 'png' to be able to be plotted!")
+    warning(
+      "The grapg has only been saved to ", file, ".\n",
+      "When 'file' is specified, needs to be 'svg' or 'png' to be able to be plotted!"
+    )
   }
   return(result)
 }

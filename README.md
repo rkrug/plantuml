@@ -18,15 +18,15 @@ Status](https://img.shields.io/codecov/c/github/rkrug/plantuml/master.svg)](http
 # Overview
 
 This package provides the functionality to create UML graphs using the
-[PlantUML](http://plantuml.com/) language.
+[PlantUML](https://plantuml.com/) language.
 
 # Installation
 
 ## Prerequisites
 
-The actual work is done by the program [plantuml](http://plantuml.com/).
+The actual work is done by the program [plantuml](https://plantuml.com/).
 Please see [the plantuml installation
-page](http://plantuml.com/faq-install) for prerequisites of running
+page](https://plantuml.com/faq-install) for prerequisites of running
 plantuml. You don’t have tio install the plantuml.jar file, as the
 packagae maintains it’s own version (see below).
 
@@ -47,7 +47,7 @@ as well:
 # Install plantuml from github
 devtools::install_github("rkrug/plantuml")
 
-# download and install the PlantUML jar file from \link{http://plantuml.com/download}
+# download and install the PlantUML jar file from \link{https://plantuml.com/download}
 # whenever you call this command again, the plantuml binary will be updated to the newest version
 library(plantuml)
 plantuml_update()

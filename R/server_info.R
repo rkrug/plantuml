@@ -1,13 +1,12 @@
 #' Get info about the plantuml server
 #'
 #' The parameter (URL and port) as in the `getPlantumlOption()` specified are used.
-#' @param url URL of the server, including port
 #'
 #' @return list with the following arguments:
 #'    - **server**: type of the server, **PicoWeb Server** or **PlantUML Web Server**
 #'    - **supported_formats: supported formats of the server
 #' @md
-#' @importFrom
+#' @importFrom jsonlite fromJSON
 #' @export
 #'
 #' @examples

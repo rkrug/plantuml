@@ -4,10 +4,14 @@
 #' \code{"plantuml.jar"} in the folder \code{system.file("jar", package =
 #' "plantuml")} of the package. The source code for \code{plantuml} can be
 #' found at \url{https://github.com/plantuml/plantuml}
-#' @param beta should the beta version be downloaded, default \code{FALSE}
+#' @param tag tag of the version to be downloaded. Allowed values are
+#'   - **"release**    : the last release
+#'   - **"snapshot"**  : the last snapshot - **Not ready for gneral use**
 #' @param ... additional arguments for the \code{download.file()} function
 #'
 #' @return the path and name of the downloaded file
+#'
+#' @md
 #' @export
 #'
 #' @importFrom utils download.file
@@ -16,7 +20,7 @@
 #' plantuml_update()
 #' }
 plantuml_update <- function(
-  beta = FALSE,
+  tag = "release",
   ...
 ) {
   url <- ifelse(

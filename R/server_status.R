@@ -8,7 +8,7 @@
 #'    - **1**  : server is PicoWeb Server
 #'    - **2**  : server is PlantUML Web Server
 #' @md
-#' @importFrom
+#' @importFrom utils capture.output
 #' @export
 #'
 #' @examples
@@ -35,7 +35,7 @@ server_status <- function(
       )
     },
     error = function(err) {
-      occur <- grep("cannot open URL", capture.output(err))
+      occur <- grep("cannot open URL", utils::capture.output(err))
       if(length(occur) > 0) -404
     }
   )

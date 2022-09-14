@@ -4,9 +4,6 @@
 #' @param file file name, including extension, to which the returned plantUML graph
 #'   should be saved.
 #'   If `NULL', the graph is saved to a temporary file.
-#' @param type type of the generated graph. Only \code{png} and \code{svg} are supported.
-#'   Default: \code{svg}.
-#' @param ... Not used at the moment.
 #'
 #' @return name of the file with the graph
 #' @md
@@ -15,10 +12,9 @@
 #' @examples
 get_graph_local <- function(
   x,
-  file = NULL,
-  type =
-  ...
+  file = NULL
 ){
+  stop("Needs Work!!!!!")
   result <- plantuml_run(
     x = x,
     file = file

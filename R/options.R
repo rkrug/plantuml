@@ -5,10 +5,6 @@
 #' @param default if the specified option is not set in the options list, this
 #'   value is returned. This facilitates retrieving an option and checking
 #'   whether it is set and setting it separately if not.
-#' @param plantuml_opt additional options for plantuml in addition to \code{-p}
-#'   and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.
-#' @param vector if \code{TRUE} use `svg` as intermediate format, if \code{FALSE}
-#'   use `png`. Only effects plotting in device.
 #'
 #' @return - `getPlantumlOption()`: the value of the option
 #' - `plantumlOptions()`: the old value of the plantuml options

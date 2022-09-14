@@ -53,12 +53,13 @@ plantuml_knit_engine <-  function(options) {
       )
     }
 
-    if (!(options$plantuml.format %in% getPlantumlOption("supported_formats"))){
+    if (!(options$plantuml.format %in% c("png", "svg", "pdf", "png", "txt", "ps"))){
       stop(
         "The option 'plantuml.format = ", options$plantuml.format, "' is not supported!\n",
         "see 'getPlantumlOption('supported_formats')' for a list of supported options."
       )
     }
+
     if (is.null(options$plantuml.format)){
       options$plantuml.format <- "png"
     }

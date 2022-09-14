@@ -17,3 +17,5 @@
 ^doc$
 ^Meta$
 ^.github$
+^tests\.rrr$
+^use_with_knitr_cache$

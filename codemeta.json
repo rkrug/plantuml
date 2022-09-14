@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/rkrug/plantuml",
   "issueTracker": "https://github.com/rkrug/plantuml/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.5",
+  "version": "0.6",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -80,11 +80,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tools",
-      "name": "tools"
     }
   ],
   "softwareRequirements": {
@@ -96,6 +91,16 @@
     },
     "2": {
       "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "tools",
+      "name": "tools"
+    },
+    "4": {
+      "@type": "SoftwareApplication",
       "identifier": "rsvg",
       "name": "rsvg",
       "provider": {
@@ -106,12 +111,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rsvg"
     },
-    "3": {
+    "5": {
       "@type": "SoftwareApplication",
-      "identifier": "utils",
-      "name": "utils"
+      "identifier": "grDevices",
+      "name": "grDevices"
     },
-    "4": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "png",
       "name": "png",
@@ -123,26 +128,26 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=png"
     },
-    "5": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "graphics",
       "name": "graphics"
     },
-    "6": {
+    "8": {
       "@type": "SoftwareApplication",
-      "identifier": "magrittr",
-      "name": "magrittr",
+      "identifier": "jsonlite",
+      "name": "jsonlite",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=magrittr"
+      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
     "SystemRequirements": null
   },
-  "fileSize": "219.529KB",
+  "fileSize": "183.698KB",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://travis-ci.org/rkrug/plantuml", "https://codecov.io/github/rkrug/plantuml?branch=master"],

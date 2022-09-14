@@ -18,11 +18,11 @@ library(plantuml)
 ```
 
 # Overview
-This package provides the functionality to create UML graphs using the [PlantUML](http://plantuml.com/) language.
+This package provides the functionality to create UML graphs using the [PlantUML](https://plantuml.com/) language.
 
 # Installation of plantuml binary
 The package does not come with the plantuml binary, which needs to be installed as well. repeated calling of this function updates the binary.
-```{r installation_plantuml, eval = TRUE}
+```{r installation_plantuml, eval = FALSE}
 plantuml_update()
 ```
 
@@ -54,6 +54,5 @@ Now we plot in in a device using vector format (svg) as intermediate format, whi
 ```{r exampleDeviceVector}
 plot(
   x = x
-# vector = TRUE
-  )
+)
 ```

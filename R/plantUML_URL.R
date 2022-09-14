@@ -97,8 +97,9 @@ encode6bit <- function(
 #'
 #' @param plantuml The plantuml code
 #' @param server_url The base url of the server. Should end with a single `/`
+#' @param server_port port on which the plantuml server is
 #' @param type the type of the returned figure. At the moment supported:
-#'   `png`, `svg` `txt`, or `map`. See \link{https://plantuml.com/server} for further details.
+#'   `png`, `svg` `txt`, or `map`. See [https://plantuml.com/server](https://plantuml.com/server) for further details.
 #' @param open_in_browser if TRUE, the result will be opened in the browser.
 #'
 #' @return complete url to retrieve the graph.
@@ -112,13 +113,12 @@ encode6bit <- function(
 plantuml_URL <- function(
   plantuml = "@startuml\nBob -> Alice : hello\n@enduml",
   server_url = getPlantumlOption("server_url"),
+  server_port = getPlantumlOption("server_port"),
   type = "svg",
   open_in_browser = FALSE
 ){
-
-  if (substr(server_url, nchar(server_url), nchar(server_url)) != "/") {
-    server_url <- paste0(server_url, "/")
-  }
+  server_url <- gsub("/$", "", server_url)
+  server_url <- paste0(server_url, ":", server_port, "/")
 
   server_url <- paste0(server_url, type, "/")
 

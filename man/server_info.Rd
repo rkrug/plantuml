@@ -6,9 +6,6 @@
 \usage{
 server_info()
 }
-\arguments{
-\item{url}{URL of the server, including port}
-}
 \value{
 list with the following arguments:
 \itemize{

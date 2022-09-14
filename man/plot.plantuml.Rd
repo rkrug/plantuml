@@ -18,6 +18,13 @@ is returned in a character vector. \strong{This is only useful for text formats
 like \code{eps} or \code{svg}!}
 }}
 
+\item{width}{output width in pixels or NULL for default.}
+
+\item{height}{output height in pixels or NULL for default}
+
+\item{css}{path/url to external css file or raw vector with css data.
+This requires your system has a recent version of librsvg.}
+
 \item{...}{additional arguments for the \code{plot} function and the \code{plantuml_run} function.}
 }
 \value{

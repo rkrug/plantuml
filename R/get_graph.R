@@ -34,12 +34,10 @@
 #' @param height	output height in pixels or NULL for default
 #' @param css	path/url to external css file or raw vector with css data.
 #'   This requires your system has a recent version of librsvg.
-#' @param ... Additional values for the function
-#'   `get_graph_local()` or `get_graph_server()`
-#'   but not used at the moment.
 #'
 #' @return name of the file with the graph
 #' @md
+#' @importFrom rsvg rsvg_png rsvg_pdf rsvg_ps
 #' @export
 #'
 #' @examples
@@ -48,8 +46,7 @@ get_graph <- function(
   file = NULL,
   width = NULL,
   height = NULL,
-  css = NULL,
-  ...
+  css = NULL
 ){
   formats <- c("svg", "txt", "png", "pdf", "ps")
 
@@ -84,17 +81,17 @@ get_graph <- function(
 
   url <- plantuml_URL(
     plantuml = x,
-    type = type
+    type = tmptype
   )
 
   result <- utils::download.file(
     url,
-    file,
+    destfile = tmpfile,
     quiet = TRUE
   )
 
   if (result != 0) {
-    unlink(file)
+    unlink(tmpfile)
     stop("Error in download of PlantUML chart from PlantUML Server / Picoweb Server!")
   }
 

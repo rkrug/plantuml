@@ -4,7 +4,7 @@
 \alias{get_graph}
 \title{Get PlantUML graph}
 \usage{
-get_graph(x, file = NULL, width = NULL, height = NULL, css = NULL, ...)
+get_graph(x, file = NULL, width = NULL, height = NULL, css = NULL)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
@@ -36,10 +36,6 @@ css = css
 
 \item{css}{path/url to external css file or raw vector with css data.
 This requires your system has a recent version of librsvg.}
-
-\item{...}{Additional values for the function
-\code{get_graph_local()} or \code{get_graph_server()}
-but not used at the moment.}
 }
 \value{
 name of the file with the graph

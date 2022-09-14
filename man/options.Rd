@@ -17,12 +17,6 @@ value is returned. This facilitates retrieving an option and checking
 whether it is set and setting it separately if not.}
 
 \item{...}{named value to be set in the form of \code{name = value}}
-
-\item{plantuml_opt}{additional options for plantuml in addition to \code{-p}
-and \code{-tFILETYPE}. See `plantuml_run() for a list of available file formats.}
-
-\item{vector}{if \code{TRUE} use \code{svg} as intermediate format, if \code{FALSE}
-use \code{png}. Only effects plotting in device.}
 }
 \value{
 \itemize{

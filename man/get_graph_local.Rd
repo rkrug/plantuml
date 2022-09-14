@@ -4,7 +4,7 @@
 \alias{get_graph_local}
 \title{Generate PlantUML graph using PlantUml jar file}
 \usage{
-get_graph_local(x, file = NULL, type = ...)
+get_graph_local(x, file = NULL)
 }
 \arguments{
 \item{x}{plantuml code to draw the UML graph}
@@ -12,11 +12,6 @@ get_graph_local(x, file = NULL, type = ...)
 \item{file}{file name, including extension, to which the returned plantUML graph
 should be saved.
 If `NULL', the graph is saved to a temporary file.}
-
-\item{type}{type of the generated graph. Only \code{png} and \code{svg} are supported.
-Default: \code{svg}.}
-
-\item{...}{Not used at the moment.}
 }
 \value{
 name of the file with the graph
