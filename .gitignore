@@ -6,4 +6,5 @@ README.nb.html
 inst/doc
 !.lintr
 plantuml.bbprojectd
-docs
+/doc/
+/Meta/

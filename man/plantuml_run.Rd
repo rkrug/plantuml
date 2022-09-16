@@ -5,45 +5,43 @@
 \title{Run the plantuml binary}
 \usage{
 plantuml_run(
-  plantuml_jar = file.path(getPlantumlOption("jar_path"),
-    getPlantumlOption("jar_name")),
-  plantuml_opt = "-help",
+  x = NULL,
+  file = "",
+  plantuml_jar = getPlantumlOption("jar_name"),
+  plantuml_opt = getPlantumlOption("plantuml_opt"),
   java_bin = getPlantumlOption("java_bin"),
   java_opt = getPlantumlOption("java_opt"),
-  stdout = "",
-  stderr = "",
-  stdin = "",
-  input = NULL
+  wait = FALSE
 )
 }
 \arguments{
-\item{plantuml_jar}{path + filename to the plantuml jar file}
+\item{x}{plantuml code to draw the UML graph}
 
-\item{plantuml_opt}{options for plantuml. The default is \code{-help} to show all
-options of plantuml}
+\item{file}{file name, including extension, to which the generated plantUML graph
+should be saved. The extension determines the format of the graph.
+If \verb{NULL', the graph is returned as a ASCII art, i.e. a }character` vector..}
 
-\item{java_bin}{path to the \code{java} binary. The dafaulkt is \code{java}, i;e; it
-assumes that the binary is in the path}
+\item{plantuml_jar}{path and name of the plantuml jar file. The dafault is read from
+\code{getPlantumlOption("plantuml_jar")}.}
+
+\item{plantuml_opt}{options for the call of \code{java}. The default is
+read from \code{getPlantumlOption("plantuml_opt")}.}
+
+\item{java_bin}{path to the \code{java} binary. The dafault is read from
+\code{getPlantumlOption("java_bin")}.}
 
 \item{java_opt}{options for the call of \code{java}. The default is
-\code{-Djava.awt.headless=true -splash:no} to enable a headless and silent
-execution of plantuml}
+read from \code{getPlantumlOption("java_opt")}.}
 
-\item{stdout}{See \code{system2()}}
-
-\item{stderr}{See \code{system2()}}
-
-\item{stdin}{See \code{system2()}}
-
-\item{input}{See \code{system2()}}
+\item{wait}{if \code{TRUE}, wait until the process has finished. If \code{FALSE}, return immediately.}
 }
 \value{
-the result from the call to \code{system2()}
+if wait  is \code{TRUE} the pid of the process started. Otherwise the result from the call to \code{system2()}
 }
 \description{
 The in the package installation included \code{plantuml} binary is executed using
-the provided java and plantuml commands.
-This is effectively a wrapper around \code{system2()} with some values set to run \code{plantuml}.
+the provided java and plantuml commands. This is effectively a wrapper around
+\code{system2()} with some values set to run \code{plantuml}.
 }
 \examples{
 \dontrun{

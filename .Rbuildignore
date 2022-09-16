@@ -4,6 +4,7 @@
 ^README.*$
 ^.*plantuml\.jar$
 ^\.travis\.yml$
+^travis\.OLD$
 ^codecov\.yml$
 ^.lintr$
 ^Makefile$
@@ -15,4 +16,6 @@
 ^pkgdown$
 ^doc$
 ^Meta$
-^\.github$
+^.github$
+^tests\.rrr$
+^use_with_knitr_cache$

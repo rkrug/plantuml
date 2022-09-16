@@ -120,6 +120,7 @@ docs:
 	Rscript -e "pkgdown::build_site()"
 
 ####
+build: build-cran
 
 build-cran:
 	cd ..;\

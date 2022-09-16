@@ -1,0 +1,41 @@
+sudo: false
+cache: packages
+language: r
+
+# r_github_packages: r-lib/remotes#340
+
+r_packages:
+  - covr
+
+env:
+  matrix:
+  - _R_CHECK_SYSTEM_CLOCK_=0
+
+matrix:
+  include:
+  - r: devel
+    after_success:
+      - Rscript -e 'library(covr); codecov()'
+  - r: release
+    os: osx
+    osx_image: xcode10.1
+    before_install:
+  - r: release
+  - r: oldrel
+
+before_install:
+- echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
+
+addons:
+  apt:
+    packages:
+    - ghostscript
+    - graphviz
+    - default-jdk
+  homebrew:
+    packages:
+    - ghostscript
+    - graphviz
+    casks:
+      java
+

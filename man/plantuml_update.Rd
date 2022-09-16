@@ -4,10 +4,14 @@
 \alias{plantuml_update}
 \title{Update or download \code{plantuml.jar} binary}
 \usage{
-plantuml_update(beta = FALSE, ...)
+plantuml_update(tag = "release", ...)
 }
 \arguments{
-\item{beta}{should the beta version be downloaded, default \code{FALSE}}
+\item{tag}{tag of the version to be downloaded. Allowed values are
+\itemize{
+\item \strong{"release}    : the last release
+\item \strong{"snapshot"}  : the last snapshot - \strong{Not ready for gneral use}
+}}
 
 \item{...}{additional arguments for the \code{download.file()} function}
 }

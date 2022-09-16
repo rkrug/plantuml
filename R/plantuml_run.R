@@ -1,24 +1,25 @@
 #' Run the plantuml binary
 #'
 #' The in the package installation included `plantuml` binary is executed using
-#' the provided java and plantuml commands.
-#' This is effectively a wrapper around `system2()` with some values set to run `plantuml`.
-#' @param plantuml_jar path + filename to the plantuml jar file
-#' @param plantuml_opt options for plantuml. The default is `-help` to show all
-#'   options of plantuml
-#' @param java_bin path to the `java` binary. The dafaulkt is `java`, i;e; it
-#'   assumes that the binary is in the path
+#' the provided java and plantuml commands. This is effectively a wrapper around
+#' `system2()` with some values set to run `plantuml`.
+#' @param x plantuml code to draw the UML graph
+#' @param file file name, including extension, to which the generated plantUML graph
+#'   should be saved. The extension determines the format of the graph.
+#'   If `NULL', the graph is returned as a ASCII art, i.e. a `character` vector..
+#' @param plantuml_jar path and name of the plantuml jar file. The dafault is read from
+#'   `getPlantumlOption("plantuml_jar")`.
+#' @param plantuml_opt options for the call of `java`. The default is
+#'   read from `getPlantumlOption("plantuml_opt")`.
+#' @param java_bin path to the `java` binary. The dafault is read from
+#'   `getPlantumlOption("java_bin")`.
 #' @param java_opt options for the call of `java`. The default is
-#'   `-Djava.awt.headless=true -splash:no` to enable a headless and silent
-#'   execution of plantuml
-#' @param stdout See `system2()`
-#' @param stderr See `system2()`
-#' @param stdin See `system2()`
-#' @param input See `system2()`
-#'
+#'   read from `getPlantumlOption("java_opt")`.
+#' @param wait if `TRUE`, wait until the process has finished. If `FALSE`, return immediately.
+
 #' @md
 #'
-#' @return the result from the call to `system2()`
+#' @return if wait  is `TRUE` the pid of the process started. Otherwise the result from the call to `system2()`
 #'
 #' @export
 #' @examples
@@ -28,14 +29,13 @@
 #'   plantuml_run()
 #' }
 plantuml_run <- function(
-  plantuml_jar = file.path( getPlantumlOption("jar_path"), getPlantumlOption("jar_name")),
-  plantuml_opt = "-help",
+  x = NULL,
+  file = "",
+  plantuml_jar = getPlantumlOption("jar_name"),
+  plantuml_opt = getPlantumlOption("plantuml_opt"),
   java_bin = getPlantumlOption("java_bin"),
   java_opt = getPlantumlOption("java_opt"),
-  stdout = "",
-  stderr = "",
-  stdin = "",
-  input = NULL
+  wait = FALSE
 ){
 
   # Checks ------------------------------------------------------------------
@@ -55,19 +55,52 @@ plantuml_run <- function(
 
   # Run plantuml ------------------------------------------------------------
 
+  if (!is.null(file)) {
+    pos <- regexpr("\\.([[:alnum:]]+)$", file)
+    type <- ifelse( pos > -1L, substring(file, pos + 1L), "")
+  } else {
+    stop("Invalid type for PlantUml graph!")
+  }
+  plantuml_opt = paste0("-p -t",type, " ", plantuml_opt)
+
   cmd <- paste0(
     "-jar \"",
     plantuml_jar,
     "\""
   )
+
+  if (wait == FALSE){
+    pids <- system2(
+      command = "jps",
+      args = "-l",
+      stdout = TRUE
+    )
+    pids <- grep("plantuml", pids, value = TRUE)
+    pids <- sapply(strsplit(pids, " "), "[[", 1)
+    if (length(pids) == 0) {
+      pids <- -99999
+    }
+  }
+
   result <- system2(
     command = java_bin,
     args = paste(java_opt, cmd, plantuml_opt),
-    stdout = stdout,
-    stderr =stderr,
-    stdin = stdin,
-    input = input
+    stdout = file,
+    stderr = "",
+    stdin = "",
+    input = x,
+    wait = wait
   )
 
+  if (wait == FALSE){
+    pid <- system2(
+      command = "jps",
+      args = "-l",
+      stdout = TRUE
+    )
+    pid <- grep("plantuml", pid, value = TRUE)
+    pid <- sapply(strsplit(pid, " "), "[[", 1)
+    pid <- result[!(pid %in% pids)]
+  }
   return(result)
 }

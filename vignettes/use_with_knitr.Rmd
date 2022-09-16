@@ -1,27 +1,28 @@
 ---
-title: "Use with `knitr`"
-output: rmarkdown::html_vignette
+title: "Use of `plantuml` with knitr"
+output:
+  rmarkdown::html_vignette: default
+  pdf_document:
+    latex_engine: xelatex
 vignette: >
-  %\VignetteIndexEntry{Use with `knitr`}
+  %\VignetteIndexEntry{Use of `plantuml` with knitr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-resource_files:
-  - graphs/*
+resource_files: graphs/*
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  cache = TRUE
+  cache = FALSE
 )
 ```
 # Register the plantuml knitr engine
 
-The plantuml knitr engine `plantuml_knit_engine()` needs to be registered with knitr. The easiest is to use thew helper function `plantuml_knit_engine_register` in the `setup` code chunk. It is important to load the package `plantuml` before, as some options need to be set.
+The plantuml knitr engine `plantuml_knit_engine()` needs to be registered with knitr. The easiest is to use the helper function `plantuml_knit_engine_register` in the `setup` code chunk. It is important to load the package `plantuml` before, as some options need to be set.
 ```{r setup, include=TRUE}
 library(plantuml)
-plantuml_knit_engine_register()
 ```
 
 
@@ -33,6 +34,7 @@ The following options are available, in addition to the standard options:
 - `plantuml.preview`: if the graph should be shown as an inline preview in the Rmarkdown document in  Rstudio. This option results in generating the image twice, which may lead to a substantial increase of the processing time. The preview is **always** a vector preview, irrespective of the file `plantuml_format`
 
 ## A simple chart as png
+A png grph is nice, because it can be shown in all kinds of documents, including html, pdf and docx. But it is a bitmap format, i.e. when scaling in the grapoh becomes pixelated.
 ```{plantuml diagram_png, eval = TRUE, echo = FALSE, plantuml.format = "png", plantuml.path = "graphs", plantuml.preview = TRUE}
 left to right direction
 actor "Food Critic" as fc
@@ -60,8 +62,16 @@ fc --> UC2
 fc --> UC3
 ```
 
-## A simple chart as svg with code
-```{plantuml diagram_svg, eval = TRUE, plantuml.format = "svg", plantuml.path = "graphs"}
+## A simple chart using format `auto` with code
+When specifying `plantuml.format = "auto"` the apropriate vector format is chosen for the output format:
+
+- pdf output format: `pdf` as plantuml.format
+- html output format: `svg` as plantuml.format
+- docx output format: `pdf` as plantuml.format
+
+Therefore, the optimal vector format is choden for the output format.
+
+```{plantuml diagram_svg, eval = TRUE, plantuml.format = "auto", plantuml.path = "graphs"}
 robust "DNS Resolver" as DNS
 robust "Web Browser" as WB
 concise "Web User" as WU
@@ -89,6 +99,18 @@ DNS is Idle
 
 ## Now only the code
 ```{plantuml code, eval = FALSE, plantuml.format = "png", plantuml.path = "graphs"}
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+```
+
+## And now as ASCII Art
+This does not play nicely with LaTeX and therefore pdf due to unicode characters used. I have no idea at the moment how to make this nicer.
+```{plantuml asciiart, eval = TRUE, plantuml.format = "txt", plantuml.path = "graphs", comment = ""}
 @startuml
 Alice -> Bob: Authentication Request
 Bob --> Alice: Authentication Response

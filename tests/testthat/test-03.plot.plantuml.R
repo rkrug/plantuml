@@ -1,34 +1,54 @@
-# plot.plantuml(..., file = "" ) ----------------------------------------------------
-
-context("03 check plot.plantuml() file = ''")
-
-skip_on_cran()
-skip_on_travis()
-
 test_that(
-  "plot using png to variable",
-  expect_known_value(
-    plot(
-      as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
-      plantuml_opt = "tpng",
-      file = ""
-    ),
-    file = "ref-03.plot.plantuml.png.rda",
-    update = TRUE
+  "plot using defult (svg) without file argument",
+  expect_snapshot(
+    {
+      skip_on_cran()
+      {
+        plot(
+          as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+          file = NULL
+        )
+      }
+    }
   )
 )
 
 test_that(
-  "plot using svg to variable",
-  expect_known_value(
-    plot(
-      as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
-      plantuml_opt = "tsvg",
-      file = ""
-    ),
-    file = "ref-03.plot.plantuml.svg.rda",
-    update = TRUE
-  )
+  "plot using defult file argument",
+  {
+    expect_snapshot(
+      {
+        skip_on_cran()
+        {
+          svg_file <- tempfile(fileext = ".svg")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = svg_file
+          )
+          png_file <- tempfile(fileext = ".png")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = png_file
+          )
+          pdf_file <- tempfile(fileext = ".pdf")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = pdf_file
+          )
+          ps_file <- tempfile(fileext = ".ps")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = ps_file
+          )
+          txt_file <- tempfile(fileext = ".txt")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = txt_file
+          )
+        }
+      }
+    )
+  }
 )
 
 
