@@ -1,12 +1,11 @@
 test_that(
-  "plot using png",
+  "plot using defult (svg) without file argument",
   expect_snapshot(
     {
       skip_on_cran()
       {
         plot(
           as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
-          formatt = "png",
           file = NULL
         )
       }
@@ -15,16 +14,36 @@ test_that(
 )
 
 test_that(
-  "plot using svge",
+  "plot using defult file argument",
   {
     expect_snapshot(
       {
         skip_on_cran()
         {
+          svg_file <- tempfile(fileext = ".svg")
           plot(
             as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
-            format = "svg",
-            file = NULL
+            file = svg_file
+          )
+          png_file <- tempfile(fileext = ".png")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = png_file
+          )
+          pdf_file <- tempfile(fileext = ".pdf")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = pdf_file
+          )
+          ps_file <- tempfile(fileext = ".ps")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = ps_file
+          )
+          txt_file <- tempfile(fileext = ".txt")
+          plot(
+            as.plantuml( x = list( a = 1L:10L, b = NA, c = LETTERS[1:10] ) ),
+            file = txt_file
           )
         }
       }

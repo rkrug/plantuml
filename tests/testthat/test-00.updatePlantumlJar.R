@@ -3,7 +3,7 @@ test_that(
   {
     expect_snapshot(
       {
-        plantuml_run("")
+        plantuml_run()
       }
     )
   }
