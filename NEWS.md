@@ -1,3 +1,9 @@
+# plantuml 0.6
+Major re-factoring and change of functionality
+This release uses the local in plantuml integrated PicoWeb server to generate the graph. All graphs are generated as svg files and converted to the target format. This change makes the structure much easier.
+
+Some other follow up changes which I unfortunately do not remember were also included.
+
 # plantuml 0.5 dev branch
 
 ## Major and Breaking changes

@@ -24,9 +24,9 @@ plantuml_update <- function(
   ...
 ) {
   url <- ifelse(
-    beta,
-    "http://beta.plantuml.net/plantuml.jar",
-    "https://sourceforge.net/projects/plantuml/files/latest/download"
+    tag == "snapshot",
+    "https://github.com/plantuml/plantuml/releases/download/snapshot/plantuml-SNAPSHOT.jar",
+    "https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar"
   )
   ##
   dir.create(
