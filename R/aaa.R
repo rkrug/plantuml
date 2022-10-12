@@ -10,10 +10,10 @@
     server_port = 8765
   )
   plantuml_knit_engine_register()
-  server_start()
-  si <- server_info()
-  msg <- paste(names(si), ": ", unlist(si), collapse = "\n")
+  # server_start()
+  # si <- server_info()
+  # msg <- paste(names(si), ": ", unlist(si), collapse = "\n")
   packageStartupMessage(utils::str(si))
-  packageStartupMessage(" You have to stop the server manually by calling `server_stop()` before quitting R!\n")
+  packageStartupMessage(" You have to start the server manually by calling `server_start()` before using the package R!\n")
 }
 
