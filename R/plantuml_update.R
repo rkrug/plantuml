@@ -23,11 +23,10 @@ plantuml_update <- function(
   tag = "release",
   ...
 ) {
-  url <- switch(
-    tag,
-    snapshot = "https://github.com/plantuml/plantuml/releases/tag/snapshot",
-    release = "https://sourceforge.net/projects/plantuml/files/plantuml.jar/download",
-    stop("Unsopported release tag!")
+  url <- ifelse(
+    tag == "snapshot",
+    "https://github.com/plantuml/plantuml/releases/download/snapshot/plantuml-SNAPSHOT.jar",
+    "https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar"
   )
   ##
   dir.create(
