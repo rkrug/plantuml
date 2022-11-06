@@ -17,8 +17,7 @@ server_status <- function(
   fn <- tempfile()
   response <- -999
 
-  url <- paste0(getPlantumlOption("server_url"), ":", getPlantumlOption("server_port"))
-  url <- gsub("/:", ":", url)
+  url <- plantuml_URL(NULL)
 
 
 # Check if reachable ------------------------------------------------------

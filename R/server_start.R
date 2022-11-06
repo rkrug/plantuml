@@ -16,11 +16,12 @@ server_start <- function(
 ){
 
   old_server <- plantumlOptions(server_url = "http://localhost")
+  plantumlOptions(server_port = "8765")
   result <- -999
   on.exit(
     {
       if (is.numeric(result) && result == -999)
-        plantumlOptions(server_url = old_server$server_url)
+        plantumlOptions(server_url = old_server)
     }
   )
 

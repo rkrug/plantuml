@@ -13,14 +13,18 @@ plantuml_URL(
 )
 }
 \arguments{
-\item{plantuml}{The plantuml code}
+\item{plantuml}{The plantuml code.
+If \code{NULL}, only the base URL consisting of server and (if specified) port will be returned.}
 
-\item{server_url}{The base url of the server. Should end with a single \code{/}}
+\item{server_url}{The base url of the server. Should end with a single \code{/}
+If \code{NULL}, encoding, including the ttpe, will be returned.}
 
 \item{server_port}{port on which the plantuml server is}
 
 \item{type}{the type of the returned figure. At the moment supported:
-\code{png}, \code{svg} \code{txt}, or \code{map}. See \url{https://plantuml.com/server} for further details.}
+\code{png}, \code{svg} \code{txt}, or \code{map}. See \url{https://plantuml.com/server} for further details.
+If \code{NULL}, encoding, excluding the tytpe, will be returned.
+\strong{The return value is invalid if \code{server_url} is given!}}
 
 \item{open_in_browser}{if TRUE, the result will be opened in the browser.}
 }

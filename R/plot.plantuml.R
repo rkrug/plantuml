@@ -48,13 +48,16 @@ plot.plantuml <- function(
   result <- get_graph(
     x = x,
     file = file,
+    width = width,
+    height = height,
+    css = css
   )
 
   pos <- regexpr("\\.([[:alnum:]]+)$", result)
   type <- ifelse( pos > -1L, substring(result, pos + 1L), "")
 
   if (type == "svg"){
-    bmp <- grDevices::as.raster(rsvg::rsvg(result, width = width, height = height))
+    bmp <- grDevices::as.raster(rsvg::rsvg(result, width = width, height = height, css = css))
     xrange <- c(0, ncol(bmp))
     yrange <- c(0, nrow(bmp))
 
@@ -95,7 +98,7 @@ plot.plantuml <- function(
     )
   } else {
     warning(
-      "The grapg has only been saved to ", file, ".\n",
+      "The grap has only been saved to ", file, ".\n",
       "When 'file' is specified, needs to be 'svg' or 'png' to be able to be plotted!"
     )
   }

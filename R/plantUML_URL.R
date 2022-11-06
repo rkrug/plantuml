@@ -95,11 +95,15 @@ encode6bit <- function(
 
 #' Generate PlantUML Server URL
 #'
-#' @param plantuml The plantuml code
+#' @param plantuml The plantuml code.
+#'   If `NULL`, only the base URL consisting of server and (if specified) port will be returned.
 #' @param server_url The base url of the server. Should end with a single `/`
+#'   If `NULL`, encoding, including the ttpe, will be returned.
 #' @param server_port port on which the plantuml server is
 #' @param type the type of the returned figure. At the moment supported:
 #'   `png`, `svg` `txt`, or `map`. See [https://plantuml.com/server](https://plantuml.com/server) for further details.
+#'   If `NULL`, encoding, excluding the tytpe, will be returned.
+#'   **The return value is invalid if `server_url` is given!**
 #' @param open_in_browser if TRUE, the result will be opened in the browser.
 #'
 #' @return complete url to retrieve the graph.
@@ -117,16 +121,28 @@ plantuml_URL <- function(
   type = "svg",
   open_in_browser = FALSE
 ){
-  server_url <- gsub("/$", "", server_url)
-  server_url <- paste0(server_url, ":", server_port, "/")
+  if (!is.null(server_url)){
+    server_url <- gsub("/$", "", server_url)
+    if (!is.null(server_port)){
+      url <- paste0(server_url, ":", server_port, "/")
+    } else {
+      url <- paste0(server_url, "/")
+    }
+  } else {
+    url <- ""
+  }
 
-  server_url <- paste0(server_url, type, "/")
+  if (!is.null(plantuml)) {
+    if (!is.null(type)){
+      url <- paste0(url, type, "/")
+    }
+    comp <- memCompress(charToRaw(plantuml), "gzip")
+    enc <- paste0("~1", encode64(comp))
+    #
+    url <- paste0(url, enc)
+    #
+  }
 
-  comp <- memCompress(charToRaw(plantuml), "gzip")
-  enc <- paste0("~1", encode64(comp))
-  #
-  url <- paste0(server_url, enc)
-  #
   if (open_in_browser){
     utils::browseURL(url)
   }

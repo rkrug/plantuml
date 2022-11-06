@@ -69,19 +69,6 @@ plantuml_run <- function(
     "\""
   )
 
-  if (wait == FALSE){
-    pids <- system2(
-      command = "jps",
-      args = "-l",
-      stdout = TRUE
-    )
-    pids <- grep("plantuml", pids, value = TRUE)
-    pids <- sapply(strsplit(pids, " "), "[[", 1)
-    if (length(pids) == 0) {
-      pids <- -99999
-    }
-  }
-
   result <- system2(
     command = java_bin,
     args = paste(java_opt, cmd, plantuml_opt),
@@ -92,15 +79,5 @@ plantuml_run <- function(
     wait = wait
   )
 
-  if (wait == FALSE){
-    pid <- system2(
-      command = "jps",
-      args = "-l",
-      stdout = TRUE
-    )
-    pid <- grep("plantuml", pid, value = TRUE)
-    pid <- sapply(strsplit(pid, " "), "[[", 1)
-    pid <- result[!(pid %in% pids)]
-  }
   return(result)
 }

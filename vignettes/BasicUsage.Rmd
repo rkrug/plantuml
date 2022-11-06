@@ -48,11 +48,58 @@ x <- plantuml(
 )
 ```
 
-## Plot via vector format
+## Plotplantuml Object
 Now we plot in in a device using vector format (svg) as intermediate format, which is the default
 
 ```{r exampleDeviceVector}
 plot(
   x = x
 )
+```
+
+## Usage of the local server
+The default server used is the offocial plantuml web server at [http://www.plantuml.com/plantuml/](http://www.plantuml.com/plantuml/). If yo weant to cretae the graphas locally, you have to 
+
+1. Make sure that the plantuml file has been installed
+2. set the plantuml options to point to the local plantuml picoweb server
+3. start the plantuml picoweb server
+4. create the graphs, and
+5. when done, stop the server.
+
+
+I will demonstrate this in a small example:
+
+```{r local, eval = TRUE, echo = TRUE}
+# 1. Make sure that the plantuml file has been installed. 
+# The easiest is to use the supplied command
+
+plantuml_update()
+
+# 2. set the plantuml options to point to the local plantuml picoweb server
+
+server_set("local")
+
+# 3. start the plantuml picoweb server
+
+server_start()
+```
+
+Now the following graph is created locally
+
+```{r plotlocal, eval = TRUE, echo = TRUE}
+plot(
+  x = x
+)
+```
+
+Finally, you should stop the server:
+
+```{r stopserver, eval = TRUE, echo = TRUE}
+server_stop()
+```
+
+To reset the plantuml options to use the default web server, do
+
+```{r resetserver, eval = TRUE, echo = TRUE}
+server_set("remote")
 ```
