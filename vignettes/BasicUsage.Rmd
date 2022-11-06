@@ -69,7 +69,7 @@ The default server used is the offocial plantuml web server at [http://www.plant
 
 I will demonstrate this in a small example:
 
-```{r local, eval = TRUE, echo = TRUE}
+```{r local, eval = FALSE, echo = TRUE}
 # 1. Make sure that the plantuml file has been installed. 
 # The easiest is to use the supplied command
 
@@ -86,7 +86,7 @@ server_start()
 
 Now the following graph is created locally
 
-```{r plotlocal, eval = TRUE, echo = TRUE}
+```{r plotlocal, eval = FALSE, echo = TRUE}
 plot(
   x = x
 )
@@ -94,12 +94,12 @@ plot(
 
 Finally, you should stop the server:
 
-```{r stopserver, eval = TRUE, echo = TRUE}
+```{r stopserver, eval = FALSE, echo = TRUE}
 server_stop()
 ```
 
 To reset the plantuml options to use the default web server, do
 
-```{r resetserver, eval = TRUE, echo = TRUE}
+```{r resetserver, eval = FALSE, echo = TRUE}
 server_set("remote")
 ```
