@@ -64,6 +64,9 @@
     <loc>/reference/as.plantuml.vma.html</loc>
   </url>
   <url>
+    <loc>/reference/get_graph.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -74,6 +77,9 @@
   </url>
   <url>
     <loc>/reference/plantuml.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plantuml_URL.html</loc>
   </url>
   <url>
     <loc>/reference/plantuml_knit_engine.html</loc>
@@ -89,6 +95,21 @@
   </url>
   <url>
     <loc>/reference/plot.plantuml.html</loc>
+  </url>
+  <url>
+    <loc>/reference/server_info.html</loc>
+  </url>
+  <url>
+    <loc>/reference/server_set.html</loc>
+  </url>
+  <url>
+    <loc>/reference/server_start.html</loc>
+  </url>
+  <url>
+    <loc>/reference/server_status.html</loc>
+  </url>
+  <url>
+    <loc>/reference/server_stop.html</loc>
   </url>
   <url>
     <loc>/reference/updatePlantumlJar.html</loc>
