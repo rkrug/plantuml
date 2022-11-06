@@ -1,9 +1,6 @@
 library(testthat)
+library(vdiffr)
 
 library(plantuml)
 
-server_stop()
-
 test_check("plantuml")
-
-server_stop()

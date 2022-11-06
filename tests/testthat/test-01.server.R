@@ -1,10 +1,9 @@
 test_that(
-  "Server is running after loading of the package",
+  "Server is not starting when server_url != \"localhost\"",
   {
-    expect_snapshot(
+    expect_snapshot_error(
       {
-        server_status()
-        server_info()
+        server_start()
       }
     )
   }
@@ -15,9 +14,25 @@ test_that(
   {
     expect_snapshot(
       {
-        server_start()
-        server_status()
-        server_info()
+        server_set("local")
+        #
+        s <- server_start()
+        s$version <- "NA"
+        s
+        #
+        s <- server_status()
+        s$version <- "NA"
+        s
+        #
+        s <- server_start()
+        s$version <- "NA"
+        s
+        #
+        s <- server_info()
+        s$version <- "NA"
+        s
+        #
+        server_set("remote")
       }
     )
   }
@@ -28,11 +43,23 @@ test_that(
   {
     expect_snapshot(
       {
-        server_stop()
+        server_set("local")
+        #
+        s <- server_stop()
+        s$version <- "NA"
+        s
         Sys.sleep(2)
-        server_status()
-        server_info()
-        server_start()
+        s <- server_status()
+        s$version <- "NA"
+        s
+        s <- server_info()
+        s$version <- "NA"
+        s
+        s <- server_start()
+        s$version <- "NA"
+        s
+        #
+        server_set("remote")
       }
     )
   }

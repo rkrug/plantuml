@@ -15,7 +15,7 @@ Other locations need to be set manually by setting the options directly.
 }}
 }
 \value{
-old values of plantuml options
+invisibly the old values of plantuml options
 }
 \description{
 Set parameter of the plantuml server addrss to the default valus

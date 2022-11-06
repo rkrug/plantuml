@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/rkrug/plantuml",
   "issueTracker": "https://github.com/rkrug/plantuml/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6",
+  "version": "0.6.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -68,6 +68,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=covr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "vdiffr",
+      "name": "vdiffr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=vdiffr"
     },
     {
       "@type": "SoftwareApplication",
@@ -147,7 +159,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "239.155KB",
+  "fileSize": "367.686KB",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://github.com/rkrug/plantuml/actions", "https://codecov.io/github/rkrug/plantuml?branch=master"],
