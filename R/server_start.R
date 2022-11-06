@@ -20,12 +20,6 @@ server_start <- function(
   }
   plantumlOptions(server_port = "8765")
   result <- -999
-  on.exit(
-    {
-      if (is.numeric(result) && result == -999)
-        plantumlOptions(server_url = old_server)
-    }
-  )
 
   # Checks ------------------------------------------------------------------
 

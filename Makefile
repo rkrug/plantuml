@@ -20,8 +20,6 @@ TMP1  = $(VIGRMD:.Rmd=.html)
 VIGHTML = ${subst $(VIGDIR),$(VIGHTMLDIR),$(TMP1)}
 VIGHTMLOUT = ${subst $(VIGDIR),$(OUTDIR),$(TMP1)}
 
-EXAMPLEXML = $(wildcard $(INSTDIR)/dmdScheme_example.xml)
-
 RMD = $(wildcard $(SRCDIR)/*.Rmd)
 TMP2  = $(RMD:.Rmd=.html)
 HTML = ${subst $(SRCDIR),$(OUTDIR),$(TMP2)}
@@ -30,19 +28,9 @@ READMERMD = Readme.Rmd
 READMEMD = Readme.md
 READMEHTML = Readme.html
 
-SCHEMEMAKE = library(dmdScheme); \
-	setwd('SCHEME_PACKAGE'); \
-	scheme_make( \
-		schemeDefinition = 'dmdScheme.xlsx', \
-		examples = list.dirs('examples/', recursive = FALSE), \
-		install_R_package = 'install_R_package.R', \
-		path = '.', \
-		overwrite = TRUE \
-	)
-
 #############
 
-all: check #clean_web web clean_check
+all: check clean_web web clean_check
 
 ####
 
