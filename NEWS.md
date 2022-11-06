@@ -1,3 +1,13 @@
+# plantunl 0.6.5
+Apologies for a disastrous last release!
+
+- The default is now to use the plantuml web server. 
+- A local server can be started and stopped from within R
+- `svg` is the format for the graph returned from plantuml and the svg is converted to the other
+  graphic formats (png, pdf, ps)
+- an ASCII art can be produced using `txt`
+
+
 # plantuml 0.6
 Major re-factoring and change of functionality
 This release uses the local in plantuml integrated PicoWeb server to generate the graph. All graphs are generated as svg files and converted to the target format. This change makes the structure much easier.

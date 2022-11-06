@@ -1,8 +1,8 @@
 Package: plantuml
 Type: Package
 Title: Create UML Graphs using PlantUML Syntax
-Version: 0.6
-Date: 2022-09-16
+Version: 0.6.5
+Date: 2022-11-06
 Authors@R: 
     c(person(given = "Rainer M.",
              family = "Krug",
@@ -30,6 +30,7 @@ Suggests:
     knitr,
     rmarkdown,
     covr,
+    vdiffr,
     testthat
 VignetteBuilder: knitr
 Config/testthat/edition: 3

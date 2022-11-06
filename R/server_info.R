@@ -25,9 +25,7 @@ server_info <- function(
     return(result)
   }
 
-  url <- paste0(getPlantumlOption("server_url"), ":", getPlantumlOption("server_port"), "/serverinfo")
-  url <- gsub("/:", ":", url)
-  url <- gsub("//serverinfo", "/serverinfo", url)
+  url <- paste0(plantuml_URL(NULL), "serverinfo")
 
   try(
     {

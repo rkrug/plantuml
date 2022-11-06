@@ -28,24 +28,20 @@ This package provides the functionality to create UML graphs using the [PlantUML
 # Installation
 
 ## Prerequisites
-The actual work is done by the program [plantuml](https://plantuml.com/). Please see [the plantuml installation page](https://plantuml.com/faq-install) for prerequisites of running plantuml. You don't have tio install the plantuml.jar file, as the packagae maintains it's own version (see below).
-
-As the package is only on github, you need `devtools` to install it easily as a prerequisite
-
-```{r installation_prerequisites, eval = FALSE}
-install.packages("devtools")
-```
+The actual work is done by the program [plantuml](https://plantuml.com/). Please see [the plantuml installation page](https://plantuml.com/faq-install) for prerequisites of running plantuml. 
 
 ## Installation of plantuml
-The package is not on CRAN, so you have to install it from github. Also, it doez not come with the plantuml binary, which needs to be installed as well:
-```{r installation_plantuml, eval = FALSE}
-# Install plantuml from github
-devtools::install_github("rkrug/plantuml")
+The package is not on CRAN, but it is in the [R-Universe](https://rkrug.r-universe.dev/ui#package:plantuml). The original installation instructions can be found there, but are here reproduced fdor simplicity:
 
-# download and install the PlantUML jar file from \link{https://plantuml.com/download}
-# whenever you call this command again, the plantuml binary will be updated to the newest version
-library(plantuml)
-plantuml_update()
+```{r installation_plantuml, eval = FALSE}
+# Enable repository from rkrug
+options(repos = c(
+  rkrug = 'https://rkrug.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'))
+# Download and install plantuml in R
+install.packages('plantuml')
+# Browse the plantuml manual pages
+help(package = 'plantuml')
 ```
 
 # Plotting Plantuml graphics
@@ -70,55 +66,27 @@ x <- plantuml(
 )
 ```
 
-## Plot via vector format
-Now we plot in in a device using vector format (svg) as intermediate format, which is the default
-
-```{r exampleDeviceVector}
-plot( 
-  x = x
-# vector = TRUE
-  )
-```
-
-## Plot via raster format
-When using `vector = FALSE` uses a raster format (png) as intermediate format
-
-```{r exampleDeviceRaster}
-plot( 
-  x = x,
-  vector = FALSE
-  )
-```
-
-
 ## Plotting to a file
 To save the graph in a file, we simply specify the `file` argument in the plot command:
-```{r exampleFile}
+```{r exampleFile, eval = FALSE}
 plot( 
   x, 
-  file = "./README_files/test.svg" 
+  file = "./vignettes/test.svg" 
 )
 ```
 
 And here is the file
 
-![README_files/test.svg](./README_files/test.svg)
+![vignettes/test.svg](./vignettes/test.svg)
 
-The type of the file is automatically determined based on the extension. Suported extensions in plantuml are:
+The type of the file is automatically determined based on the extension. Plantuml retturns an svg file, wi=hich is than converted using Suported extensions in plantuml are:
 
-    - png		To generate images using PNG format (default)
-    - svg		To generate images using SVG format
-    - eps		To generate images using EPS format
-    - pdf		To generate images using PDF format
-    - vdx		To generate images using VDX format
-    - xmi		To generate XMI file for class diagram
-    - scxml		To generate SCXML file for state diagram
-    - html		To generate HTML file for class diagram
+    - svg	  To generate images in SVG format
+    - png	  To generate images in PNG format
+    - pdf		To generate images in PDF format
+    - ps		To generate images in PS format
     - txt		To generate images with ASCII art
-    - utxt		To generate images with ASCII art using Unicode characters
-    - latex		To generate images using LaTeX/Tikz format
-    - latex:nopreamble	To generate images using LaTeX/Tikz format without preamble
-   
+
 # Plotting R objects
 
 In addition to plotting based on plantuml code some basic functionality to document R objects has been included. 

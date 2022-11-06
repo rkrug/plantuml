@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 ```
 # Register the plantuml knitr engine
 
-The plantuml knitr engine `plantuml_knit_engine()` needs to be registered with knitr. The easiest is to use the helper function `plantuml_knit_engine_register` in the `setup` code chunk. It is important to load the package `plantuml` before, as some options need to be set.
+The plantuml knitr engine `plantuml_knit_engine()` needs to be registered with knitr. This is done automatically when loading the package `plantuml`. 
 ```{r setup, include=TRUE}
 library(plantuml)
 ```
@@ -29,6 +29,7 @@ library(plantuml)
 ## PlantUML Code Chunk Options
 
 The following options are available, in addition to the standard options:
+
 - `plantuml_format`: the format of the resulting file. At the moment, `png` (the default), `svg`, and `eps` are implemented.
 - `plantuml.path`: the path at which the resulting graphs should be saved. If the directory does not exist, it will be created.
 - `plantuml.preview`: if the graph should be shown as an inline preview in the Rmarkdown document in  Rstudio. This option results in generating the image twice, which may lead to a substantial increase of the processing time. The preview is **always** a vector preview, irrespective of the file `plantuml_format`
@@ -49,6 +50,7 @@ fc --> UC3
 ```
 
 ## A simple chart as png and with code
+To also show the plantuml code, you have to set `echo = TRUE`:
 ```{plantuml diagram_png_code, eval = TRUE, echo = TRUE, plantuml.format = "png", plantuml.path = "graphs"}
 left to right direction
 actor "Food Critic" as fc
@@ -65,11 +67,11 @@ fc --> UC3
 ## A simple chart using format `auto` with code
 When specifying `plantuml.format = "auto"` the apropriate vector format is chosen for the output format:
 
-- pdf output format: `pdf` as plantuml.format
-- html output format: `svg` as plantuml.format
-- docx output format: `pdf` as plantuml.format
+- pdf output format: `pdf` as `plantuml.format`
+- html output format: `svg` `as plantuml.format`
+- docx output format: `pdf` `as plantuml.format`
 
-Therefore, the optimal vector format is choden for the output format.
+Therefore, the vector format appropritw for the output format is is chosen for the output format.
 
 ```{plantuml diagram_svg, eval = TRUE, plantuml.format = "auto", plantuml.path = "graphs"}
 robust "DNS Resolver" as DNS

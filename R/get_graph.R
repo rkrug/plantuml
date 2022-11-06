@@ -81,6 +81,8 @@ get_graph <- function(
 
   url <- plantuml_URL(
     plantuml = x,
+    server_url = getPlantumlOption("server_url"),
+    server_port = getPlantumlOption("server_port"),
     type = tmptype
   )
 
