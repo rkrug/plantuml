@@ -1,3 +1,4 @@
+
 test_that(
   "Server is not starting when server_url != \"localhost\"",
   {
