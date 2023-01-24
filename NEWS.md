@@ -1,4 +1,7 @@
-# plantunl 0.6.5
+#plantuml 0.6.6
+- re-enabled plotting ad server control
+
+# plantuml 0.6.5
 Apologies for a disastrous last release!
 
 - The default is now to use the plantuml web server. 

@@ -7,13 +7,13 @@
   "codeRepository": "https://github.com/rkrug/plantuml",
   "issueTracker": "https://github.com/rkrug/plantuml/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "runtimePlatform": "R version 4.2.2 (2022-10-31)",
   "author": [
     {
       "@type": "Person",
@@ -159,7 +159,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "404.518KB",
+  "fileSize": "404.576KB",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://github.com/rkrug/plantuml/actions", "https://codecov.io/github/rkrug/plantuml?branch=master"],
