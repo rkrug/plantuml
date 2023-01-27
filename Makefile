@@ -102,10 +102,10 @@ metadata:
 
 ####
 
-docs:
-	Rscript -e "codemetar::write_codemeta()"
+doc:
 	Rscript -e "devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))"
-	Rscript -e "pkgdown::build_site()"
+
+docs: metadata doc web
 
 ####
 build: build-cran

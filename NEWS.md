@@ -1,4 +1,9 @@
-# plantunl 0.6.5
+#plantuml 0.6.6
+- re-enabled plotting ad server control
+- set `plantuml.format` for knitting to `auto` as default (solves Issue #16)
+
+
+# plantuml 0.6.5
 Apologies for a disastrous last release!
 
 - The default is now to use the plantuml web server. 
