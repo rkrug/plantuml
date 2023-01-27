@@ -8,6 +8,18 @@
 #     )
 #   }
 # )
+unlink(getPlantumlOption("jar_name"))
+
+test_that(
+  "plantuml jar does not exist",
+  {
+    expect_snapshot(
+      {
+        file.exists(getPlantumlOption("jar_name"))
+      }
+    )
+  }
+)
 
 test_that(
   "plantuml_update(beta = TRUE)",
@@ -21,6 +33,19 @@ test_that(
 )
 
 test_that(
+  "plantuml jar exists",
+  {
+    expect_snapshot(
+      {
+        file.exists(getPlantumlOption("jar_name"))
+      }
+    )
+  }
+)
+
+unlink(getPlantumlOption("jar_name"))
+
+test_that(
   "plantuml_update(beta = FALSE)",
   {
     expect_snapshot(
@@ -30,3 +55,15 @@ test_that(
     )
   }
 )
+
+test_that(
+  "plantuml jar exists",
+  {
+    expect_snapshot(
+      {
+        file.exists(getPlantumlOption("jar_name"))
+      }
+    )
+  }
+)
+
