@@ -4,9 +4,10 @@ plantuml.format: the format of the generated image.
 For formats which return images, these will be inserted,
 formats resulting in text qill be included as text.
 At the moment, the following are supported:
-png	To generate image using PNG format (default).
-svg	To generate image using SVG format.
-eps	To generate text in EPS format; or generates an image when
+auto (default) uses svg if output is html and pdf if output is pdf
+png	 To generate image using PNG format (default).
+svg	 To generate image using SVG format.
+eps	 To generate text in EPS format; or generates an image when
 outputting LaTeX rather than HTML formats.
 
 plantuml.path: the path where the resulting files will be saved.
@@ -32,7 +33,7 @@ Attention: the processing takse twice as long as without this option!.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plantuml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.6</span>
       </span>
     </div>
 
@@ -80,9 +81,10 @@ Attention: the processing takse twice as long as without this option!.
     <p>This function provides a knit engine for the plantuml. It has the following additional functions:</p><ul><li><p><strong>plantuml.format</strong>: the format of the generated image.
 For formats which return images, these will be inserted,
 formats resulting in text qill be included as text.
-At the moment, the following are supported:</p><ul><li><p><strong>png</strong>	To generate image using PNG format (default).</p></li>
-<li><p><strong>svg</strong>	To generate image using SVG format.</p></li>
-<li><p><strong>eps</strong>	To generate text in EPS format; or generates an image when
+At the moment, the following are supported:</p><ul><li><p><strong>auto</strong> (default) uses <code>svg</code> if output is <code>html</code> and <code>pdf</code> if output is <code>pdf</code></p></li>
+<li><p><strong>png</strong>	 To generate image using PNG format (default).</p></li>
+<li><p><strong>svg</strong>	 To generate image using SVG format.</p></li>
+<li><p><strong>eps</strong>	 To generate text in EPS format; or generates an image when
 outputting LaTeX rather than HTML formats.</p></li>
 </ul></li>
 <li><p><strong>plantuml.path</strong>: the path where the resulting files will be saved.
@@ -135,7 +137,7 @@ See <code>knit_engines</code> in the knitr packages for details</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
