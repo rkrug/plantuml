@@ -1,4 +1,8 @@
-#plantuml 0.6.6
+# plantuml 0.6.7
+- add functionality to plot yml, jsonlite files including values and 
+functionality to read csv and rds files to plot structure of contained objects. The functionality can be used via the function `plantuml_file(file, ...)`
+
+# plantuml 0.6.6
 - re-enabled plotting ad server control
 - set `plantuml.format` for knitting to `auto` as default (solves Issue #16)
 

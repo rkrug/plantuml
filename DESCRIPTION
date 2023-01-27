@@ -1,7 +1,7 @@
 Package: plantuml
 Type: Package
 Title: Create UML Graphs using PlantUML Syntax
-Version: 0.6.6
+Version: 0.6.7
 Date: 2022-11-06
 Authors@R: 
     c(person(given = "Rainer M.",
@@ -22,7 +22,6 @@ Imports:
   tools,
   rsvg,
   grDevices,
-  png,
   graphics,
   jsonlite
 RoxygenNote: 7.2.3
