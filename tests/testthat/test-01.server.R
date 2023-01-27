@@ -2,6 +2,17 @@
 server_stop()
 
 test_that(
+  "Server ststus before tests",
+  {
+    expect_snapshot(
+      {
+        server_status()
+      }
+    )
+  }
+)
+
+test_that(
   "Server is not starting when server_url != \"localhost\"",
   {
     expect_snapshot_error(
