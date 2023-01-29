@@ -7,6 +7,10 @@
 #'    - `.json`: the json file is graphed
 #'    - `.rds` : the file is loaded and the object contained is graphed
 #'    - `.csv` : the csv is loaded and graphed
+#' @param preamble **Only used for yaml and json files.** Text to be inserted
+#'   after the `@startyaml` and before the actual yaml. For example style and
+#'   highlight info. See [https://plantuml.com/yaml](https://plantuml.com/yaml)
+#'   for further info.
 #'
 #' @return
 #'
@@ -24,6 +28,7 @@
 #' }
 plantuml_file <- function(
   file,
+  preamble = "",
   ...
 ){
   if (!file.exists(file)){
@@ -35,9 +40,9 @@ plantuml_file <- function(
 
   result <- switch(
     ext,
-    "yml"  = plantuml_yaml(file = file, ...),
-    "yaml" = plantuml_yaml(file = file, ...),
-    "json" = plantuml_json(file = file, ...),
+    "yml"  = plantuml_yaml(file = file, preamble = preamble, ...),
+    "yaml" = plantuml_yaml(file = file, preamble = preamble, ...),
+    "json" = plantuml_json(file = file, preamble = preamble, ...),
     "csv"  = plantuml_csv(file = file, ...),
     "rds"  = plantuml_rds(file = file, ...),
     stop("Unsupported extension!", "See the help for a list of supported extensions.")
@@ -48,9 +53,15 @@ plantuml_file <- function(
 
 #' Convert yaml file to uml graph
 #'
+#' Exactly one of the two arguments (`file` or `text`) needs tobe specified.
 #' @param file file name of the yaml file. The function does **not** do any
 #'   checking if the file is a yaml file!
+#' @param text yaml text to be converted. The function does **not** do any
+#'   checking if the file is valid yaml!
 #' @param ... additional arguments. Will be passed to `readLines()`
+#' @param preamble text to be inserted after the `@startyaml` and before the
+#'   actual yaml. For example style and highlight info. See
+#'   [https://plantuml.com/yaml](https://plantuml.com/yaml) for further info.
 #'
 #' @return a `plantuml` containing the yaml file for plotting
 #'
@@ -60,28 +71,59 @@ plantuml_file <- function(
 #'
 #' @examples
 #' ## some preparations
-#' x <- "name: Test yml\na:\n- a\n- b\n- c\nB:\n- C\n- D\n- E\nx:\n- 0.2486851\n- 0.7498182\n"
-#' fn <- tempfile(fileext = ".yml")
-#' writeLines(x, fn)
+#' x1 <- "name: Test yml\na:\n- a\n- d\n- c\nB:\n- C\n- D\n- E\nx:\n  one: 0.2486851\n  two: 0.7498182\n"
+#' x2 <- "name: Test yml\na:\n- a\n- b\n- c\nB:\n- C\n- D\n- E\nx:\n  one: 0.2486651\n  two: 0.7498182\n"
+#' fn1 <- tempfile(fileext = ".yml")
+#' fn2 <- tempfile(fileext = ".yml")
+#' writeLines(x1, fn1)
+#' writeLines(x2, fn2)
 #'
 #' ## and now the example
 #'
-#' plot(plantuml_yaml(fn))
+#' plot(plantuml_yaml(fn1))
 #'
-#' ## and cleanupo
-#' unlink(fn)
+#' ## Now let's see the differences between `fn1` and `fn2`
+#' ## this requires the package `yaml` to be installed
+#'
+#' if (require(yaml)) {
+#'   plot(
+#'     plantuml_yaml(
+#'       file = fn1,
+#'       preamble = diff_yaml_json(yaml::read_yaml(fn1), yaml::read_yaml(fn2))
+#'    )
+#'   )
+#' }
+#'
+#' ## and cleanup
+#'
+#' unlink(fn1)
+#' unlink(fn2)
 #'
 plantuml_yaml <- function(
     file,
+    text,
+    preamble = "",
     ...
 ){
-  if (!file.exists(file)){
-    stop("yaml file does not exist!")
+  if (!missing(file) & !missing(text)){
+    stop("Either `file` or `text` must be specified - not both!")
+  }
+
+  if (missing(text)) {
+    if (!file.exists(file)){
+      stop("yaml file does not exist!")
+    }
+    text <- readLines(file, ...)
+  }
+
+  if (is.null(preamble)){
+    preamble <- ""
   }
 
   code <- c(
     "@startyaml",
-    readLines(file, ...),
+    preamble,
+    text,
     "@endyaml"
   )
   code <- paste(code, collapse = "\n")
@@ -91,8 +133,14 @@ plantuml_yaml <- function(
 
 #' Convert json file to uml graph
 #'
+#' Exactly one of the two arguments (`file` or `text`) needs tobe specified.
 #' @param file file name of the json file. The function does **not** do any
 #'   checking if the file is a json file!
+#' @param file json text to be converted. The function does **not** do any
+#'   checking if the file is valid json!
+#' @param preamble text to be inserted after the `@startyaml` and before the
+#'   actual yaml. For example style and highlight info. See
+#'   [https://plantuml.com/yaml](https://plantuml.com/yaml) for further info.
 #' @param ... additional arguments. Will be passed to `readLines()`
 #'
 #' @return a `plantuml` containing the json file for plotting
@@ -117,15 +165,25 @@ plantuml_yaml <- function(
 #'
 plantuml_json <- function(
     file,
+    text,
+    preamble = "",
     ...
 ){
-  if (!file.exists(file)){
-    stop("json file does not exist!")
+  if (!missing(file) & !missing(text)){
+    stop("Either `file` or `text` must be specified - not both!")
   }
+
+  if (missing(text)) {
+    if (!file.exists(file)){
+      stop("Json file does not exist!")
+    }
+    text <- readLines(file, ...)
+  }
+
 
   code <- c(
     "@startjson",
-    readLines(file, ...),
+    text,
     "@endjson"
   )
   code <- paste(code, collapse = "\n")

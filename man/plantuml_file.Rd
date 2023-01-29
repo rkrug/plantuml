@@ -4,7 +4,7 @@
 \alias{plantuml_file}
 \title{Convert file to plantuml code}
 \usage{
-plantuml_file(file, ...)
+plantuml_file(file, preamble = "", ...)
 }
 \arguments{
 \item{file}{file name. At the moment the following files are supported:
@@ -14,6 +14,11 @@ plantuml_file(file, ...)
 \item \code{.rds} : the file is loaded and the object contained is graphed
 \item \code{.csv} : the csv is loaded and graphed
 }}
+
+\item{preamble}{\strong{Only used for yaml and json files.} Text to be inserted
+after the \verb{@startyaml} and before the actual yaml. For example style and
+highlight info. See \url{https://plantuml.com/yaml}
+for further info.}
 }
 \description{
 The function either plots the object including values (\code{yaml} and \code{json}) or

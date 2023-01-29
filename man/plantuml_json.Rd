@@ -4,11 +4,15 @@
 \alias{plantuml_json}
 \title{Convert json file to uml graph}
 \usage{
-plantuml_json(file, ...)
+plantuml_json(file, text, preamble = "", ...)
 }
 \arguments{
-\item{file}{file name of the json file. The function does \strong{not} do any
-checking if the file is a json file!}
+\item{file}{json text to be converted. The function does \strong{not} do any
+checking if the file is valid json!}
+
+\item{preamble}{text to be inserted after the \verb{@startyaml} and before the
+actual yaml. For example style and highlight info. See
+\url{https://plantuml.com/yaml} for further info.}
 
 \item{...}{additional arguments. Will be passed to \code{readLines()}}
 }
@@ -16,7 +20,7 @@ checking if the file is a json file!}
 a \code{plantuml} containing the json file for plotting
 }
 \description{
-Convert json file to uml graph
+Exactly one of the two arguments (\code{file} or \code{text}) needs tobe specified.
 }
 \examples{
 ## some preparations
