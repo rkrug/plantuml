@@ -30,7 +30,7 @@ READMEHTML = Readme.html
 
 #############
 
-all: check clean_web web clean_check
+all: doc metadata build install
 
 ####
 
@@ -116,7 +116,7 @@ build-cran:
 
 ####
 
-install: build
+install:
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 
