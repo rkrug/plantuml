@@ -2,27 +2,59 @@
 % Please edit documentation in R/plantuml_file.R
 \name{plantuml_file}
 \alias{plantuml_file}
+\alias{plantuml_yaml}
+\alias{plantuml_json}
+\alias{plantuml_csv}
+\alias{plantuml_rds}
 \title{Convert file to plantuml code}
 \usage{
 plantuml_file(file, preamble = "", ...)
+
+plantuml_yaml(file, text, preamble = "", ...)
+
+plantuml_json(file, text, preamble = "", ...)
+
+plantuml_csv(file, ...)
+
+plantuml_rds(file, ...)
 }
 \arguments{
-\item{file}{file name. At the moment the following files are supported:
-\itemize{
-\item \code{.yml} or \code{yaml}: the yml data is graphed
-\item \code{.json}: the json file is graphed
-\item \code{.rds} : the file is loaded and the object contained is graphed
-\item \code{.csv} : the csv is loaded and graphed
-}}
+\item{file}{file name of the \code{rds} file. The function does \strong{not} do any
+checking if the file is a \code{rds} file!}
 
-\item{preamble}{\strong{Only used for yaml and json files.} Text to be inserted
-after the \verb{@startyaml} and before the actual yaml. For example style and
-highlight info. See \url{https://plantuml.com/yaml}
-for further info.}
+\item{preamble}{text to be inserted after the \verb{@startyaml} and before the
+actual yaml. For example style and highlight info. See
+\url{https://plantuml.com/yaml} for further info.}
+
+\item{...}{additional arguments. Will be passed to \code{readRDS()}}
+
+\item{text}{yaml text to be converted. The function does \strong{not} do any
+checking if the file is valid yaml!}
+}
+\value{
+a \code{plantuml} containing the yaml file for plotting
+
+a \code{plantuml} containing the json file for plotting
+
+a \code{plantuml} containing the structure of the \code{csv} file for plotting
+
+a \code{plantuml} containing the structure of the \code{rds} file for plotting
 }
 \description{
 The function either plots the object including values (\code{yaml} and \code{json}) or
 loads the object and plots the structure (\code{csv} and \code{rds}).
+
+Exactly one of the two arguments (\code{file} or \code{text}) needs tobe specified.
+
+Exactly one of the two arguments (\code{file} or \code{text}) needs tobe specified.
+
+This is a convenience function which only reads the \code{csv} file using
+\code{read.csv(file, ...)} and converts the resulting \code{data.frame} to a plantuml
+object using \code{plantuml()}.
+
+This is a convenience function which only reads the \code{rds} file using
+\code{readRDS(file, ...)} and converts the resulting object to a plantuml
+object using \code{plantuml()}.
 }
 \examples{
 \dontrun{
@@ -32,4 +64,92 @@ plantuml_file("name.json")
 plantuml_file("name.rds")
 plantuml_file("name.csv")
 }
+## some preparations
+x1 <- "name: Test yml\na:\n- a\n- d\n- c\nB:\n- C\n- D\n- E\nx:\n  one: 0.2885\n  two: 0.7498\n"
+x2 <- "name: Test yml\na:\n- a\n- b\n- c\nB:\n- C\n- D\n- E\nx:\n  one: 0.2865\n  two: 0.7498\n"
+fn1 <- tempfile(fileext = ".yml")
+fn2 <- tempfile(fileext = ".yml")
+writeLines(x1, fn1)
+writeLines(x2, fn2)
+
+## and now the example
+
+plot(plantuml_yaml(fn1))
+
+## Now let's see the differences between `fn1` and `fn2`
+## this requires the package `yaml` to be installed
+
+if (require(yaml)) {
+  plot(
+    plantuml_yaml(
+      file = fn1,
+      preamble = diff_yaml_json(yaml::read_yaml(fn1), yaml::read_yaml(fn2))
+   )
+  )
+}
+
+## and cleanup
+
+unlink(fn1)
+unlink(fn2)
+
+## some preparations
+x <- '{"name":["Test json"],"a":["a","b","c"],"B":["C","D","E"],"x":[0.6464,0.6879]}'
+fn <- tempfile(fileext = ".json")
+writeLines(x, fn)
+
+## and now the example
+
+plot(plantuml_json(fn))
+
+## and cleanupo
+
+unlink(fn)
+
+## some preparations
+x <- data.frame(
+  a = c("a", "b", "c"),
+  B = c("C", "D", "E"),
+  x = c(0.77, 0.38, 4.43),
+  bool = c(TRUE, FALSE, FALSE)
+)
+
+fn <- tempfile(fileext = ".csv")
+write.csv(x, fn)
+
+## and now the example
+
+plot(plantuml_csv(fn))
+
+# and only the fors columns (the rownames will not all be there)
+
+plot(plantuml_csv(fn, nrows = 1))
+
+# or character vectors as factors
+
+plot(plantuml_csv(fn, as.is = FALSE))
+
+## and cleanupo
+
+unlink(fn)
+
+## some preparations
+x <- list(
+  name = "Test list",
+  a = c("a", "b", "c"),
+  B = c("C", "D", "E"),
+  x = c(0.776318477466702, 0.381654617609456)
+)
+
+fn <- tempfile(fileext = ".rds")
+saveRDS(x, fn)
+
+## and now the example
+
+plot(plantuml_rds(fn))
+
+## and cleanupo
+
+unlink(fn)
+
 }

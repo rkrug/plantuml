@@ -18,6 +18,8 @@
 #'
 #' @export
 #'
+#' @rdname plantuml_file
+#'
 #' @examples
 #' \dontrun{
 #' plantuml_file("name.yml")
@@ -69,10 +71,12 @@ plantuml_file <- function(
 #'
 #' @export
 #'
+#' @rdname plantuml_file
+#'
 #' @examples
 #' ## some preparations
-#' x1 <- "name: Test yml\na:\n- a\n- d\n- c\nB:\n- C\n- D\n- E\nx:\n  one: 0.2486851\n  two: 0.7498182\n"
-#' x2 <- "name: Test yml\na:\n- a\n- b\n- c\nB:\n- C\n- D\n- E\nx:\n  one: 0.2486651\n  two: 0.7498182\n"
+#' x1 <- "name: Test yml\na:\n- a\n- d\n- c\nB:\n- C\n- D\n- E\nx:\n  one: 0.2885\n  two: 0.7498\n"
+#' x2 <- "name: Test yml\na:\n- a\n- b\n- c\nB:\n- C\n- D\n- E\nx:\n  one: 0.2865\n  two: 0.7498\n"
 #' fn1 <- tempfile(fileext = ".yml")
 #' fn2 <- tempfile(fileext = ".yml")
 #' writeLines(x1, fn1)
@@ -149,6 +153,8 @@ plantuml_yaml <- function(
 #'
 #' @export
 #'
+#' @rdname plantuml_file
+#'
 #' @examples
 #' ## some preparations
 #' x <- '{"name":["Test json"],"a":["a","b","c"],"B":["C","D","E"],"x":[0.6464,0.6879]}'
@@ -205,7 +211,10 @@ plantuml_json <- function(
 #'
 #' @md
 #'
+#' @importFrom utils read.csv
 #' @export
+#'
+#' @rdname plantuml_file
 #'
 #' @examples
 #' ## some preparations
@@ -243,7 +252,7 @@ plantuml_csv <- function(
     stop("csv file does not exist!")
   }
 
-  code <- as.plantuml(read.csv(file, ...))
+  code <- as.plantuml(utils::read.csv(file, ...))
 
   return(code)
 }
@@ -262,6 +271,8 @@ plantuml_csv <- function(
 #' @md
 #'
 #' @export
+#'
+#' @rdname plantuml_file
 #'
 #' @examples
 #' ## some preparations

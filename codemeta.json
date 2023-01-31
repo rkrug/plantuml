@@ -145,9 +145,21 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
+    "8": {
+      "@type": "SoftwareApplication",
+      "identifier": "png",
+      "name": "png",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=png"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "287.08KB",
+  "fileSize": "280.134KB",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
   "contIntegration": ["https://github.com/rkrug/plantuml/actions", "https://codecov.io/github/rkrug/plantuml?branch=master"],
