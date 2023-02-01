@@ -101,6 +101,7 @@ get_graph <- function(
   if (is.null(file)){
     file <- tmpfile
   } else {
+    dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
     switch (
       type,
       svg = file.copy(

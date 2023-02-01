@@ -1,3 +1,6 @@
+# plantuml 0.6.8
+- if file is specified in `plot()` or `get_graph()` the directory is created, if it does not exist.
+
 # plantuml 0.6.7
 - add functionality to plot yml, jsonlite files including values and 
 functionality to read csv and rds files to plot structure of contained objects. The functionality can be used via the function `plantuml_file(file, ...)`
