@@ -16,7 +16,7 @@
     "If you want to use a different server or the local plantuml server,\n",
     "please set the addresss and the port by e.g.\n\n",
     "   plantumlOptions(server_url = 'http://localhost/')\n",
-    "   plantumlOptions(server_port = '50000')\n\n",
+    "   plantumlOptions(server_port = '8080')\n\n",
     "If you are using the local plantuml server, you have to start it by\n\n",
     "   server_set(\"local\")\n",
     "   server_start()\n\n",
