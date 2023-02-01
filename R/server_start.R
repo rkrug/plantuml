@@ -18,7 +18,7 @@ server_start <- function(
   if (plantumlOptions()$server_url != "http://localhost/") {
     stop("Server needs to be set to localhost by running `server_set(\"local\"!)`")
   }
-  plantumlOptions(server_port = "8765")
+  plantumlOptions(server_port = "8080")
   result <- -999
 
   # Checks ------------------------------------------------------------------

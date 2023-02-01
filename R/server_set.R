@@ -14,7 +14,7 @@ server_set <- function(
 ){
   if (location == "local") {
     old_server <- plantumlOptions(server_url = "http://localhost/")
-    plantumlOptions(server_port = 8765)
+    plantumlOptions(server_port = 8080)
   } else if (location == "remote") {
     old_server <- plantumlOptions(server_url = "http://www.plantuml.com/plantuml/")
     plantumlOptions(server_port = NULL)

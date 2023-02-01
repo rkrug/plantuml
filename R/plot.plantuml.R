@@ -23,6 +23,7 @@
 #' @export
 #' @importFrom graphics plot rasterImage
 #' @importFrom grDevices as.raster
+#' @importFrom png readPNG
 #'
 #' @examples
 #' plantumlCode <- '
