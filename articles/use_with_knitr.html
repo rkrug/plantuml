@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plantuml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.7</span>
       </span>
     </div>
 
@@ -78,7 +78,7 @@
 
       
 
-      </header><script src="use_with_knitr_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Use of <code>plantuml</code> with knitr</h1>
@@ -94,7 +94,9 @@
 <div class="section level2">
 <h2 id="register-the-plantuml-knitr-engine">Register the plantuml knitr engine<a class="anchor" aria-label="anchor" href="#register-the-plantuml-knitr-engine"></a>
 </h2>
-<p>The plantuml knitr engine <code><a href="../reference/plantuml_knit_engine.html">plantuml_knit_engine()</a></code> needs to be registered with knitr. This is done automatically when loading the package <code>plantuml</code>.</p>
+<p>The plantuml knitr engine <code><a href="../reference/plantuml_knit_engine.html">plantuml_knit_engine()</a></code> needs
+to be registered with knitr. This is done automatically when loading the
+package <code>plantuml</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rkrug/plantuml" class="external-link">plantuml</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; The package is by default using the online plantuml server</span></span>
@@ -116,27 +118,39 @@
 <div class="section level3">
 <h3 id="plantuml-code-chunk-options">PlantUML Code Chunk Options<a class="anchor" aria-label="anchor" href="#plantuml-code-chunk-options"></a>
 </h3>
-<p>The following options are available, in addition to the standard options:</p>
+<p>The following options are available, in addition to the standard
+options:</p>
 <ul>
 <li>
-<code>plantuml_format</code>: the format of the resulting file. At the moment, <code>png</code> (the default), <code>svg</code>, and <code>eps</code> are implemented.</li>
+<code>plantuml_format</code>: the format of the resulting file. At
+the moment, <code>png</code> (the default), <code>svg</code>, and
+<code>eps</code> are implemented.</li>
 <li>
-<code>plantuml.path</code>: the path at which the resulting graphs should be saved. If the directory does not exist, it will be created.</li>
+<code>plantuml.path</code>: the path at which the resulting graphs
+should be saved. If the directory does not exist, it will be
+created.</li>
 <li>
-<code>plantuml.preview</code>: if the graph should be shown as an inline preview in the Rmarkdown document in Rstudio. This option results in generating the image twice, which may lead to a substantial increase of the processing time. The preview is <strong>always</strong> a vector preview, irrespective of the file <code>plantuml_format</code>
+<code>plantuml.preview</code>: if the graph should be shown as an
+inline preview in the Rmarkdown document in Rstudio. This option results
+in generating the image twice, which may lead to a substantial increase
+of the processing time. The preview is <strong>always</strong> a vector
+preview, irrespective of the file <code>plantuml_format</code>
 </li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="a-simple-chart-as-png">A simple chart as png<a class="anchor" aria-label="anchor" href="#a-simple-chart-as-png"></a>
 </h3>
-<p>A png grph is nice, because it can be shown in all kinds of documents, including html, pdf and docx. But it is a bitmap format, i.e. when scaling in the grapoh becomes pixelated.</p>
-<p><img src="../../../../../../private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpBVER5i/diagram_png.png" width="152"></p>
+<p>A png grph is nice, because it can be shown in all kinds of
+documents, including html, pdf and docx. But it is a bitmap format,
+i.e. when scaling in the grapoh becomes pixelated.</p>
+<p><img src="../../../../../../tmp/RtmpPalnvf/diagram_png.png" width="152"></p>
 </div>
 <div class="section level3">
 <h3 id="a-simple-chart-as-png-and-with-code">A simple chart as png and with code<a class="anchor" aria-label="anchor" href="#a-simple-chart-as-png-and-with-code"></a>
 </h3>
-<p>To also show the plantuml code, you have to set <code>echo = TRUE</code>:</p>
+<p>To also show the plantuml code, you have to set
+<code>echo = TRUE</code>:</p>
 <pre class="plantuml"><code>left to right direction
 actor "Food Critic" as fc
 package Restaurant {
@@ -147,21 +161,26 @@ package Restaurant {
 fc --&gt; UC1
 fc --&gt; UC2
 fc --&gt; UC3</code></pre>
-<p><img src="../../../../../../private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpBVER5i/diagram_png_code.png" width="152"></p>
+<p><img src="../../../../../../tmp/RtmpPalnvf/diagram_png_code.png" width="152"></p>
 </div>
 <div class="section level3">
 <h3 id="a-simple-chart-using-format-auto-with-code">A simple chart using format <code>auto</code> with code<a class="anchor" aria-label="anchor" href="#a-simple-chart-using-format-auto-with-code"></a>
 </h3>
-<p>When specifying <code>plantuml.format = "auto"</code> the apropriate vector format is chosen for the output format:</p>
+<p>When specifying <code>plantuml.format = "auto"</code> the apropriate
+vector format is chosen for the output format:</p>
 <ul>
-<li>pdf output format: <code>pdf</code> as <code>plantuml.format</code>
+<li>pdf output format: <code>pdf</code> as
+<code>plantuml.format</code>
 </li>
-<li>html output format: <code>svg</code> <code>as plantuml.format</code>
+<li>html output format: <code>svg</code>
+<code>as plantuml.format</code>
 </li>
-<li>docx output format: <code>pdf</code> <code>as plantuml.format</code>
+<li>docx output format: <code>pdf</code>
+<code>as plantuml.format</code>
 </li>
 </ul>
-<p>Therefore, the vector format appropritw for the output format is is chosen for the output format.</p>
+<p>Therefore, the vector format appropritw for the output format is is
+chosen for the output format.</p>
 <pre class="plantuml"><code>robust "DNS Resolver" as DNS
 robust "Web Browser" as WB
 concise "Web User" as WU
@@ -185,7 +204,7 @@ DNS is Processing
 
 @+300
 DNS is Idle</code></pre>
-<p><img src="../../../../../../private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpBVER5i/diagram_svg.svg"><!-- --></p>
+<p><img src="../../../../../../tmp/RtmpPalnvf/diagram_svg.svg"><!-- --></p>
 </div>
 <div class="section level3">
 <h3 id="now-only-the-code">Now only the code<a class="anchor" aria-label="anchor" href="#now-only-the-code"></a>
@@ -201,7 +220,9 @@ Alice &lt;-- Bob: Another authentication Response
 <div class="section level3">
 <h3 id="and-now-as-ascii-art">And now as ASCII Art<a class="anchor" aria-label="anchor" href="#and-now-as-ascii-art"></a>
 </h3>
-<p>This does not play nicely with LaTeX and therefore pdf due to unicode characters used. I have no idea at the moment how to make this nicer.</p>
+<p>This does not play nicely with LaTeX and therefore pdf due to unicode
+characters used. I have no idea at the moment how to make this
+nicer.</p>
 <pre class="plantuml"><code>@startuml
 Alice -&gt; Bob: Authentication Request
 Bob --&gt; Alice: Authentication Response

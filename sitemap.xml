@@ -64,6 +64,9 @@
     <loc>/reference/as.plantuml.vma.html</loc>
   </url>
   <url>
+    <loc>/reference/diff_yaml_json.html</loc>
+  </url>
+  <url>
     <loc>/reference/get_graph.html</loc>
   </url>
   <url>
@@ -80,6 +83,9 @@
   </url>
   <url>
     <loc>/reference/plantuml_URL.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plantuml_file.html</loc>
   </url>
   <url>
     <loc>/reference/plantuml_knit_engine.html</loc>

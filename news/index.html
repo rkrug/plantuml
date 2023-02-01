@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plantuml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.7</span>
       </span>
     </div>
 
@@ -61,6 +61,17 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.7" id="plantuml-067">plantuml 0.6.7<a class="anchor" aria-label="anchor" href="#plantuml-067"></a></h2>
+<ul><li>add functionality to plot yml, jsonlite files including values and functionality to read csv and rds files to plot structure of contained objects. The functionality can be used via the function <code>plantuml_file(file, ...)</code>
+</li>
+<li>added function <code><a href="../reference/diff_yaml_json.html">diff_yaml_json()</a></code> to highlight the differences in the values in yaml or json files. The implementation is rudimental and could be improved and made more stable.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.6" id="plantuml-066">plantuml 0.6.6<a class="anchor" aria-label="anchor" href="#plantuml-066"></a></h2>
+<ul><li>re-enabled plotting ad server control</li>
+<li>set <code>plantuml.format</code> for knitting to <code>auto</code> as default (solves Issue <a href="https://github.com/rkrug/plantuml/issues/16" class="external-link">#16</a>)</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.6.5" id="plantuml-065">plantuml 0.6.5<a class="anchor" aria-label="anchor" href="#plantuml-065"></a></h2>
 <p>Apologies for a disastrous last release!</p>
 <ul><li>The default is now to use the plantuml web server.</li>
@@ -87,7 +98,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-0-5">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-5"></a></h3>
-<ul><li>added plantuml.format “auto” to knit engine With “auto” the format is changed deepending on the output format. If the output format is html, it is “svg”, otherwise “pdf”. Tested for pfdf, html and doc.</li></ul></div>
+<ul><li>added plantuml.format “auto” to knit engine With “auto” the format is changed deepending on the output format. If the output format is html, it is “svg”, otherwise “pdf”. Tested for pfdf, html and doc.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="other-changes-0-5">other Changes<a class="anchor" aria-label="anchor" href="#other-changes-0-5"></a></h3>
 <ul><li>added knit engine registration into .onAttach() so it does not need to be called explicitely. # plantuml 0.3.5 ## Major and Breaking changes</li>
@@ -101,13 +113,16 @@
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.4" id="plantuml-034">plantuml 0.3.4<a class="anchor" aria-label="anchor" href="#plantuml-034"></a></h2>
-<ul><li>replace preview with png preview, as eps caused problems (see <a href="https://github.com/rkrug/plantuml/issues/17" class="external-link uri">https://github.com/rkrug/plantuml/issues/17</a>) - thanks <a href="https://github.com/retorquere" class="external-link">@retorquere</a></li></ul></div>
+<ul><li>replace preview with png preview, as eps caused problems (see <a href="https://github.com/rkrug/plantuml/issues/17" class="external-link uri">https://github.com/rkrug/plantuml/issues/17</a>) - thanks <a href="https://github.com/retorquere" class="external-link">@retorquere</a></li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.3" id="plantuml-033">plantuml 0.3.3<a class="anchor" aria-label="anchor" href="#plantuml-033"></a></h2>
-<ul><li>added <code>plantuml.preview</code> option to kitr engine which will show a preview in RStudio</li></ul></div>
+<ul><li>added <code>plantuml.preview</code> option to kitr engine which will show a preview in RStudio</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.2" id="plantuml-032">plantuml 0.3.2<a class="anchor" aria-label="anchor" href="#plantuml-032"></a></h2>
-<ul><li>Adds <code>mode = "wd"</code> to the download of <code>plantuml.jar</code> to avoid corruption on windows</li></ul></div>
+<ul><li>Adds <code>mode = "wd"</code> to the download of <code>plantuml.jar</code> to avoid corruption on windows</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.1" id="plantuml-031">plantuml 0.3.1<a class="anchor" aria-label="anchor" href="#plantuml-031"></a></h2>
 <ul><li>added function to register knit engine <code><a href="../reference/plantuml_knit_engine_register.html">plantuml_knit_engine_register()</a></code>
@@ -117,13 +132,14 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3" id="plantuml-03">plantuml 0.3<a class="anchor" aria-label="anchor" href="#plantuml-03"></a></h2>
-<ul><li>added knit engine so that PlantUML code can be directly knitted in a RMarkdown document</li></ul></div>
+<ul><li>added knit engine so that PlantUML code can be directly knitted in a RMarkdown document</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.7" id="plantuml-027">plantuml 0.2.7<a class="anchor" aria-label="anchor" href="#plantuml-027"></a></h2>
 <ul><li>
 <code><a href="../reference/plantuml_run.html">plantuml_run()</a></code>: new function to run plantuml without the need for using system calls</li>
 <li>
-<code><a href="../reference/plot.plantuml.html">plot.plantuml()</a></code>: added the possibility to return the graph as a return value when file == "" and replaced calls to <code><a href="https://rdrr.io/r/base/system2.html" class="external-link">system2()</a></code> with <code><a href="../reference/plantuml_run.html">plantuml_run()</a></code>
+<code><a href="../reference/plot.plantuml.html">plot.plantuml()</a></code>: added the possibility to return the graph as a return value when file == “” and replaced calls to <code><a href="https://rdrr.io/r/base/system2.html" class="external-link">system2()</a></code> with <code><a href="../reference/plantuml_run.html">plantuml_run()</a></code>
 </li>
 <li>added tests to <code><a href="../reference/plot.plantuml.html">plot.plantuml()</a></code>
 </li>
@@ -132,20 +148,23 @@
 <h2 class="page-header" data-toc-text="0.2.6" id="plantuml-026">plantuml 0.2.6<a class="anchor" aria-label="anchor" href="#plantuml-026"></a></h2>
 <div class="section level3">
 <h3 id="bug-fix-0-2-6">Bug Fix<a class="anchor" aria-label="anchor" href="#bug-fix-0-2-6"></a></h3>
-<ul><li>#9 <a href="https://github.com/rkrug/plantuml/issues/9" class="external-link uri">https://github.com/rkrug/plantuml/issues/9</a> path to jar not enclosed in inverted commes, therefore problems when path to jar contains spaces. Thanks at <a href="https://github.com/jstrin" class="external-link">@jstrin</a> for reporting.</li></ul></div>
+<ul><li>#9 <a href="https://github.com/rkrug/plantuml/issues/9" class="external-link uri">https://github.com/rkrug/plantuml/issues/9</a> path to jar not enclosed in inverted commes, therefore problems when path to jar contains spaces. Thanks at <a href="https://github.com/jstrin" class="external-link">@jstrin</a> for reporting.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.5" id="plantuml-025">plantuml 0.2.5<a class="anchor" aria-label="anchor" href="#plantuml-025"></a></h2>
 <div class="section level3">
 <h3 id="bug-fix-0-2-5">Bug fix<a class="anchor" aria-label="anchor" href="#bug-fix-0-2-5"></a></h3>
-<ul><li>remove leading and trailing whitespace</li></ul></div>
+<ul><li>remove leading and trailing whitespace</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.3.1" id="plantuml-0231">plantuml 0.2.3.1<a class="anchor" aria-label="anchor" href="#plantuml-0231"></a></h2>
 <div class="section level3">
 <h3 id="change-in-default-behaviour-0-2-3-1">Change in default behaviour<a class="anchor" aria-label="anchor" href="#change-in-default-behaviour-0-2-3-1"></a></h3>
 <ul><li>added “-Djava.awt.headless=true -splash:no” as default java_opt to keep java quiet<br>
-Sebastyian Sauer reported <a href="https://github.com/rkrug/plantuml/issues/8" class="external-link uri">https://github.com/rkrug/plantuml/issues/8</a> which was caused by a trailing linebreak. Seems to be a probl;em in plantuml, but fixed here.</li></ul></div>
+Sebastyian Sauer reported <a href="https://github.com/rkrug/plantuml/issues/8" class="external-link uri">https://github.com/rkrug/plantuml/issues/8</a> which was caused by a trailing linebreak. Seems to be a probl;em in plantuml, but fixed here.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="minor-changes-0-2-3-1">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-2-3-1"></a></h3>
 <ul><li>add argumwent <em>beta</em> to function plantuml_update() to enable download from beta versions</li>
@@ -159,7 +178,8 @@ Sebastyian Sauer reported <a href="https://github.com/rkrug/plantuml/issues/8" c
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.3" id="plantuml-023">plantuml 0.2.3<a class="anchor" aria-label="anchor" href="#plantuml-023"></a></h2>
-<ul><li>quote names of objects to avoid errors with non-text-characters</li></ul></div>
+<ul><li>quote names of objects to avoid errors with non-text-characters</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2.3" id="plantuml-0223">plantuml 0.2.2.3<a class="anchor" aria-label="anchor" href="#plantuml-0223"></a></h2>
 <ul><li><p>add java_opt argument to plot.plantuml() to allow additional java arguments. Thanks samssann in <a href="https://github.com/rkrug/plantuml/issues/1" class="external-link uri">https://github.com/rkrug/plantuml/issues/1</a></p></li>
@@ -175,7 +195,8 @@ Sebastyian Sauer reported <a href="https://github.com/rkrug/plantuml/issues/8" c
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2.1" id="plantuml-0221-1">plantuml 0.2.2.1<a class="anchor" aria-label="anchor" href="#plantuml-0221-1"></a></h2>
-<ul><li>fixed error when object has more than one class</li></ul></div>
+<ul><li>fixed error when object has more than one class</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2.1" id="plantuml-0221-2">plantuml 0.2.2.1<a class="anchor" aria-label="anchor" href="#plantuml-0221-2"></a></h2>
 <ul><li>add BasicUsage vignette</li>
@@ -183,7 +204,8 @@ Sebastyian Sauer reported <a href="https://github.com/rkrug/plantuml/issues/8" c
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2" id="plantuml-022">plantuml 0.2.2<a class="anchor" aria-label="anchor" href="#plantuml-022"></a></h2>
-<ul><li>fix wrong version</li></ul></div>
+<ul><li>fix wrong version</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.1" id="plantuml-021">plantuml 0.2.1<a class="anchor" aria-label="anchor" href="#plantuml-021"></a></h2>
 <ul><li>revert back to using <code>.eps</code> as intermediate format instead odf <code>.svg</code>

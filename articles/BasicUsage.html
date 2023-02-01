@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plantuml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.7</span>
       </span>
     </div>
 
@@ -78,13 +78,15 @@
 
       
 
-      </header><script src="BasicUsage_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Basic Usage of the <code>plantuml</code> package</h1>
-                        <h4 data-toc-skip class="author">Vignette Author</h4>
+      <h1 data-toc-skip>Basic Usage of the <code>plantuml</code>
+package</h1>
+                        <h4 data-toc-skip class="author">Vignette
+Author</h4>
             
-            <h4 data-toc-skip class="date">2023-01-27</h4>
+            <h4 data-toc-skip class="date">2023-02-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rkrug/plantuml/blob/HEAD/vignettes/BasicUsage.Rmd" class="external-link"><code>vignettes/BasicUsage.Rmd</code></a></small>
       <div class="hidden name"><code>BasicUsage.Rmd</code></div>
@@ -96,12 +98,15 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>This package provides the functionality to create UML graphs using the <a href="https://plantuml.com/" class="external-link">PlantUML</a> language.</p>
+<p>This package provides the functionality to create UML graphs using
+the <a href="https://plantuml.com/" class="external-link">PlantUML</a> language.</p>
 </div>
 <div class="section level2">
 <h2 id="installation-of-plantuml-binary">Installation of plantuml binary<a class="anchor" aria-label="anchor" href="#installation-of-plantuml-binary"></a>
 </h2>
-<p>The package does not come with the plantuml binary, which needs to be installed as well. repeated calling of this function updates the binary.</p>
+<p>The package does not come with the plantuml binary, which needs to be
+installed as well. repeated calling of this function updates the
+binary.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plantuml_update.html">plantuml_update</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -133,21 +138,24 @@
 <div class="section level3">
 <h3 id="plotplantuml-object">Plotplantuml Object<a class="anchor" aria-label="anchor" href="#plotplantuml-object"></a>
 </h3>
-<p>Now we plot in in a device using vector format (svg) as intermediate format, which is the default</p>
+<p>Now we plot in in a device using vector format (svg) as intermediate
+format, which is the default</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="va">x</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="BasicUsage_files/figure-html/exampleDeviceVector-1.png" width="700"></p>
-<pre><code><span><span class="co">#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpssfmuX/plantuml.154b4112d480.svg"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "/tmp/RtmpgNDPZp/plantuml.1b02816c299.svg"</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="usage-of-the-local-server">Usage of the local server<a class="anchor" aria-label="anchor" href="#usage-of-the-local-server"></a>
 </h3>
-<p>The default server used is the offocial plantuml web server at <a href="http://www.plantuml.com/plantuml/" class="external-link">http://www.plantuml.com/plantuml/</a>. If yo weant to cretae the graphas locally, you have to</p>
+<p>The default server used is the offocial plantuml web server at <a href="http://www.plantuml.com/plantuml/" class="external-link">http://www.plantuml.com/plantuml/</a>.
+If yo weant to cretae the graphas locally, you have to</p>
 <ol style="list-style-type: decimal">
 <li>Make sure that the plantuml file has been installed</li>
-<li>set the plantuml options to point to the local plantuml picoweb server</li>
+<li>set the plantuml options to point to the local plantuml picoweb
+server</li>
 <li>start the plantuml picoweb server</li>
 <li>create the graphs, and</li>
 <li>when done, stop the server.</li>
