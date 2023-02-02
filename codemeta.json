@@ -7,13 +7,13 @@
   "codeRepository": "https://github.com/rkrug/plantuml",
   "issueTracker": "https://github.com/rkrug/plantuml/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.8",
+  "version": "0.6.8.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.2 (2022-10-31)",
+  "runtimePlatform": "R version 4.2.3 (2023-03-15)",
   "author": [
     {
       "@type": "Person",
@@ -171,9 +171,9 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "280.192KB",
+  "fileSize": "267.76KB",
   "releaseNotes": "https://github.com/rkrug/plantuml/blob/master/NEWS.md",
   "readme": "https://github.com/rkrug/plantuml/blob/master/README.md",
-  "contIntegration": ["https://github.com/rkrug/plantuml/actions", "https://codecov.io/github/rkrug/plantuml?branch=master"],
+  "contIntegration": "https://codecov.io/github/rkrug/plantuml?branch=master",
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing"
 }

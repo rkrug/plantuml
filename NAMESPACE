@@ -2,7 +2,6 @@
 
 S3method(as.plantuml,character)
 S3method(as.plantuml,complex)
-S3method(as.plantuml,data.frame)
 S3method(as.plantuml,default)
 S3method(as.plantuml,factor)
 S3method(as.plantuml,integer)

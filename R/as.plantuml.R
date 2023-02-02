@@ -1,12 +1,12 @@
 #' Convert an R object to a Class uml object
 #'
 #' Generic function to convert an R object to a \code{plantuml} Class object.
-#' This can be plotted.
-#'
+#' See details for the individual functions
 #' @param x R object to be converted
 #' @param ... other argunents passed on to generic functions
 #'
 #' @return object of class \code{plantuml} which can be plotted.
+#' @rdname as.plantuml
 #' @export
 #'
 #' @examples

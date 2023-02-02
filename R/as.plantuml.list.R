@@ -1,25 +1,17 @@
-#' Convert a list to a \code{plantuml} object
 #'
-#' Convert a \code{character} to a \code{plantuml} object.
-#' This can be plotted.
-#'
-#' @param x character sting containing plantuml code.
-#' @param complete if \code{TRUE}, enclose the plantuml statements in \code{"@startuml"} and \code{"@enduml"}
-#' @param nm normally not for user - TODO I have to check... embarassing
-#' @param ... additional arguments - not used here
-#'
-#' @return object of class \code{plantuml} which can be plotted.
+#' @rdname as.plantuml
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#'  x <- '
-#'  @startuml --> "First Activity" -->[You can put also labels] "Second Activity"
-#'  -->
-#'  @enduml
-#'  '
-#'  x <- as.plantuml( x )
-#'  plot( x ) }
+#'  x <- list(
+#'    num = 1:10,
+#'    let = letters[1:20]
+#'  )
+#'  x$list <- list(x, x)
+#'  x <- as.plantuml(x)
+#'  plot(x)
+#'  }
 #'
 as.plantuml.list <- function(
   x,
@@ -38,7 +30,7 @@ as.plantuml.list <- function(
   puml <- addAttributes( x = x, nm = nm, puml = puml )
   #
   for (i in 1:length(x)) {
-    nme <- paste0(nm, ".", i, ".", names(x)[i])
+    nme <- paste0(nm, "_", i, "_", names(x)[i])
     puml$code <- paste(
       puml$code,
       as.plantuml(
