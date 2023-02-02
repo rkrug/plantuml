@@ -7,7 +7,9 @@ PlantUML in R
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1922215.svg)](https://doi.org/10.5281/zenodo.1922215)
 
-[![R-CMD-check](https://github.com/rkrug/plantuml/workflows/R-CMD-check/badge.svg)](https://github.com/rkrug/plantuml/actions)
+[![plantuml status
+badge](https://rkrug.r-universe.dev/badges/plantuml)](https://rkrug.r-universe.dev)
+<!-- [![R-CMD-check](https://github.com/rkrug/plantuml/workflows/R-CMD-check/badge.svg)](https://github.com/rkrug/plantuml/actions) -->
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/rkrug/plantuml/master.svg)](https://codecov.io/github/rkrug/plantuml?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
@@ -126,7 +128,7 @@ plot(
 
 ![](README_files/figure-gfm/exampleObject-1.png)<!-- -->
 
-    ## [1] "/var/folders/50/wcr5bjwn75q595n6x82gxj280000gq/T//RtmpY7vzXX/plantuml.cac07edbe08d.svg"
+    ## [1] "/var/folders/5k/g8z_7q3d6vb54m8k0cjy940r0000gq/T//RtmpKTtJj4/plantuml.10de13e819524.svg"
 
 <!-- # **<span style="color:red">TODO</span>** -->
 <!-- - make selection dependant on installed packages, as `vector = TRUE` requires postscript to be installed! -->
