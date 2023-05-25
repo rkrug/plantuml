@@ -11,7 +11,9 @@ eps	 To generate text in EPS format; or generates an image when
 outputting LaTeX rather than HTML formats.
 
 plantuml.path: the path where the resulting files will be saved.
-Default is the same directory as the .Rmd file is in. The path will be created if it does not exist.
+Default is the same directory as the .Rmd file is in in a directory named
+` plantuml. The path will be created if it does not exist. The name of each
+plantuml figure is the label of thre chunk with the extension as specified.
 plantuml.preview: if TRUE, an inline preview will be shown in RStudio.
 Attention: the processing takse twice as long as without this option!.
 
@@ -33,7 +35,7 @@ Attention: the processing takse twice as long as without this option!.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plantuml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.9</span>
       </span>
     </div>
 
@@ -88,7 +90,9 @@ At the moment, the following are supported:</p><ul><li><p><strong>auto</strong> 
 outputting LaTeX rather than HTML formats.</p></li>
 </ul></li>
 <li><p><strong>plantuml.path</strong>: the path where the resulting files will be saved.
-Default is the same directory as the <code>.Rmd</code> file is in. The path will be created if it does not exist.</p></li>
+Default is the same directory as the <code>.Rmd</code> file is in in a directory named
+` plantuml. The path will be created if it does not exist. The name of each
+plantuml figure is the label of thre chunk with the extension as specified.</p></li>
 <li><p><strong>plantuml.preview</strong>: if <code>TRUE</code>, an inline preview will be shown in RStudio.
 <strong>Attention: the processing takse twice as long as without this option!</strong>.</p></li>
 </ul></div>
