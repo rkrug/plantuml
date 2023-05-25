@@ -35,40 +35,42 @@ plantuml_knit_engine <-  function(options) {
     stop ("This function need the package `knitr` to be installed!")
   }
   ##
+
   if (is.null(options$plantuml.path)) {
     path <-  "."
   } else {
     path <- options$plantuml.path
   }
+
   if (is.null(options$plantuml.format)) {
     options$plantuml.format <-  "auto"
   }
+
+  if (!(options$plantuml.format %in% c("png", "svg", "pdf", "png", "txt", "ps"))){
+    stop(
+      "The option 'plantuml.format = ", options$plantuml.format, "' is not supported!\n",
+      "see 'getPlantumlOption('supported_formats')' for a list of supported options."
+    )
+  }
+
+  if (options$plantuml.format == "auto"){
+    options$plantuml.format <- ifelse(
+      knitr::is_html_output(),
+      "svg",
+      "pdf"
+    )
+  } else if (is.null(options$plantuml.format)){
+    options$plantuml.format <- "png"
+  }
+
   ###
+
   result <- list(out = "", code = "")
   if (options$eval) {
-    #
+
     puml <- paste0(options$code, collapse = "\n")
     ###
 
-
-    if (options$plantuml.format == "auto"){
-      options$plantuml.format <- ifelse(
-        knitr::is_html_output(),
-        "svg",
-        "pdf"
-      )
-    }
-
-    if (!(options$plantuml.format %in% c("png", "svg", "pdf", "png", "txt", "ps"))){
-      stop(
-        "The option 'plantuml.format = ", options$plantuml.format, "' is not supported!\n",
-        "see 'getPlantumlOption('supported_formats')' for a list of supported options."
-      )
-    }
-
-    if (is.null(options$plantuml.format)){
-      options$plantuml.format <- "png"
-    }
     fig <- paste0(options$label, ".", options$plantuml.format)
 
     ###
