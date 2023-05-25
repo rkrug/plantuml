@@ -27,7 +27,9 @@ At the moment, the following are supported:
 outputting LaTeX rather than HTML formats.
 }
 \item \strong{plantuml.path}: the path where the resulting files will be saved.
-Default is the same directory as the \code{.Rmd} file is in. The path will be created if it does not exist.
+Default is the same directory as the \code{.Rmd} file is in in a directory named
+` plantuml. The path will be created if it does not exist. The name of each
+plantuml figure is the label of thre chunk with the extension as specified.
 \item \strong{plantuml.preview}: if \code{TRUE}, an inline preview will be shown in RStudio.
 \strong{Attention: the processing takse twice as long as without this option!}.
 }

@@ -1,3 +1,10 @@
+# plantuml 0.6.9
+- added support for quarto
+
+# plantuml 0.6.8.1
+- Changes in documentation
+- usage of "_" instead of "." when converting lists and data.frames to plantuml code.
+
 # plantuml 0.6.8
 - if file is specified in `plot()` or `get_graph()` the directory is created, if it does not exist.
 

@@ -1,0 +1,17 @@
+     ┌─────┐                           ┌───┐
+     │Alice│                           │Bob│
+     └──┬──┘                           └─┬─┘
+        │    Authentication Request      │  
+        │───────────────────────────────>│  
+        │                                │  
+        │    Authentication Response     │  
+        │<─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│  
+        │                                │  
+        │Another authentication Request  │  
+        │───────────────────────────────>│  
+        │                                │  
+        │Another authentication Response │  
+        │<─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│  
+     ┌──┴──┐                           ┌─┴─┐
+     │Alice│                           │Bob│
+     └─────┘                           └───┘
