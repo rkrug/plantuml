@@ -26,7 +26,7 @@
   )
 
   if (getPlantumlOption("java_bin") == "") {
-    warning("Java is not installed. Therefore you can only use the online Plantuml server!")
+    packageStartupMessage("\n\nJava is not installed. Therefore you can only use the online Plantuml server!\n\n")
   }
 }
 
