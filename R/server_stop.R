@@ -12,6 +12,9 @@
 #'
 #' @examples
 server_stop <- function(){
+    if (getPlantumlOption("java_bin") == "") {
+      stop("Java is not installed, therefore local processing not possible!")
+    }
 
   result <- -999
   fn <- tempfile(pattern = "serverinfo_", fileext = ".json")
