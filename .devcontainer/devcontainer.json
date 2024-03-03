@@ -1,0 +1,52 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver
+{
+	"name": "R (tidy for without rstudio)",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// "image": "ghcr.io/rocker-org/devcontainer/r-ver:4",
+	"build": {
+		// Path is relataive to the devcontainer.json file.
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "librsvg2-dev, default-jre"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/pandoc:1": {
+			"version": "latest"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
+			// "installTinyTex": true,
+			// "version": "latest"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "tidyverse, devtools, remotes, rmarkdown, here, httpgd, vscDebugger, languageserver"
+			"packages": "rversions",
+			"additionalRepositories": "rhub = 'https://r-hub.r-universe.dev', jeroen = 'https://jeroen.r-universe.dev', rkrug = 'https://rkrug.r-universe.dev'"
+		} 
+	// },
+	// "customizations": {
+	// 	"vscode": {
+	// 		"extensions": [
+	// 			"mechatroner.rainbow-csv",
+	// 			"GitHub.copilot",
+	// 			"ChrisChinchilla.vscode-pandoc",
+	// 			"Gruntfuggly.todo-tree",
+	// 			"stkb.rewrap",
+	// 			"RDebugger.r-debugger",
+	// 			"REditorSupport.r",
+	// 			"yzane.markdown-pdf"
+	// 		]
+	// 	},
+	// }
+// Features to add to the dev container. More info: https://containers.dev/features.
+// "features": {},
+// Use 'forwardPorts' to make a list of ports inside the container available locally.
+// "forwardPorts": [],
+// Use 'postCreateCommand' to run commands after the container is created.
+// "postCreateCommand": "R -q -e 'renv::install()'",
+// Configure tool-specific properties.
+// "customizations": {},
+// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+// "remoteUser": "root"
+}
