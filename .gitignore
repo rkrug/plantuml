@@ -11,5 +11,5 @@ plantuml.bbprojectd
 /docs/
 .DS_Store
 
-.devcontainer
+.devcontainer/*
 
