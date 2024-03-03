@@ -10,3 +10,7 @@ plantuml.bbprojectd
 /Meta/
 /docs/
 .DS_Store
+
+.devcontainer
+.github
+
