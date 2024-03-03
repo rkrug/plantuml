@@ -4,7 +4,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' #' \dontrun{
+#'  ## \code{complex}
 #'  x <- 1:2 + 1i*(8:9)
 #'  x <- as.plantuml(x)
 #'  plot(x)

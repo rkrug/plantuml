@@ -4,6 +4,7 @@
 #'
 #' @examples
 #' \dontrun{
+#'  ## \code{list}
 #'  x <- list(
 #'    num = 1:10,
 #'    let = letters[1:20]

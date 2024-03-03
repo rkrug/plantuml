@@ -4,6 +4,7 @@
 #'
 #' @examples
 #' \dontrun{
+#'  ## \code{character}
 #'  x <- LETTERS
 #'  x <- as.plantuml(x)
 #'  plot(x)

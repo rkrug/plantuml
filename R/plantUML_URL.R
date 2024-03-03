@@ -133,7 +133,7 @@ plantuml_URL <- function(
   }
 
   if (!is.null(plantuml)) {
-    if (!is.null(type)){
+    if (!is.null(type)) {
       url <- paste0(url, type, "/")
     }
     comp <- memCompress(charToRaw(plantuml), "gzip")

@@ -4,6 +4,7 @@
 #'
 #' @examples
 #' \dontrun{
+#'  ## \code{integer}
 #'  x <- 1L:10L
 #'  names(x) <- letters[1:10]
 #'  x <- as.plantuml(x)

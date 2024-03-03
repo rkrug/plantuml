@@ -3,6 +3,7 @@
 #' @export
 #'
 #' \dontrun{
+#'  ## \code{data.frame}
 #'  x <- data.frame(
 #'    id = 1:10,
 #'    random = runif(10),
