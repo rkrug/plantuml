@@ -38,6 +38,8 @@
 #' @return name of the file with the graph
 #' @md
 #' @importFrom rsvg rsvg_png rsvg_pdf rsvg_ps
+#' @importFrom crul HttpClient
+#'
 #' @export
 #'
 #' @examples
@@ -47,7 +49,7 @@ get_graph <- function(
   width = NULL,
   height = NULL,
   css = NULL
-){
+) {
   formats <- c("svg", "txt", "png", "pdf", "ps")
 
   if (inherits(x, what = "plantuml")) {
@@ -56,16 +58,20 @@ get_graph <- function(
     }
     x <- x$code
   } else if (!inherits(x, what = "character")) {
-    stop("'x' has to be of class 'plantuml' or a 'character` vector containing the plantuml code!")
+    stop(
+      "'x' has to be of class 'plantuml' or a 'character` vector containing the plantuml code!"
+    )
   }
 
   if (!is.null(file)) {
     pos <- regexpr("\\.([[:alnum:]]+)$", file)
-    type <- ifelse( pos > -1L, substring(file, pos + 1L), "")
+    type <- ifelse(pos > -1L, substring(file, pos + 1L), "")
 
     if (!(type %in% formats)) {
       stop(
-        "Type '", type, "' not supported!"
+        "Type '",
+        type,
+        "' not supported!"
       )
     }
   } else {
@@ -77,7 +83,7 @@ get_graph <- function(
     "txt",
     "svg"
   )
-  tmpfile <- tempfile( pattern = "plantuml.", fileext = paste0(".", tmptype))
+  tmpfile <- tempfile(pattern = "plantuml.", fileext = paste0(".", tmptype))
 
   url <- plantuml_URL(
     plantuml = x,
@@ -94,15 +100,27 @@ get_graph <- function(
 
   if (result != 0) {
     unlink(tmpfile)
-    stop("Error in download of PlantUML chart from PlantUML Server / Picoweb Server!")
+    stop(
+      "Error in download of PlantUML chart from PlantUML Server / Picoweb Server!"
+    )
   }
 
+  # client <- HttpClient$new(url = url)
 
-  if (is.null(file)){
+  # response <- client$get(disk = tmpfile)
+
+  # if (response$status_code >= 400) {
+  #   unlink(tmpfile)
+  #   stop(
+  #     "Error in download of PlantUML chart from PlantUML Server / Picoweb Server!"
+  #   )
+  # }
+
+  if (is.null(file)) {
     file <- tmpfile
   } else {
     dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
-    switch (
+    switch(
       type,
       svg = file.copy(
         from = tmpfile,
@@ -139,7 +157,7 @@ get_graph <- function(
     )
   }
 
-  if (file != tmpfile){
+  if (file != tmpfile) {
     unlink(tmpfile)
   }
 

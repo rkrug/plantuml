@@ -1,0 +1,50 @@
+http_interactions:
+- request:
+    method: GET
+    uri: http://www.plantuml.com/plantuml/svg/~1U9p5aprhmp0GXdVzYfTuw0T9iPhDe4A7RAP3cwqKSLPLH-2FOYc5_lkYfBRZqL98XXiakEVWddiPRf8aWQ_AM8V-uOk1OU5_Rma2FCzucYzHGE3bUGa5WNoptMvUtzvvnjEFkmKog8gi1SIHDh_V_NxhzYi2KBUVEgAzqatfTX1OWo6WNqfohZF5tcahPHZZeQ5QMmWG2gWZOx3qKrEK9CabJKIPnkbITu6OqLSSfzVMx6lT6HL86UpnrA_DrxpbtwzMJm6JpwpeKHRJBBMbKLG5OauY5SKPaXL56HLToj1Xy9aDhQMQ658xwaYv-UV_3neTnP9wIx6SAqJfC9dX3-b6dxK0
+  response:
+    status: 200
+    headers:
+      access-control-allow-origin: '*'
+      age: '4373'
+      alt-svc: h3=":443"; ma=86400
+      cache-control: public, max-age=432000
+      cf-cache-status: DYNAMIC
+      cf-ray: 94b8e6ea283723f7-ZRH
+      connection: keep-alive
+      content-encoding: gzip
+      content-type: image/svg+xml
+      date: Fri, 06 Jun 2025 15:21:53 GMT
+      display:
+      - staticcontent_sol
+      - orig_site_sol
+      etag: W/"1c47a2fb33c5b3761f2401d5d6b5c5f3COremncf0Y_vHfpjsHPX5W00"
+      expires: Wed, 11 Jun 2025 14:08:59 GMT
+      last-modified: Sun, 01 Jun 2025 09:57:00 GMT
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=7h86JLxnjvcH449xwhaYC7Ud%2F0h74AvN0zJgUDKzcPR2DcJKpgcXQLSo3vw4Wr8NR6VmceWaDFT9%2BUthUiU%2Bj4IEWov6C0zrrwDXa6NNPIqo54KHWwiE6OwadMwLAGWRePXZ"}],"group":"cf-nel","max_age":604800}'
+      response: '200'
+      server: cloudflare
+      server-timing: cfL4;desc="?proto=TCP&rtt=15153&min_rtt=15153&rtt_var=7576&sent=1&recv=3&lost=0&retrans=0&sent_bytes=0&recv_bytes=547&delivery_rate=0&cwnd=249&unsent_bytes=0&cid=0000000000000000&ts=0&x=0"
+      status: HTTP/1.1 200 OK
+      transfer-encoding: chunked
+      vary: Accept-Encoding,Origin
+      x-donate: https://plantuml.com/paypal
+      x-etag: '"1c47a2fb33c5b3761f2401d5d6b5c5f3COremncf0Y_vHfpjsHPX5W00"'
+      x-ez-proxy-out: true 2.4
+      x-ezoic-cdn: Bypass
+      x-middleton-display:
+      - staticcontent_sol
+      - orig_site_sol
+      x-middleton-response: '200'
+      x-patreon: Support us on https://plantuml.com/patreon
+      x-plantuml-diagram-description: (4 entities)
+      x-plantuml-diagram-height: '327'
+      x-plantuml-diagram-width: '1194'
+      x-powered-by: PlantUML Version 1.2025.4beta1
+      x-quote: Sometimes if you received an answer, the question might be taken away.
+      x-sol: orig
+    body:
+      on_disk: /Volumes/Documents/GitHub/plantuml/tests/fixtures/vcr/plot.plantuml.default-files/plantuml.17afa36cd67d6.svg
+  recorded_at: 2025-06-06 15:21:53
+recorded_with: vcr/1.7.0.91, webmockr/2.0.0

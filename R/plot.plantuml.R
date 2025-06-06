@@ -39,13 +39,13 @@
 #' plot(as.plantuml(x), java_opt = "-Djava.awt.headless=true")
 #' }
 plot.plantuml <- function(
-    x,
-    file = NULL,
-    width = 1024,
-    height = NULL,
-    css = NULL,
-    ...
-){
+  x,
+  file = NULL,
+  width = 1024,
+  height = NULL,
+  css = NULL,
+  ...
+) {
   result <- get_graph(
     x = x,
     file = file,
@@ -55,10 +55,17 @@ plot.plantuml <- function(
   )
 
   pos <- regexpr("\\.([[:alnum:]]+)$", result)
-  type <- ifelse( pos > -1L, substring(result, pos + 1L), "")
+  type <- ifelse(pos > -1L, substring(result, pos + 1L), "")
 
-  if (type == "svg"){
-    bmp <- grDevices::as.raster(rsvg::rsvg(result, width = width, height = height, css = css))
+  vcr::local_cassette("plot.plantuml")
+
+  if (type == "svg") {
+    bmp <- grDevices::as.raster(rsvg::rsvg(
+      result,
+      width = width,
+      height = height,
+      css = css
+    ))
     xrange <- c(0, ncol(bmp))
     yrange <- c(0, nrow(bmp))
 
@@ -73,10 +80,12 @@ plot.plantuml <- function(
     )
     rasterImage(
       bmp,
-      xleft   = 0, xright = xrange[[2]],
-      ybottom = 0, ytop   = yrange[[2]]
+      xleft = 0,
+      xright = xrange[[2]],
+      ybottom = 0,
+      ytop = yrange[[2]]
     )
-  } else if (type == "png"){
+  } else if (type == "png") {
     puml <- png::readPNG(
       result,
       info = TRUE
@@ -98,8 +107,10 @@ plot.plantuml <- function(
       ytop = attr(puml, "dim")[[1]]
     )
   } else {
-    warning(
-      "The grap has only been saved to ", file, ".\n",
+    message(
+      "The graph has only been saved to ",
+      file,
+      ".\n",
       "When 'file' is specified, needs to be 'svg' or 'png' to be able to be plotted!"
     )
   }
