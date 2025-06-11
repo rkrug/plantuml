@@ -1,7 +1,7 @@
 Package: plantuml
 Type: Package
 Title: Create UML Graphs using PlantUML Syntax
-Version: 0.6.9
+Version: 0.6.9.1
 Date: 2023-01-31
 Authors@R: 
     c(person(given = "Rainer M.",
@@ -17,6 +17,8 @@ BugReports: https://github.com/rkrug/plantuml/issues
 License: GPL-3
 Encoding: UTF-8
 Depends: R (> 4.0)
+Additional_repositories: 
+    https://ropensci.r-universe.dev
 Imports:
   utils,
   tools,
@@ -24,6 +26,7 @@ Imports:
   crul,
   grDevices,
   graphics,
+  httr2,
   jsonlite,
   png
 RoxygenNote: 7.3.2
@@ -33,6 +36,7 @@ Suggests:
     covr,
     vdiffr,
     testthat,
+    vcr (> 1.7.0),
     yaml
 VignetteBuilder: knitr
 Config/testthat/edition: 3

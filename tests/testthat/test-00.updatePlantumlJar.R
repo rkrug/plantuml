@@ -8,62 +8,27 @@
 #     )
 #   }
 # )
-unlink(getPlantumlOption("jar_name"))
-
-test_that(
-  "plantuml jar does not exist",
-  {
-    expect_snapshot(
-      {
-        file.exists(getPlantumlOption("jar_name"))
-      }
-    )
-  }
-)
-
-test_that(
-  "plantuml_update(beta = TRUE)",
-  {
-    expect_snapshot(
-      {
-        plantuml_update( beta = TRUE, quiet = TRUE )
-      }
-    )
-  }
-)
-
-test_that(
-  "plantuml jar exists",
-  {
-    expect_snapshot(
-      {
-        file.exists(getPlantumlOption("jar_name"))
-      }
-    )
-  }
-)
 
 unlink(getPlantumlOption("jar_name"))
 
-test_that(
-  "plantuml_update(beta = FALSE)",
-  {
-    expect_snapshot(
-      {
-        plantuml_update( beta = FALSE, quiet = TRUE )
-      }
-    )
-  }
-)
+vcr::local_cassette("update_plantuml_jar_beta")
+test_that("plantuml_update(tag = 'snapshot')", {
+  expect_snapshot(
+    {
+      plantuml_update(tag = "snapshot")
+      file.exists(getPlantumlOption("jar_name"))
+      unlink(getPlantumlOption("jar_name"))
+    }
+  )
+})
 
-test_that(
-  "plantuml jar exists",
-  {
-    expect_snapshot(
-      {
-        file.exists(getPlantumlOption("jar_name"))
-      }
-    )
-  }
-)
 
+vcr::local_cassette("update_plantuml_jar_release")
+test_that("plantuml_update(tag = 'release')", {
+  expect_snapshot(
+    {
+      plantuml_update(tag = "release")
+      file.exists(getPlantumlOption("jar_name"))
+    }
+  )
+})

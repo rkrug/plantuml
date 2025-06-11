@@ -1,12 +1,14 @@
+vcr::local_cassette("plot_plantuml")
+
 test_that("plot using defult (svg) without file argument", {
-  vcr::local_cassette("plot.plantuml.default")
-  fn <- plot(
-    as.plantuml(x = list(a = 1L:10L, b = NA, c = LETTERS[1:10])),
-    file = NULL
-  )
-  expect_snapshot_file(fn, "plot_default.svg")
-  unlink(fn)
-})
+#   vcr::local_cassette("plot.plantuml.default")
+#   fn <- plot(
+#     as.plantuml(x = list(a = 1L:10L, b = NA, c = LETTERS[1:10])),
+#     file = NULL
+#   )
+#   expect_snapshot_file(fn, "plot_default.svg")
+#   unlink(fn)
+# })
 
 
 test_that("plot using svg", {

@@ -7,21 +7,19 @@
 #' @param tag tag of the version to be downloaded. Allowed values are
 #'   - **"release**    : the last release
 #'   - **"snapshot"**  : the last snapshot - **Not ready for gneral use**
-#' @param ... additional arguments for the \code{download.file()} function
 #'
 #' @return the path and name of the downloaded file
 #'
 #' @md
 #' @export
 #'
-#' @importFrom utils download.file
+#' @importFrom httr2 request req_perform
 #' @examples
 #' \dontrun{
 #' plantuml_update()
 #' }
 plantuml_update <- function(
-  tag = "release",
-  ...
+  tag = "release"
 ) {
   url <- ifelse(
     tag == "snapshot",
@@ -35,12 +33,18 @@ plantuml_update <- function(
     recursive = TRUE
   )
   ##
-  download.file(
-    url = url,
-    destfile = getPlantumlOption("jar_name"),
-    mode = "wb",
-    ...
-  )
+
+  httr2::request(url) |>
+    httr2::req_perform(
+      path = getPlantumlOption("jar_name")
+    )
+
+  # download.file(
+  #   url = url,
+  #   destfile = getPlantumlOption("jar_name"),
+  #   mode = "wb",
+  #   ...
+  # )
   invisible(TRUE)
 }
 
@@ -52,6 +56,8 @@ plantuml_update <- function(
 #'
 #' @export
 updatePlantumlJar <- function(...) {
-  warning("The function `updatePlantumlJar()` has been renamed to `plantuml_update()`!\nPlease change in your scripts!")
+  warning(
+    "The function `updatePlantumlJar()` has been renamed to `plantuml_update()`!\nPlease change in your scripts!"
+  )
   plantuml_update(...)
 }

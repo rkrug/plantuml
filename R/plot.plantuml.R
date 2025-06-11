@@ -57,8 +57,6 @@ plot.plantuml <- function(
   pos <- regexpr("\\.([[:alnum:]]+)$", result)
   type <- ifelse(pos > -1L, substring(result, pos + 1L), "")
 
-  vcr::local_cassette("plot.plantuml")
-
   if (type == "svg") {
     bmp <- grDevices::as.raster(rsvg::rsvg(
       result,

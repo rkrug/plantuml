@@ -9,3 +9,4 @@ plantuml.bbprojectd
 /doc/
 /Meta/
 /docs/
+tests/fixtures/vcr/vcr.log

@@ -38,7 +38,7 @@
 #' @return name of the file with the graph
 #' @md
 #' @importFrom rsvg rsvg_png rsvg_pdf rsvg_ps
-#' @importFrom crul HttpClient
+#' @importFrom httr2 request req_perform
 #'
 #' @export
 #'
@@ -92,18 +92,23 @@ get_graph <- function(
     type = tmptype
   )
 
-  result <- utils::download.file(
-    url,
-    destfile = tmpfile,
-    quiet = TRUE
-  )
+  # result <- utils::download.file(
+  #   url,
+  #   destfile = tmpfile,
+  #   quiet = TRUE
+  # )
 
-  if (result != 0) {
-    unlink(tmpfile)
-    stop(
-      "Error in download of PlantUML chart from PlantUML Server / Picoweb Server!"
+  # if (result != 0) {
+  #   unlink(tmpfile)
+  #   stop(
+  #     "Error in download of PlantUML chart from PlantUML Server / Picoweb Server!"
+  #   )
+  # }
+
+  httr2::request(url) |>
+    httr2::req_perform(
+      path = tmpfile
     )
-  }
 
   # client <- HttpClient$new(url = url)
 
