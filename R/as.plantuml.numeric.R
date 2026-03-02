@@ -4,6 +4,7 @@
 #'
 #' @examples
 #' \dontrun{
+#'  ## \code{numeric}
 #'  x <- 1/(-10:10)
 #'  x <- as.plantuml(x)
 #'  plot(x)

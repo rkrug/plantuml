@@ -2,8 +2,6 @@
 #' @rdname as.plantuml
 #' @export
 #'
-#' @examples
-#'
 
 as.plantuml.default <- function(
   x,

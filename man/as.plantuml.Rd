@@ -63,18 +63,28 @@ plot( x )
 }
 
 \dontrun{
+ ## \code{character}
  x <- LETTERS
  x <- as.plantuml(x)
  plot(x)
  }
 
 \dontrun{
+ ## \code{complex}
+ x <- 1:2 + 1i*(8:9)
+ x <- as.plantuml(x)
+ plot(x)
+ }
+
+\dontrun{
+ ## \code{factor}
  x <- factor(LETTERS)
  x <- as.plantuml(x)
  plot(x)
  }
 
 \dontrun{
+ ## \code{integer}
  x <- 1L:10L
  names(x) <- letters[1:10]
  x <- as.plantuml(x)
@@ -82,6 +92,7 @@ plot( x )
  }
 
 \dontrun{
+ ## \code{list}
  x <- list(
    num = 1:10,
    let = letters[1:20]
@@ -92,6 +103,14 @@ plot( x )
  }
 
 \dontrun{
+  ## \code{logical}
+  x <- c(True, FALSE, TRUE, NA)
+  x <- as.plantuml(x)
+  plot(x)
+ }
+
+\dontrun{
+ ## \code{numeric}
  x <- 1/(-10:10)
  x <- as.plantuml(x)
  plot(x)

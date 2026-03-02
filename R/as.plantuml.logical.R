@@ -3,9 +3,11 @@
 #' @export
 #'
 #' @examples
-#'  x <- c(True, FALSE, TRUE, NA)
-#'  x <- as.plantuml(x)
-#'  plot(x)
+#' \dontrun{
+#'   ## \code{logical}
+#'   x <- c(True, FALSE, TRUE, NA)
+#'   x <- as.plantuml(x)
+#'   plot(x)
 #'  }
 #'
 as.plantuml.logical <- function(

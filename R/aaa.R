@@ -24,5 +24,9 @@
     "   stop_server()",
     "   server_set(\"local\")"
   )
+
+  if (getPlantumlOption("java_bin") == "") {
+    packageStartupMessage("\n\nJava is not installed. Therefore you can only use the online Plantuml server!\n\n")
+  }
 }
 

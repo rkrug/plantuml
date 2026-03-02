@@ -10,3 +10,5 @@ plantuml.bbprojectd
 /Meta/
 /docs/
 tests/fixtures/vcr/vcr.log
+.DS_Store
+.devcontainer/*

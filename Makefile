@@ -108,7 +108,10 @@ doc:
 docs: metadata doc web
 
 ####
-build: build-cran
+build: 
+	cd ..;\
+	R CMD build $(PKGSRC)
+
 
 build-cran:
 	cd ..;\
@@ -116,7 +119,7 @@ build-cran:
 
 ####
 
-install:
+install: build
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 
@@ -163,19 +166,5 @@ list_targets:
 list: list_variables list_targets
 
 #############
-
-
-
-
-docker_build:
-	docker build -t r-devel-plantuml ./docker/
-
-docker_run:
-	docker run \
-		--name=r-devel-plantuml \
-		-v ~/git/0.Rpackages/plantuml:/RPackage/mypackage \
-		--rm -ti r-devel-plantuml /bin/bash
-
-
 
 .PHONY: web clean_web list files update clean clean_vignettes clean_web clean_html publish docs scheme_package

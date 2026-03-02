@@ -13,6 +13,9 @@ server_set <- function(
     location = "remote"
 ){
   if (location == "local") {
+    if (getPlantumlOption("java_bin") == "") {
+      stop("Java is not installed, therefore local processing not possible!")
+    }
     old_server <- plantumlOptions(server_url = "http://localhost/")
     plantumlOptions(server_port = 8080)
   } else if (location == "remote") {

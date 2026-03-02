@@ -14,6 +14,9 @@
 #' @examples
 server_start <- function(
 ){
+    if (getPlantumlOption("java_bin") == "") {
+      stop("Java is not installed, therefore local processing not possible!")
+    }
 
   if (plantumlOptions()$server_url != "http://localhost/") {
     stop("Server needs to be set to localhost by running `server_set(\"local\"!)`")
@@ -28,17 +31,13 @@ server_start <- function(
   if (status == 0) {
     warning("There is an unknown server running on port ", getPlantumlOption("server_port"), "!")
     result <- 1
-  }
-  if (status == 1) {
+  } else if (status == 1) {
     warning("There is already a PicoWeb Server running on port ", getPlantumlOption("server_port"), "!")
     result <- 1
-  }
-  if (status == 2) {
+  } else if (status == 2) {
     stop("There is a PlantUML Web Server running on port ", getPlantumlOption("server_port"), "!")
     result <- 2
-  }
-
-  if (result == -999){
+  } else {
 
     # Starting PicoWeb Server -------------------------------------------------
 
